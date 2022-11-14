@@ -27,13 +27,15 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "customerId")
     private Customer customer;
-//
-////    @ManyToMany
-////    @JoinTable(
-////            name = "orders_products",
-////            joinColumns = { @JoinColumn(name = "orderId") },
-////            inverseJoinColumns = { @JoinColumn(name = "productId")})
-////            private Set<Product> products = new HashSet<>();
+
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "orders_products",
+            joinColumns = @JoinColumn(name = "orderId"),
+            inverseJoinColumns = @JoinColumn(name = "productId")
+    )
+    private Set<Product> products = new HashSet<>();
 
 
 }

@@ -1,8 +1,6 @@
 package com.allcoolstore.model;
 
 import lombok.*;
-import org.aspectj.weaver.ast.Or;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -23,8 +21,8 @@ public class Product {
     private int qty;
     private double volume;
 
-//    @ManyToMany(mappedBy = "productId")
-//    private Set<Order> orderId = new HashSet<>();
+    @ManyToMany(mappedBy = "products")
+    private Set<Order> orderId = new HashSet<>();
 
 
 

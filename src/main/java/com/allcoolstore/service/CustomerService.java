@@ -1,13 +1,12 @@
 package com.allcoolstore.service;
 
-import com.allcoolstore.iservice.ICustomerService;
 import com.allcoolstore.model.Customer;
 import com.allcoolstore.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 @Service
-public class CustomerService implements ICustomerService {
+public class CustomerService {
 
     private final CustomerRepository customerRepository;
 
@@ -15,18 +14,17 @@ public class CustomerService implements ICustomerService {
         this.customerRepository = customerRepository;
     }
 
-    @Override
+
     public List<Customer> getAllCustomers() {
         return customerRepository.findAll();
     }
 
-    @Override
+
     public void createCustomer(Customer customer) {
         validateEmail(customer.getEmail());
         customerRepository.save(customer);
     }
 
-    @Override
     public void deleteCustomer(Long id) {
         boolean customerExists = customerRepository.existsById(id);
         if (!customerExists) {
@@ -35,7 +33,6 @@ public class CustomerService implements ICustomerService {
         customerRepository.deleteById(id);
     }
 
-    @Override
     public void updateCustomer(Long id, Customer customer) {
         Customer customerToUpdate = customerRepository.findById(id).orElseThrow(() ->
                 new IllegalStateException(String.format("Customer with id %s does not exist.", id)));

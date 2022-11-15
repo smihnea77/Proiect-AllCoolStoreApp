@@ -15,7 +15,6 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-
     @GetMapping
     public List<Order> getAllOrders(){
         return orderService.getAllOrders();
@@ -32,10 +31,7 @@ public class OrderController {
     }
 
     @DeleteMapping(path = "{id}")
-    public void deleteOrder(@PathVariable Long id, @RequestBody Order order){
-        orderService.deleteOrder(id, order);
+    public void deleteOrder(@PathVariable Long id){
+        orderService.deleteOrder(id);
     }
-
-
-
 }

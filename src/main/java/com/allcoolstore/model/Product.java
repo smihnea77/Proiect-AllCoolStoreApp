@@ -7,8 +7,7 @@ import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+@Getter @Setter
 @ToString
 @Entity
 @Table(name = "products")
@@ -21,10 +20,10 @@ public class Product {
     private int qty;
     private double volume;
 
+    @ManyToOne
+    @JoinColumn(name = "adminId")
+    private Admin admin;
+
     @ManyToMany(mappedBy = "products")
     private Set<Order> orderId = new HashSet<>();
-
-
-
-
 }

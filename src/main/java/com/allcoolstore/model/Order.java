@@ -1,8 +1,6 @@
 package com.allcoolstore.model;
 
 import lombok.*;
-import org.springframework.cglib.core.Local;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -10,8 +8,7 @@ import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+@Getter @Setter
 @ToString
 @Entity
 @Table(name = "orders")
@@ -28,6 +25,9 @@ public class Order {
     @JoinColumn(name = "customerId")
     private Customer customer;
 
+    @ManyToOne
+    @JoinColumn(name = "adminId")
+    private Admin admin;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(

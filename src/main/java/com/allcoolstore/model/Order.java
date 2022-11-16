@@ -1,5 +1,6 @@
 package com.allcoolstore.model;
 
+import com.sun.istack.NotNull;
 import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -16,18 +17,18 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    //@NotNull
     private String status;
+    //@NotNull
     private double total;
+   // @NotNull
     private String paymentMethod;
     private LocalDate localDate;
 
     @ManyToOne
-    @JoinColumn(name = "customerId")
-    private Customer customer;
+    @JoinColumn(name = "userId")
+    private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "adminId")
-    private Admin admin;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(

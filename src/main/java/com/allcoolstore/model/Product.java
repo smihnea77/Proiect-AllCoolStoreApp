@@ -1,5 +1,6 @@
 package com.allcoolstore.model;
 
+import com.sun.istack.NotNull;
 import lombok.*;
 import javax.persistence.*;
 import java.util.HashSet;
@@ -15,15 +16,15 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+   // @NotNull
     private String name;
+    //@NotNull
     private String type;
+   // @NotNull
     private double price;
     private int qty;
     private double volume;
 
-    @ManyToOne
-    @JoinColumn(name = "adminId")
-    private Admin admin;
 
     @ManyToMany(mappedBy = "products")
     private Set<Order> orderId = new HashSet<>();

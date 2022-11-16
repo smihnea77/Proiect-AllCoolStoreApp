@@ -1,6 +1,6 @@
 package com.allcoolstore.security.adapter;
 
-import com.allcoolstore.model.Customer;
+import com.allcoolstore.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,28 +8,25 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
-public class CustomerDetailsAdapter implements UserDetails {
-
-    private final Customer customer;
+public class UserDetailsAdapter implements UserDetails {private final User user;
 
     @Autowired
-    public CustomerDetailsAdapter(Customer customer) {
-        this.customer = customer;
+    public UserDetailsAdapter(User user){
+        this.user = user;
     }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return List.of(() -> user.getRole());
     }
 
     @Override
     public String getPassword() {
-        return customer.getPassword();
+        return user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return customer.getEmail();
+        return user.getUsername();
     }
 
     @Override
@@ -52,4 +49,3 @@ public class CustomerDetailsAdapter implements UserDetails {
         return true;
     }
 }
-

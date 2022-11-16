@@ -20,6 +20,7 @@ public class Admin {
     private String username;
     private String password;
 
+
     @OneToMany(mappedBy = "admin")
     private List<Order> orderList;
 

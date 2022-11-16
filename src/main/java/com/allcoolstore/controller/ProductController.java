@@ -4,6 +4,7 @@ import com.allcoolstore.model.Product;
 import com.allcoolstore.service.ProductService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -33,6 +34,17 @@ public class ProductController {
     @DeleteMapping(path = "{id}")
     public void deleteProduct(@PathVariable Long id){
         productService.deleteProduct(id);
+    }
+
+    @GetMapping(path = "{type}")
+    public List <Product> getProductsByType(@PathVariable("type") String type){
+        List <Product> findAllProducts = productService.getAllProducts();
+       List <Product> productList = new ArrayList<>();
+       for (Product p: findAllProducts){
+           if (type.equals(p.getType())){
+               productList.add(p);
+           }
+       }return productList;
     }
 
 }

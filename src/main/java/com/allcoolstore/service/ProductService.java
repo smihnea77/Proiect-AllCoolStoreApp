@@ -14,13 +14,18 @@ public class ProductService {
 
     public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
-
     }
 
     public List<Product> getAllProducts() {
         priceWithTva();
         return productRepository.findAll();
     }
+
+//    public List<Product> getProductsByType(String type, Product product) {
+//        priceWithTva();
+//        List<Product> productListByType = (List<Product>) productRepository.findByType(type);
+//        return productListByType;
+//    }
 
     private void priceWithTva() {
         List<Product> productList = productRepository.findAll();

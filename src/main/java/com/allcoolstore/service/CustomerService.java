@@ -40,7 +40,7 @@ public class CustomerService {
         customerToUpdate.setFirstName(customer.getFirstName());
         customerToUpdate.setLastName(customer.getLastName());
         customerToUpdate.setEmail(customer.getEmail());
-        customerToUpdate.setPass(customer.getPass());
+        customerToUpdate.setPassword(customer.getPassword());
         customerToUpdate.setAge(customer.getAge());
         customerToUpdate.setPhone(customer.getPhone());
         customerToUpdate.setAddress(customer.getAddress());

@@ -1,50 +1,141 @@
 package com.allcoolstore.controller;
 
 import com.allcoolstore.model.Product;
+import com.allcoolstore.repository.ProductRepository;
 import com.allcoolstore.service.ProductService;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController
-@RequestMapping(path = "/api/v1/products")
+@Controller
+@RequestMapping(path = "/products")
 public class ProductController {
     private final ProductService productService;
+    private final ProductRepository productRepository;
 
-    public ProductController(ProductService productService) {
+    public ProductController(ProductService productService, ProductRepository productRepository) {
         this.productService = productService;
+        this.productRepository = productRepository;
     }
 
-    @GetMapping
-    public List<Product> getAllProducts(){
-        return productService.getAllProducts();
-    }
+//    @GetMapping()
+//    public String getAllProducts(){
+//        ModelMap modelMap = new ModelMap();
+//        List <Product> findAllProducts = productService.getAllProducts();
+//        modelMap.addAttribute("products",findAllProducts);
+//       return "products";
+//        //return productService.getAllProducts();
+//    }
 
     @PutMapping(path = "update-product/{id}")
-    public void updateProduct(@PathVariable Long id, @RequestBody Product product){
+    public void updateProduct(@PathVariable Long id, @RequestBody Product product) {
         productService.updateProduct(id, product);
     }
 
     @PostMapping(path = "/create-product")
-    public void createProduct(@RequestBody Product product){
+    public void createProduct(@RequestBody Product product) {
         productService.createProduct(product);
     }
 
     @DeleteMapping(path = "{id}")
-    public void deleteProduct(@PathVariable Long id){
+    public void deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
     }
 
-    @GetMapping(path = "{type}")
-    public List <Product> getProductsByType(@PathVariable("type") String type){
-        List <Product> findAllProducts = productService.getAllProducts();
-       List <Product> productList = new ArrayList<>();
-       for (Product p: findAllProducts){
-           if (type.equals(p.getType())){
-               productList.add(p);
-           }
-       }return productList;
+    @GetMapping(path = "/cognac")
+    public String getCognacType(ModelMap modelMap) {
+        String type = "cognac";
+        List<Product> findAllProducts = productService.getAllProducts();
+        List<Product> productList = new ArrayList<>();
+        for (Product p : findAllProducts) {
+            if (type.equals(p.getType())) {
+                productList.add(p);
+            }
+        }
+        modelMap.addAttribute("products", productList);
+        return "cognac";
     }
 
+    @GetMapping(path = "/champagne")
+    public String getChampagneType(ModelMap modelMap) {
+        String type = "champagne";
+        List<Product> findAllProducts = productService.getAllProducts();
+        List<Product> productList = new ArrayList<>();
+        for (Product p : findAllProducts) {
+            if (type.equals(p.getType())) {
+                productList.add(p);
+            }
+        }
+        modelMap.addAttribute("products", productList);
+        return "champagne";
+    }
+    @GetMapping(path = "/rum")
+    public String getRumType(ModelMap modelMap) {
+        String type = "rum";
+        List<Product> findAllProducts = productService.getAllProducts();
+        List<Product> productList = new ArrayList<>();
+        for (Product p : findAllProducts) {
+            if (type.equals(p.getType())) {
+                productList.add(p);
+            }
+        }
+        modelMap.addAttribute("products", productList);
+        return "rum";
+    }
+
+    @GetMapping(path = "/vodka")
+    public String getVodkaType(ModelMap modelMap) {
+        String type = "vodka";
+        List<Product> findAllProducts = productService.getAllProducts();
+        List<Product> productList = new ArrayList<>();
+        for (Product p : findAllProducts) {
+            if (type.equals(p.getType())) {
+                productList.add(p);
+            }
+        }
+        modelMap.addAttribute("products", productList);
+        return "vodka";
+    }
+
+    @GetMapping(path = "/whiskey")
+    public String getWhiskeyType(ModelMap modelMap) {
+        String type = "whiskey";
+        List<Product> findAllProducts = productService.getAllProducts();
+        List<Product> productList = new ArrayList<>();
+        for (Product p : findAllProducts) {
+            if (type.equals(p.getType())) {
+                productList.add(p);
+            }
+        }
+        modelMap.addAttribute("products", productList);
+        return "whiskey";
+    }
+
+    @GetMapping(path = "/wine")
+    public String getWineType(ModelMap modelMap) {
+        String type = "wine";
+        List<Product> findAllProducts = productService.getAllProducts();
+        List<Product> productList = new ArrayList<>();
+        for (Product p : findAllProducts) {
+            if (type.equals(p.getType())) {
+                productList.add(p);
+            }
+        }
+        modelMap.addAttribute("products", productList);
+        return "wine";
+    }
+//    @GetMapping(path = "/{type}")
+//    public String getProductsByType(@PathVariable("type") String type, ModelMap modelMap){
+//        List <Product> findAllProducts = productService.getAllProducts();
+//        List <Product> productList = new ArrayList<>();
+//        for (Product p: findAllProducts){
+//            if (type.equals(p.getType())){
+//                productList.add(p);
+//            }
+//        }modelMap.addAttribute("products", productList);
+//        return "{type}";
+//    }
 }

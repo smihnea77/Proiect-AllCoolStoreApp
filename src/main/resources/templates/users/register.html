@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>All-Cool</title>
+    <style>
+        body {
+            background-image: url("images/register-background.jpg");
+            height: 750px;
+            background-position: center top;
+            background-size: cover;
+        }
+    </style>
+
+
+    <link rel="stylesheet" type="text/css" href="css/style1.css">
+    
+
+</head>
+
+<body>
+
+    <div class="topnav">
+        <nav>
+            <a href="../index.html">Home</a>|
+            <a href="../products/cognac.html">Cognac</a>|
+            <a href="../products/whiskey.html">Whiskey</a> |
+            <a href="../productsrum.html">Rum</a> |
+            <a href="../products/champagne.html">Champagne</a> |
+            <a href="../products/wine.html">Wine</a> |
+            <a href="../products/vodka.html">Vodka</a> |
+            <a href="login.html"><img src="images/sign-in100px.png" alt="Login" width="20px"></a> |
+            <a href="images/orders.html"><img src="images/cart-100px.png" alt="Order" width="25px"></a>
+        </nav>
+    </div>
+
+
+    <br/> <br/>
+    <div class="center">
+        <img class="logo" src="images/register-logo.png" alt="All-Cool" height="225">
+    </div>
+
+
+<br/>
+
+<div class="register-page">
+    <form>
+        <div class="container">
+            <h1 class="center"> Customer Registration Form</h1>
+            <hr>
+            <div>
+
+    
+            <label> Firstname </label>
+            <input type="text" name="firstname" placeholder= "Firstname" size="15" required />
+            <label> Lastname: </label>
+            <input type="text" name="lastname" placeholder="Lastname" size="15"required />
+            <label for="email"> Email: </label>
+            <input type="email" name="email" placeholder="Email" size="15"required />
+            <label> Password: </label>
+            <input type="password" name="password" placeholder="Password" size="15"required />
+    
+            <hr>
+            <label> Phone(+40) :</label for="phone">
+            <input type="text" name="phone" placeholder="phone no." size="15" maxlength="8" required />
+            <hr>
+            
+            Current Address<br><br>
+            <label> City: </label>
+            <input type="text" name="city" placeholder= "City" size="15" required />
+            <label> County: </label>
+            <input type="text" name="county" placeholder="County" size="15"required />
+            <label for="postal code">Postal code: </label>
+            <input type="text" name="postal code" placeholder="Street and number" size="15" maxlength="6" required />
+            </label for="street and number">Street and number: </label>
+            <input type="text" name="street and number" placeholder="Street and number" size="15" required />
+            </div>
+            <div class="center">
+            <hr> 
+            <label>
+                You are adult?
+                </label><br><br>
+                    <input type="radio" value="yes" name="gender" checked > Yes
+                    <input type="radio" value="no" name="gender"> No
+            </div>
+            <hr>   
+            <div class="center">
+                <button>Login</button>
+                <p><a href="user.html"></a></p>
+            </div>
+        </form>
+
+
+</div>
+
+        
+       
+        
+
+
+    
+
+</body>
+
+
+</html>

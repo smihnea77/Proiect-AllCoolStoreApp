@@ -1,7 +1,6 @@
 //package com.allcoolstore.security.config;
 //
 //import com.allcoolstore.repository.UserRepository;
-//import com.allcoolstore.service.PasswordService;
 //import com.allcoolstore.service.UserService;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.context.annotation.Bean;
@@ -17,8 +16,8 @@
 //    @Autowired
 //    UserRepository userRepository;
 //
-//    @Autowired
-//    PasswordService passwordService;
+////    @Autowired
+////    PasswordService passwordService;
 //
 //    @Autowired
 //    UserService userService;
@@ -35,27 +34,18 @@
 //
 //    @Override
 //    protected void configure(HttpSecurity http) throws Exception {
-//        http.formLogin();
-//        http.authorizeRequests();
+///*        http.formLogin();
+//http.csrf().disable();
+//        http.authorizeRequests();*/
 ////                .mvcMatchers("/createOrder").access("hasAnyAuthority('ADMIN')")
 ////                .mvcMatchers("/addUser").permitAll()
 ////                .mvcMatchers("/orderlist").permitAll()
 ////                .anyRequest().authenticated();
 //
 //        // for adding users
-/////        {
-////            "firstname" : "maria",
-////                "lastname" : "nastase",
-////                "phone" : "23423",
-////                "role" : "USER",
-////                "password" : "123",
-////                "email" : "m@test.ro",
-////                "username" : "maria"
-////        }*/
 //
-///*        http.csrf().disable();
 //        http.authorizeRequests()
-//                .anyRequest().permitAll();*/
+//                .anyRequest().permitAll();
 //    }
 //
 //

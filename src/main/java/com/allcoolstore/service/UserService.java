@@ -2,16 +2,15 @@ package com.allcoolstore.service;
 
 import com.allcoolstore.model.User;
 import com.allcoolstore.repository.UserRepository;
-import com.allcoolstore.security.adapter.UserDetailsAdapter;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.core.userdetails.UserDetailsService;
+//import com.allcoolstore.security.adapter.UserDetailsAdapter;
+//import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.userdetails.UserDetailsService;
+//import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 @Service
-public class UserService implements UserDetailsService {
+public class UserService {
 
     private final UserRepository userRepository;
 
@@ -69,11 +68,11 @@ public class UserService implements UserDetailsService {
         }return userRepository.findByUsername(username);
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> user = Optional.ofNullable(userRepository.findByUsername(username));
-        User foundUser = user.orElseThrow(() -> new UsernameNotFoundException("Error! Username not found"));
-        return new UserDetailsAdapter(foundUser);
-    }
+//    @Override
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        Optional<User> user = Optional.ofNullable(userRepository.findByUsername(username));
+//        User foundUser = user.orElseThrow(() -> new UsernameNotFoundException("Error! Username not found"));
+//        return new UserDetailsAdapter(foundUser);
+//    }
 
 }

@@ -19,9 +19,9 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @PostMapping(path = "/create-user")
-    public void createUser(@RequestBody User user) {
-        userService.createUser(user);
+    @PostMapping(path = "/register-user")
+    public void registerUser(@RequestBody User user) {
+        userService.registerUser(user);
     }
 
     @PutMapping(path = "/update-user/{id}")

@@ -52,38 +52,20 @@ nav a:hover {
     color: yellow;
 }
 
-.dropbtn {
-    background-color: #C9D3C7;
-    color: black;
-    font-size: 20px;
-    border: none;
+.div-top {
+    text-align: center;
 }
 
-.dropdown {
-    background-color: red;
-    position: relative;
-    display: inline-block;
+.img-top {
+    width: 1600px;
+    object-fit: cover;
 }
 
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+.img-footer {
+    width: 1000px;
+    object-fit: cover;
 }
 
-.dropdown-content a {
-    background-color: red;
-    color: white;
-    padding: 10px 15px;
-    display: block;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
 
 table {
     width: 100%;
@@ -110,8 +92,46 @@ article {
     display: block;
     flex-direction: row;
     flex-wrap: wrap;
-    float: right;
+    float: left;
     align-content: space-between;
     border-radius: 10px;
     
+}
+
+.div-art {
+    margin: auto;
+    display: block;
+
+}
+
+.divimg-footer {
+    margin: 0;
+    display: inline-block;
+    justify-content: center;
+}
+
+
+footer {
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    text-align: center;    
+}
+
+#p-footer {
+    background-color: #C9D3C7;
+    margin: 0;
+    height: 15px;
+    padding: 10px;
+    color: red;
+}
+
+hr {
+    margin: 0;
+    color:rgb(220, 50, 50)
+}
+
+.divf {
+    display: block;
+    padding: 25px;
 }

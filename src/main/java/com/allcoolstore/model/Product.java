@@ -24,7 +24,21 @@ public class Product {
     private double price;
     private int qty;
     private double volume;
+    @Lob
+    @Column(
+            name = "photo",
+            columnDefinition = "MEDIUMBLOB"
+    )
+    private String image;
 
+    public Product(String image, String name, String type, double price, int qty, double volume) {
+        this.image = image;
+        this.name = name;
+        this.type = type;
+        this.price = price;
+        this.qty = qty;
+        this.volume = volume;
+    }
 
     @ManyToMany(mappedBy = "products")
     private Set<Order> orderId = new HashSet<>();

@@ -52,39 +52,37 @@
             <div>
 
     
-            <label> Firstname </label>
-            <input type="text" name="firstname" placeholder= "Firstname" size="15" required />
-            <label> Lastname: </label>
-            <input type="text" name="lastname" placeholder="Lastname" size="15"required />
-            <label for="email"> Email: </label>
-            <input type="email" name="email" placeholder="Email" size="15"required />
-            <label> Password: </label>
-            <input type="password" name="password" placeholder="Password" size="15"required />
+            <label> <sup class="asterix">*</sup> First Name: </label>
+            <input type="text" name="firstName" placeholder= "First Name" size="15" required />
+            <label> <sup class="asterix">*</sup> Last Name: </label>
+            <input type="text" name="lastName" placeholder="Last Name" size="15" required />
+            <label> <sup class="asterix">*</sup> Username: </label>
+            <input type="text" name="username" placeholder="Username" size="15" required />
+            <label for="email"> <sup class="asterix">*</sup> Email: </label>
+            <input type="email" name="email" placeholder="Email" size="15" required />
+            <label> <sup class="asterix">*</sup> Password: </label>
+            <input type="password" name="password" placeholder="Password" size="15" minlength="6" required />
     
             <hr>
-            <label> Phone(+40) :</label for="phone">
-            <input type="text" name="phone" placeholder="phone no." size="15" maxlength="8" required />
+            <label> <sup class="asterix">*</sup> Phone(+40) :</label for="phone">
+            <input type="text" name="phone" placeholder="phone no." size="15" maxlength="9" required />
             <hr>
             
             Current Address<br><br>
-            <label> City: </label>
+            <label> <sup class="asterix">*</sup> City: </label>
             <input type="text" name="city" placeholder= "City" size="15" required />
-            <label> County: </label>
+            <label> <sup class="asterix">*</sup> County: </label>
             <input type="text" name="county" placeholder="County" size="15"required />
-            <label for="postal code">Postal code: </label>
-            <input type="text" name="postal code" placeholder="Street and number" size="15" maxlength="6" required />
-            </label for="street and number">Street and number: </label>
-            <input type="text" name="street and number" placeholder="Street and number" size="15" required />
-            </div>
-            <div class="center">
-            <hr> 
-            <label>
-                You are adult?
-                </label><br><br>
-                    <input type="radio" value="yes" name="gender" checked > Yes
-                    <input type="radio" value="no" name="gender"> No
-            </div>
-            <hr>   
+            <label> <sup class="asterix">*</sup> Postal code: </label>
+            <input type="number" name="postal code" placeholder="postal code" size="15" maxlength="6" required />
+            <label> <sup class="asterix">*</sup> Address 1: </label>
+            <input type="text" name="address1" placeholder="street and number" size="15" required />
+            <label> Address 2: </label>
+            <input type="text" name="address2" placeholder="bl, sc, et, apt" size="15"/>
+            <hr>
+            <label class="red-label"> <sup class="asterix">*</sup> <id="req"></id>Required </label>
+            <hr>
+
             <div class="center">
                 <button>Login</button>
                 <p><a href="user.html"></a></p>

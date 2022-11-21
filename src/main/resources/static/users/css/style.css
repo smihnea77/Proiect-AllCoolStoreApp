@@ -19,6 +19,10 @@ body {
     
 }
 
+.asterix {
+  color: red;
+}
+
 
 .topnav {
     
@@ -57,7 +61,6 @@ nav a:hover {
 
 }
 
-
 .form {
   position: relative;
   z-index: 1;
@@ -85,7 +88,7 @@ nav a:hover {
   /* font-family: "Roboto", sans-serif; */
   text-transform: uppercase;
   outline: 0;
-  background: #EF3B3A;
+  background: black;
   width: 100%;
   border: 0;
   padding: 15px;
@@ -97,7 +100,7 @@ nav a:hover {
 }
 
 .form button:hover,.form button:active,.form button:focus {
-  background: #43A047;
+  background: #EF3B3A;
 }
 
 .form .message {

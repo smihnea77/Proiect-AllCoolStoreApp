@@ -24,7 +24,7 @@ public class UserService {
     }
 
 
-    public void createUser(User user) {
+    public void registerUser(User user) {
         validateEmail(user.getEmail());
         validateUsername(user.getUsername());
         userRepository.save(user);

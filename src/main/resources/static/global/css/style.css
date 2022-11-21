@@ -13,7 +13,6 @@
 
 
 body {
-    background-color: white;
     margin: 0 auto;
     overflow:auto;
 }
@@ -30,30 +29,26 @@ footer {
     margin: 0;
     height: 15px;
     padding: 10px;
-    color: rgb(220, 50, 50);
+    color: red;
 }
 
 hr {
     margin: 0;
-    color:rgb(220, 50, 50);
 }
 
 .topnav {
     background-color: #C9D3C7;
     overflow: hidden;
-
 }
 
 nav {
     display: block;
     background-color: #C9D3C7;
     padding: 15px;
-    margin: 0;
     align-items: flex-end;
-    float: right;
-
+    float:right;
+    margin: 0;
 }
-
 
 nav a {
     color: black;
@@ -62,26 +57,43 @@ nav a {
     background-color: #C9D3C7;
     vertical-align: middle;
     padding: 15px;
-    
 }
 
-p a:link {
-    text-decoration: none;
-    color: rgb(220, 50, 50);
+h1 {
+    text-align: center;
 }
 
-p a:hover {
-    text-decoration: none;
-    color: rgb(220, 50, 50);
-}
-
-p a:visited {
-    text-decoration: none;
-    color: rgb(220, 50, 50);
+h3 {
+    text-align: center;
 }
 
 nav a:hover {
     color: rgb(138, 148, 47);
 }
 
+.terms {
+    margin: 0;
+    padding-left: 50px;
+    padding-right: 50px;
+}
 
+article, img {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+}
+
+article {
+    width: 250px;
+    height: 150px;
+    border: 2px solid red;
+    vertical-align: middle;
+    margin: 25px;
+    padding: 25px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    float: left;
+    align-content: space-between;
+    border-radius: 10px;
+    
+}

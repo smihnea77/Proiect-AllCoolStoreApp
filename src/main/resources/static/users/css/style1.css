@@ -59,12 +59,46 @@ nav a:hover {
 
     padding-top: 10px;
   
-  }
+}
+
+.regf {
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+
+}
+
+.inttable {
+  padding: 10px;
+}
+
+.asterix {
+  color: red;
+  line-height: 80%;
+}
+
+.red-label {
+  color: red;
+}
 
 .container {
     width: 70%;
     padding: 50px;
     background-color: #C9D3C7;
+}
+
+.notall {
+  padding-left: 125px;
+}
+
+notdiv {
+  padding: 100px;
+}
+
+.p-div {
+  width: 500px;
+  text-align: center;
 }
 
 input[type=text], input[type=password], input[type=email], input[type=number] {
@@ -74,6 +108,10 @@ input[type=text], input[type=password], input[type=email], input[type=number] {
   display: inline-block;
   border: none;
   background: #F1F1F1;
+}
+
+h2 {
+  color: white;
 }
 
 button {

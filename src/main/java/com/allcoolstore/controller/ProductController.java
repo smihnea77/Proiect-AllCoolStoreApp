@@ -1,28 +1,22 @@
 package com.allcoolstore.controller;
 
 import com.allcoolstore.model.Product;
-import com.allcoolstore.repository.ProductRepository;
 import com.allcoolstore.service.ProductService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping(path = "/products")
 public class ProductController {
     private final ProductService productService;
 
-    private static final String UPLOAD_DIRECTORY = System.getProperty("user.dir");
+    //private static final String UPLOAD_DIRECTORY = System.getProperty("user.dir");
 
     public ProductController(ProductService productService) {
         this.productService = productService;
@@ -51,14 +45,14 @@ public class ProductController {
             modelAndView.addObject(new Product());
             return modelAndView;
         }
-
         @PostMapping("/create-product")
-        public ModelAndView saveProduct (@RequestParam("file") MultipartFile file,
+        public String saveProduct (@RequestParam("file") MultipartFile file,
                 @RequestParam("name") String name,
         @RequestParam("price") double price,
         @RequestParam("type") String type){
             productService.saveProduct2ToDB(file, name, price, type);
-            return new ModelAndView("redirect:/view-product");
+            //return new ModelAndView("redirect:/view-product");
+            return "index";
         }
 
         @DeleteMapping(path = "{id}")
@@ -161,20 +155,20 @@ public class ProductController {
 //        return "view";
 
 
-        @GetMapping("/uploadimage")
-        public String displayUploadForm () {
-            return "index";
-        }
-
-        @PostMapping("/upload")
-        public String uploadImage (Model model, @RequestParam("image") MultipartFile file) throws IOException {
-            StringBuilder fileNames = new StringBuilder();
-            Path fileNameAndPath = Paths.get(UPLOAD_DIRECTORY, file.getOriginalFilename());
-            fileNames.append(file.getOriginalFilename());
-            Files.write(fileNameAndPath, file.getBytes());
-            model.addAttribute("msg", "Uploaded images: " + fileNames.toString());
-            return "index";
-        }
+//        @GetMapping("/uploadimage")
+//        public String displayUploadForm () {
+//            return "index";
+//        }
+//
+//        @PostMapping("/upload")
+//        public String uploadImage (Model model, @RequestParam("image") MultipartFile file) throws IOException {
+//            StringBuilder fileNames = new StringBuilder();
+//            Path fileNameAndPath = Paths.get(UPLOAD_DIRECTORY, file.getOriginalFilename());
+//            fileNames.append(file.getOriginalFilename());
+//            Files.write(fileNameAndPath, file.getBytes());
+//            model.addAttribute("msg", "Uploaded images: " + fileNames.toString());
+//            return "index";
+//        }
 
 
     }

@@ -80,7 +80,7 @@ public class ProductService {
         productRepository.save(product);
     }
 
-    public void saveProduct2ToDB(MultipartFile file, String name, double price) {
+    public void saveProduct2ToDB(MultipartFile file, String name, double price, String type) {
         Product product = new Product();
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         if (fileName.contains("..")) {
@@ -93,6 +93,7 @@ public class ProductService {
         }
         product.setName(name);
         product.setPrice(price);
+        product.setType(type);
         productRepository.save(product);
     }
 }

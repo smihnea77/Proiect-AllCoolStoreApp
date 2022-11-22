@@ -1,188 +1,113 @@
-<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <title>Cognac</title>
 
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" th:href="@{css/style01.css}">
 
 </head>
 
 <body>
-    <div class="topnav">
-        <nav>
-            <a href="../index.html">Home</a>|
-            <a href="cognac.html">Cognac</a>|
-            <a href="whiskey.html">Whiskey</a> |
-            <a href="rum.html">Rum</a> |
-            <a href="champagne.html">Champagne</a> |
-            <a href="wine.html">Wine</a> |
-            <a href="vodka.html">Vodka</a> |
-            <a href="../users/login.html"><img src="images/sign-in100px.png" alt="Order" width="20px"></a> |
-            <a href="../orders.html"><img src="images/cart-100px.png" alt="Order" width="25px"></a>
-        </nav>
-    </div>
+<!-- <div>
+        <object class="header" type=""text/html" data="global/header.html"></object>
+    </div> -->
 
-    <br>
-       
-    <div class="div-top">
-        <img class="img-top" src="images/cognac-wallpaper-db.jpg" alt="Cognac" height="500">
-    </div>
+<!-- <br/> -->
+
+<div class="topnav">
+    <nav>
+        <a th:href="@{/}">Home</a>|
+        <a th:href="@{/products/cognac}">Cognac</a>|
+        <a href="whiskey.html">Whiskey</a> |
+        <a th:href="@{/products/rum}">Rum</a> |
+        <a href="champagne.html">Champagne</a> |
+        <a href="wine.html">Wine</a> |
+        <a th:href="@{/products/proba}">Proba</a> |
+        <a href="../users/login.html"><img src="images/sign-in100px.png" alt="Order" width="20px"></a> |
+        <a href="../orders.html"><img src="images/cart-100px.png" alt="Order" width="25px"></a>
+    </nav>
+</div>
+
+<br/>
+
+<!-- <div>
+    <center>
+        <table border="0">
+            <tr>
+                <td><img class="logo" src="images/logo.png" alt="All-Cool" height="225"></td>
+                <td><img src="images/cognac-00.jpg" alt="Cognac" height="500"></td>
+                <td><img class="logo" src="images/logo.png" alt="All-Cool" height="225"></td>
+            </tr>
+        </table>
+    </center>
+
+</div> -->
+
+<div class="div-top">
+    <img class="img-top" src="images/cognac-wallpaper-db.jpg" alt="Cognac" height="500">
+</div>
+
+<br/>
 
 
+<table border="1" class="table" th:href="@{/products/cognac}">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Image</th>
+        <th scope="col">Name</th>
+        <th scope="col">Brand</th>
+        <th scope="col">Description</th>
+        <th scope="col">Price</th>
+        <th scope="col">Review</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="cognac: ${products}">
+        <th th:text="${cognac.id}">1</th>
 
-<div class="div-art">
-    <div>
-        <article>
-            <div class="infoprod">
-                <div>
-                    <font>VS</font>
+        <td th:text="${cognac.name}">Product</td>
+        <td th:text="${cognac.price}">Price</td>
+        <!-- <td>
+            <img th:src="*{'data:image/jpeg;base64,' + {product.photo}}" style="width: 100px;height: 100px;" >
+        </td>
+        <td th:text="${cognac.type}">Product</td>
+        <td th:text="${cognac.qty}">Price</td>
+        <td th:text="${cognac.volume}">Price</td>
+        <td th:text="${product.description}">@mdo</td>
+        <td th:text="${product.price}">@mdo</td>
+        <td th:text="${product.review}">@mdo</td> -->
+    </tr>
+    </tbody>
+</table>
+
+<div th:href="@{/products/cognac}">
+    <div th:each="cognac: ${products}">
+        <article >
+            <div class="infoprod" >
+                <div th:text="${cognac.name}">
+                    <p></p>
                 </div>
-                <div>
+                <!-- <div>
                     <img src="images/cognac-01.jpg" alt="Cognac" height="225">
+                    <img th:src="*{'data:image/jpeg;base64,' + {product.photo}}" style="width: 100px;height: 100px;">
+                </div> -->
+                <div>
+                    <img th:src="*{'data:image/jpeg;base64,' + {cognac.image}}" style="width: 100px;height: 100px;">
+<!--                    <img th:src="@{'data:image/jpeg;base64' + ${cognac.image}}" style="width: 100px;height: 100px;">-->
+<!--                    <img  th:src="@{'data:image/jpeg;base64,'+${sb.encodedString}}" />-->
                 </div>
                 <div>
                     <font>164<sup>99</sup> lei</font>
                 </div>
-                <div>
-                    <font>COMANDA</font>
+                <div th:text="${cognac.price}">
+                    <p></p>
                 </div>
             </div>
         </article>
     </div>
-
-    <div>
-        <article>
-            <div class="infoprod">
-                <div>
-                    <font>X.O</font>
-                </div>
-                <div>
-                    <img src="images/cognac-02.jpg" alt="Cognac" height="225">
-                </div>
-                <div>
-                    <font>139<sup>99</sup> lei</font>
-                </div>
-                <div>
-                    <font>COMANDA</font>
-                </div>
-            </div>
-        </article>
-    </div>
-
-    <div>
-        <article>
-            <div class="infoprod">
-                <div>
-                    <font>5 STELE</font>
-                </div>
-                <div>
-                    <img src="images/cognac-03.jpg" alt="Cognac" height="225">
-                </div>
-                <div>
-                    <font>42<sup>50</sup> lei</font>
-                </div>
-                <div>
-                    <font>COMANDA</font>
-                </div>
-            </div>
-        </article>
-    </div>
-
-    <div>
-        <article>
-            <div class="infoprod">
-                <div>
-                    <font>12 STELE</font>
-                </div>
-                <div>
-                    <img src="images/cognac-04.jpg" alt="Cognac" height="225">
-                </div>
-                <div>
-                    <font>139<sup>00</sup> lei</font>
-                </div>
-                <div>
-                    <font>COMANDA</font>
-                </div>
-            </div>
-        </article>
-    
-    </div>
-
-    <div>
-        <article>
-            <div class="infoprod">
-                <div>
-                    <font>AMBRE</font>
-                </div>
-                <div>
-                    <img src="images/cognac-05.jpg" alt="Cognac" height="225">
-                </div>
-                <div>
-                    <font>213<sup>00</sup> lei</font>
-                </div>
-                <div>
-                    <font>COMANDA</font>
-                </div>
-            </div>
-        </article>
-    </div>
-
-    <div>
-        <article>
-            <div class="infoprod">
-                <div>
-                    <font>VIRSTA 10 ANI</font>
-                </div>
-                <div>
-                    <td><img src="images/cognac-06.jpg" alt="Cognac" height="225"></td>
-                </div>
-                <div>
-                    <font>79<sup>99</sup> lei</font>
-                </div>
-                <div>
-                    <font>COMANDA</font>
-                </div>
-            </div>
-        </article>
-    </div>
-   
-
-
 </div>
-
 <br>
-<div class="divimg-footer">
-    <div>
-        <img class="img-footer" src="images/pleasedrinkresp.png" alt="Cognac">
-    </div>
-</div>
-
-<br><br><br><br><br><br><br><br>
-
-
-<footer>
-    <div class="topnav">
-        <nav>
-            <a href="../global/terms.html">Terms</a>|
-            <a href="../global/gdpr.html">GDPR</a>|
-            <a href="../global/contact.html">Contact</a>
-        </nav>
-    </div>
-    <div>
-        <hr color="red">
-        <p id="p-footer">&copy; 2022 All-Cool - by Admin<br/></p>
-     </div>
- </footer>
-
-
-
-   
-
-    
-
 </body>
-
-
 </html>

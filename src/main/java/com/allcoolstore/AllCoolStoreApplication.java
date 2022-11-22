@@ -10,5 +10,4 @@ public class AllCoolStoreApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(AllCoolStoreApplication.class, args);
 	}
-
 }

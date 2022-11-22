@@ -25,7 +25,7 @@
 <!--    <a class="nav-link" th:href="@{/login}">Login</a>-->
 </nav>
 
-<form method="POST" th:action="@{/products/add-product}" th:object="${product}" class="col-md-4 col-md-offset-4"
+<form method="POST" th:action="@{/products/create-product}" th:object="${product}" class="col-md-4 col-md-offset-4"
       style="max-width: 350px; margin: 0 auto" enctype="multipart/form-data">
     <div class="border border-secondary rounded p-3">
 
@@ -41,6 +41,10 @@
             <label for="price" class="form-label">Price</label>
             <input type="text" th:field="*{price}" id="price"/>
         </div>
+    <div class="col-md-6">
+        <label for="name" class="form-label">Type</label>
+        <input type="text" th:field="*{type}" id="type">
+    </div>
 
         </div>
         <div class="col-12">

@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.Base64;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -53,12 +54,7 @@ public class ProductService {
     public void updateProduct(Long id, Product product) {
         Product productToUpdate = productRepository.findById(id).orElseThrow(() ->
                 new IllegalStateException(String.format("Product with id %s does not exist.", id)));
-        productToUpdate.setName(product.getName());
-        productToUpdate.setType(product.getType());
-        productToUpdate.setPrice(product.getPrice());
-        productToUpdate.setQty(product.getQty());
-        productToUpdate.setVolume(product.getVolume());
-        productRepository.save(productToUpdate);
+        productRepository.save(product);
     }
 
     public void saveProductToDB(MultipartFile file, String name, String type, double price, int qty, double volume) {
@@ -95,6 +91,10 @@ public class ProductService {
         product.setPrice(price);
         product.setType(type);
         productRepository.save(product);
+    }
+
+    public Product getByProductId(Long id) {
+        return productRepository.findById(id).orElse(new Product());
     }
 }
 

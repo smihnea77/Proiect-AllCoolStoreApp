@@ -43,16 +43,7 @@ public class UserService {
                 new IllegalStateException(String.format("User with id %s does not exist.", id)));
         validateEmail(user.getEmail());
         validateUsername(user.getUsername());
-        userToUpdate.setFirstName(user.getFirstName());
-        userToUpdate.setLastName(user.getLastName());
-        userToUpdate.setEmail(user.getEmail());
-        userToUpdate.setUsername(user.getUsername());
-        userToUpdate.setPassword(user.getPassword());
-        userToUpdate.setRole(user.getRole());
-        userToUpdate.setAge(user.getAge());
-        userToUpdate.setPhone(user.getPhone());
-        userToUpdate.setAddress(user.getAddress());
-        userRepository.save(userToUpdate);
+        userRepository.save(user);
     }
 
     private User validateEmail(String email) {
@@ -67,6 +58,13 @@ public class UserService {
             throw new IllegalStateException(String.format("Username %s already exists.", username));
         }return userRepository.findByUsername(username);
     }
+
+    public User getByUserId(Long id) {
+        return userRepository.findById(id).orElse(new User());
+    }
+
+
+
 
 //    @Override
 //    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

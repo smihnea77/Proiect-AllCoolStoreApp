@@ -3,6 +3,7 @@ package com.allcoolstore.controller;
 import com.allcoolstore.model.Order;
 import com.allcoolstore.service.OrderService;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -16,22 +17,36 @@ public class OrderController {
     }
 
     @GetMapping
-    public List<Order> getAllOrders(){
-        return orderService.getAllOrders();
+    public ModelAndView getAllOrders() {
+        ModelAndView modelAndView = new ModelAndView("orders");
+        List<Order> orderList = orderService.getAllOrders();
+        modelAndView.addObject("orderList", orderList);
+        return modelAndView;
     }
 
-    @PostMapping(path = "/create-order")
-    public void createOrder(@RequestBody Order order){
+    @GetMapping("/create-order")
+    public ModelAndView createOrderPage() {
+        ModelAndView modelAndView = new ModelAndView("createOrder");
+        modelAndView.addObject(new Order());
+        return modelAndView;
+    }
+
+    @PostMapping("/create-order")
+    public ModelAndView createOrder(@ModelAttribute Order order) {
         orderService.createOrder(order);
+        return new ModelAndView("redirect:/orders");
     }
 
-    @PutMapping(path = "/update-order/{id}")
-    public void updateOrder(@PathVariable Long id, @RequestBody Order order){
+    @PostMapping(path = "/update-order/{id}")
+    public ModelAndView updateOrder(@PathVariable Long id, @ModelAttribute("orderUpdateForm") Order order) {
         orderService.updateOrder(id, order);
+        return new ModelAndView("redirect:/orders");
     }
 
-    @DeleteMapping(path = "{id}")
-    public void deleteOrder(@PathVariable Long id){
-        orderService.deleteOrder(id);
+    @GetMapping("/update-order/{id}")
+    public ModelAndView updateOrderPage(@PathVariable Long id) {
+        ModelAndView modelAndView = new ModelAndView("updateOrder");
+        modelAndView.addObject(orderService.getOrderById(id));
+        return modelAndView;
     }
 }

@@ -17,7 +17,7 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     //@NotNull
-    private String status;
+  //  private String status;
     //@NotNull
     private double total;
    // @NotNull
@@ -36,6 +36,5 @@ public class Order {
             inverseJoinColumns = @JoinColumn(name = "productId")
     )
     private Set<Product> products = new HashSet<>();
-
 
 }

@@ -1,0 +1,107 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">-->
+<!--<head>-->
+<!--&lt;!&ndash;    <meta charset="UTF-8">&ndash;&gt;-->
+<!--&lt;!&ndash;    <title>Producte</title>&ndash;&gt;-->
+<!--&lt;!&ndash;    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"&ndash;&gt;-->
+<!--&lt;!&ndash;          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">&ndash;&gt;-->
+<!--&lt;!&ndash;    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"&ndash;&gt;-->
+<!--&lt;!&ndash;            integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"&ndash;&gt;-->
+<!--&lt;!&ndash;            crossorigin="anonymous"></script>&ndash;&gt;-->
+<!--&lt;!&ndash;    <link rel="stylesheet" type="text/css" href="css/style.css">&ndash;&gt;-->
+<!--</head>-->
+<!--<body>-->
+<!--&lt;!&ndash;<nav class="nav navbar-expand navbar-dark bg-dark">&ndash;&gt;-->
+<!--&lt;!&ndash;    <a class="menuNav" th:href="@{/login}">&ndash;&gt;-->
+<!--&lt;!&ndash;        <img th:src="@{/images/logo.jpg}"/>&ndash;&gt;-->
+<!--&lt;!&ndash;    </a>&ndash;&gt;-->
+<!--&lt;!&ndash;    <a class="menuNav" aria-current="page" href="#">Active</a>&ndash;&gt;-->
+<!--&lt;!&ndash;    <a class="menuNav" th:href="@{/product}">Products</a>&ndash;&gt;-->
+<!--&lt;!&ndash;    <a class="menuNav" th:href="@{/cart-products}">Cart</a>&ndash;&gt;-->
+<!--&lt;!&ndash;    <a class="menuNavLeft" th:href="@{/admin}">Admin</a>&ndash;&gt;-->
+<!--&lt;!&ndash;    <a class="menuNavLeft" th:href="@{/login}">Login</a>&ndash;&gt;-->
+<!--&lt;!&ndash;</nav>&ndash;&gt;-->
+
+<!--<div class="row">-->
+
+<!--    <div class="col-xl-3" th:href="@{/products/product}" th:each="product: ${productList}">-->
+<!--        <div class="card p-3 bg-white">-->
+<!--            <div class="about-product text-center mt-2">-->
+<!--                <img th:src="*{'data:image/jpeg;base64,' + {product.image}}" style="width: 100px;height: 100px;">-->
+<!--                <div>-->
+<!--                    <h5 th:text="${product.name}">Card title</h5>-->
+
+
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{css/style01.css}">
+
+</head>
+
+<body>
+<!-- <div>
+        <object class="header" type=""text/html" data="global/header.html"></object>
+    </div> -->
+
+<!-- <br/> -->
+
+<!-- <div>
+    <center>
+        <table border="0">
+            <tr>
+                <td><img class="logo" src="images/logo.png" alt="All-Cool" height="225"></td>
+                <td><img src="images/cognac-00.jpg" alt="Cognac" height="500"></td>
+                <td><img class="logo" src="images/logo.png" alt="All-Cool" height="225"></td>
+            </tr>
+        </table>
+    </center>
+
+</div> -->
+
+
+
+<table border="1" class="table" th:href="@{/users}">
+    <thead>
+
+    </thead>
+    <tbody>
+    <tr th:each="user: ${userList}">
+        <th th:text="${user.id}">1</th>
+        <td th:text="${user.firstName}">First Name</td>
+        <td th:text="${user.lastName}">lastName</td>
+        <td th:text="${user.email}">email</td>
+        <td th:text="${user.username}">username</td>
+        <td th:text="${user.role}">role</td>
+        <td th:text="${user.phone}">phone</td>
+        <td th:text="${user.city}">city</td>
+        <td th:text="${user.country}">country</td>
+        <td th:text="${user.postalCode}">postalCode</td>
+        <td th:text="${user.address1}">address1</td>
+        <td th:text="${user.address2}">address2</td>
+
+        <!-- <td>
+            <img th:src="*{'data:image/jpeg;base64,' + {product.photo}}" style="width: 100px;height: 100px;" >
+        </td>
+        <td th:text="${cognac.type}">Product</td>
+        <td th:text="${cognac.qty}">Price</td>
+        <td th:text="${cognac.volume}">Price</td>
+        <td th:text="${product.description}">@mdo</td>
+        <td th:text="${product.price}">@mdo</td>
+        <td th:text="${product.review}">@mdo</td> -->
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

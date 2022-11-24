@@ -16,8 +16,6 @@ import java.util.List;
 public class ProductController {
     private final ProductService productService;
 
-    //private static final String UPLOAD_DIRECTORY = System.getProperty("user.dir");
-
     public ProductController(ProductService productService) {
         this.productService = productService;
     }
@@ -42,15 +40,15 @@ public class ProductController {
                                       @RequestParam("name") String name,
                                       @RequestParam("price") double price,
                                       @RequestParam("type") String type) {
-        productService.saveProduct2ToDB(file, name, price, type);
+        productService.createProduct(file, name, price, type);
         //return new ModelAndView("redirect:/view-product");
-        return new ModelAndView("redirect:/");
+        return new ModelAndView("redirect:/products");
     }
 
     @PostMapping(path = "update-product/{id}")
     public ModelAndView updateProduct(@PathVariable Long id, @ModelAttribute("productUpdateForm") Product product) {
         productService.updateProduct(id, product);
-        return new ModelAndView("redirect:/");
+        return new ModelAndView("redirect:/products");
     }
 
 
@@ -61,22 +59,12 @@ public class ProductController {
         return modelAndView;
     }
 
-    //    @DeleteMapping(path = "/delete-product/{id}")
-//    public ModelAndView deleteProduct(@PathVariable Long id, @ModelAttribute("productUpdateForm") Product product) {
-//        productService.deleteProduct(id);
-//        return new ModelAndView("redirect:/");
-//    }
     @GetMapping(path = "/delete-product/{id}")
     public ModelAndView deleteProduct(@PathVariable ("id") Long id, Model model) {
         productService.deleteProduct(id);
-        return new ModelAndView("redirect:/");
+        return new ModelAndView("redirect:/products");
     }
-//    @GetMapping("/delete-product/{id}")
-//    public ModelAndView deleteProductPage(@PathVariable Long id) {
-//        ModelAndView modelAndView = new ModelAndView("deleteProduct");
-//        modelAndView.addObject(productService.getByProductId(id));
-//        return modelAndView;
-//    }
+
 
 
     @GetMapping(path = "/cognac")

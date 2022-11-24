@@ -1,0 +1,32 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{css/style01.css}">
+
+</head>
+
+<body>
+
+<table border="1" class="table" th:href="@{/users}">
+    <thead>
+
+    </thead>
+    <tbody>
+    <tr th:each="order: ${orderList}">
+        <th th:text="${order.id}">1</th>
+        <th th:text="${order.total}">Total</th>
+        <th th:text="${order.paymentMethod}">paymentMethod</th>
+        <th th:text="${order.localDate}">localDate</th>
+
+
+
+
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

@@ -38,9 +38,6 @@ public class ProductService {
         }
     }
 
-    public void createProduct(Product product) {
-        productRepository.save(product);
-    }
 
     public void deleteProduct(Long id) {
         boolean productExists = productRepository.existsById(id);
@@ -77,7 +74,7 @@ public class ProductService {
         productRepository.save(product);
     }
 
-    public void saveProduct2ToDB(MultipartFile file, String name, double price, String type) {
+    public void createProduct(MultipartFile file, String name, double price, String type) {
         Product product = new Product();
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         if (fileName.contains("..")) {

@@ -2,8 +2,8 @@ package com.allcoolstore.controller;
 
 import com.allcoolstore.model.User;
 import com.allcoolstore.service.UserService;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -18,8 +18,11 @@ public class UserController {
     }
 
     @GetMapping
-    public List<User> getAllUsers() {
-        return userService.getAllUsers();
+    public ModelAndView getAllUsers() {
+        ModelAndView modelAndView = new ModelAndView("users");
+        List<User> userList = userService.getAllUsers();
+        modelAndView.addObject("userList", userList);
+        return modelAndView;
     }
 
     @GetMapping("/register-user")
@@ -36,7 +39,7 @@ public class UserController {
     }
 
     @PostMapping(path = "/update-user/{id}")
-    public ModelAndView ModelAndView(@PathVariable Long id, @ModelAttribute("userUpdateForm") User user) {
+    public ModelAndView updateUser(@PathVariable Long id, @ModelAttribute("userUpdateForm") User user) {
         userService.updateUser(id, user);
         return new ModelAndView("redirect:/");
     }
@@ -51,5 +54,11 @@ public class UserController {
     @DeleteMapping(path = "{id}")
     public void deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
+    }
+
+    @GetMapping(path = "/delete-user/{id}")
+    public ModelAndView deleteUser(@PathVariable ("id") Long id, Model model) {
+        userService.deleteUser(id);
+        return new ModelAndView("redirect:/users");
     }
 }

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Contact</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/global.css" th:href="@{/css/global.css}" />
+    
+
+</head>
+
+<body>
+    <header>
+        <div>
+            <nav class="menu-nav">
+                <a th:href="@{/}">Home</a>|
+                <a th:href="@{/products/cognac}">Cognac</a>|
+                <a th:href="@{/products/whiskey}">Whiskey</a> |
+                <a th:href="@{/products/rum}">Rum</a> |
+                <a th:href="@{/products/champagne}">Champagne</a> |
+                <a th:href="@{/products/wine}">Wine</a> |
+                <a th:href="@{/products/vodka}">Vodka</a> |
+                <a th:href="@{/users/login}"><img src="images/sign-in100px.png" alt="Login" width="20px"></a> |
+                <a th:href="@{/orders/orders}"><img src="images/cart-100px.png" alt="Order" width="25px"></a>
+            </nav>
+        </div>
+    </header>
+
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <article>
+                        <div>
+                            <div>
+                                <b><i>........ Department</i></b>
+                            </div>
+                            <div>
+                                 <p><img src="images/user.png"> Monica Prundean</p>
+                            </div>
+                            <div>
+                                <p> <img src="images/phone.png"> 0700111111</p>
+                            </div>
+                            <div>
+                                <p><img src="images/email.png"> monica.prundean@all-cool.com</p>
+                            </div>
+                        </div>
+                    </article>
+                </td>
+                <td>
+                    <article>
+                        <div>
+                            <div>
+                                <b><i>...... Department</i></b>
+                            </div>
+                            <div>
+                                 <p><img src="images/user.png"> Mihnea Serban</p>
+                            </div>
+                            <div>
+                                <p> <img src="images/phone.png"> 0700222222</p>
+                            </div>
+                            <div>
+                                <p><img src="images/email.png"> mihnea.serban@all-cool.com</p>
+                            </div>
+                        </div>
+                    </article>
+                </td>
+                <td>
+                    <article>
+                        <div>
+                            <div>
+                                <b><i>........ Department</i></b>
+                            </div>
+                            <div>
+                                 <p><img src="images/user.png"> David Secheres</p>
+                            </div>
+                            <div>
+                                <p> <img src="images/phone.png"> 0700333333</p>
+                            </div>
+                            <div>
+                                <p><img src="images/email.png"> david.secheres@all-cool.com</p>
+                            </div>
+                        </div>
+                    </article>
+                </td>
+                <td>
+                    <article>
+                        <div>
+                            <div>
+                                <b><i>............ Department</i></b>
+                            </div>
+                            <div>
+                                 <p><img src="images/user.png"> Cornel Lupu</p>
+                            </div>
+                            <div>
+                                <p> <img src="images/phone.png"> 0700444444</p>
+                            </div>
+                            <div>
+                                <p><img src="images/email.png"> cornel.lupu@all-cool.com</p>
+                            </div>
+                        </div>
+                    </article>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <article class="address-div">
+                        <div>
+                            <div>
+                                <b><i>All-Cool Inc</i></b>
+                            </div>
+                            <div>
+                                <div>
+                                    <p><img src="images/address.png"> Address: 
+                                        <p class="text-space">TechHub, Nicolae Filipescu 39-41,</p>
+                                        <p class="text-space">Cladirea TechHub, Bucuresti 020961</p>
+                                    </p>
+                                </div>
+                                                   
+                            </div>
+                            <div>
+                                <p> <img src="images/phone.png"> Phone: 0370111111</p>
+                            </div>
+                            <div>
+                                <p><img src="images/email.png"> Internet: www.all-cool.com</p>
+                            </div>
+                            <div>
+                                <p><img src="images/email.png"> E-mail: office@all-cool.com</p>
+                            </div>
+                        </div>
+                    </article>
+                </td>
+                <td>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2848.7062113444786!2d26.099988351238682!3d44.43918830916489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b201fe887d246d%3A0x2cd4257cfbe895ba!2sSoftware%20Development%20Academy!5e0!3m2!1sen!2sro!4v1669289424545!5m2!1sen!2sro" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" align="center"></iframe>
+                </td>
+            </tr>
+        </table>
+    </div>
+<br>
+
+
+
+    <footer>
+        <div>
+            <nav class="menu-nav">
+                <a th:href="@{/global/terms}">Terms</a>|
+                <a th:href="@{/global/gdpr}">GDPR</a>|
+                <a th:href="@{/global/contact}">Contact</a>
+                <br>
+            </nav>
+        </div>
+        <div class="after-footer">
+            <hr color="red">
+            <p id="p-footer">&copy; 2022 All-Cool - Created by Admin<br/></p>
+         </div>
+    </footer> 
+
+</body>
+</html>

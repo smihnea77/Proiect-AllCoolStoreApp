@@ -9,7 +9,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.Base64;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -57,7 +56,7 @@ public class ProductService {
         productRepository.save(product);
     }
 
-    public void saveProductToDB(MultipartFile file, String name, String type, double price, int qty, double volume) {
+    public void saveProductToDB(MultipartFile file, String name, String producer,  String type, double price, int qty, double bottleSize, String description) {
         Product product = new Product();
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         if (fileName.contains("..")) {
@@ -69,10 +68,12 @@ public class ProductService {
             e.printStackTrace();
         }
         product.setName(name);
-        product.setPrice(price);
+        product.setProducer(producer);
         product.setType(type);
+        product.setPrice(price);
         product.setQty(qty);
-        product.setVolume(volume);
+        product.setBottleSize(bottleSize);
+        product.setDescription(description);
         productRepository.save(product);
     }
 

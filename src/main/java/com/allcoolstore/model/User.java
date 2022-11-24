@@ -26,26 +26,36 @@ public class User {
    // @NotNull
     private String password;
     //@NotNull
+//    private Date birthDate;
     private String role;
     //@NotNull
-    private int age;
     private String phone;
-    private String address;
+    private String city;
+    private String country;
+    private String postalCode;
+    private String address1;
+    private String address2;
 
-    public User(String firstName, String lastName, String email, String username, String password, String role, int age, String phone, String address) {
+    public User(String firstName, String lastName, String email, String username, String password, String role, String phone, String city, String country, String postalCode, String address1, String address2) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.username = username;
         this.password = password;
         this.role = role;
-        this.age = age;
         this.phone = phone;
-        this.address = address;
+        this.city = city;
+        this.country = country;
+        this.postalCode = postalCode;
+        this.address1 = address1;
+        this.address2 = address2;
     }
 
     @OneToMany(mappedBy = "user")
     private List<Order> orderList;
 
-
+    public User(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 }

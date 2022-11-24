@@ -1,6 +1,5 @@
 package com.allcoolstore.model;
 
-import com.sun.istack.NotNull;
 import lombok.*;
 import javax.persistence.*;
 import java.util.HashSet;
@@ -19,11 +18,13 @@ public class Product {
    // @NotNull
     private String name;
     //@NotNull
+    private String producer;
     private String type;
    // @NotNull
     private double price;
     private int qty;
-    private double volume;
+    private double bottleSize;
+    private String description;
     @Lob
     @Column(
             name = "photo",
@@ -31,13 +32,15 @@ public class Product {
     )
     private String image;
 
-    public Product(String image, String name, String type, double price, int qty, double volume) {
-        this.image = image;
+    public Product(String name, String producer, String type, double price, int qty, double bottleSize, String description, String image) {
         this.name = name;
+        this.producer = producer;
         this.type = type;
         this.price = price;
         this.qty = qty;
-        this.volume = volume;
+        this.bottleSize = bottleSize;
+        this.description = description;
+        this.image = image;
     }
 
     @ManyToMany(mappedBy = "products")

@@ -7,8 +7,10 @@ import com.allcoolstore.repository.UserRepository;
 //import org.springframework.security.core.userdetails.UserDetailsService;
 //import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
+
 @Service
 public class UserService {
 
@@ -41,8 +43,7 @@ public class UserService {
     public void updateUser(Long id, User user) {
         User userToUpdate = userRepository.findById(id).orElseThrow(() ->
                 new IllegalStateException(String.format("User with id %s does not exist.", id)));
-        validateEmail(user.getEmail());
-        validateUsername(user.getUsername());
+
         userRepository.save(user);
     }
 
@@ -50,21 +51,21 @@ public class UserService {
         Optional<User> userOptional = Optional.ofNullable(userRepository.findByEmail(email));
         if (userOptional.isPresent()) {
             throw new IllegalStateException(String.format("Email address %s already exists.", email));
-        }return userRepository.findByEmail(email);
+        }
+        return userRepository.findByEmail(email);
     }
+
     private User validateUsername(String username) {
         Optional<User> userOptional = Optional.ofNullable(userRepository.findByUsername(username));
         if (userOptional.isPresent()) {
             throw new IllegalStateException(String.format("Username %s already exists.", username));
-        }return userRepository.findByUsername(username);
+        }
+        return userRepository.findByUsername(username);
     }
 
     public User getByUserId(Long id) {
         return userRepository.findById(id).orElse(new User());
     }
-
-
-
 
 //    @Override
 //    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

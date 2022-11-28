@@ -1,66 +1,181 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
-    <title>Add Product</title>
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-            crossorigin="anonymous"></script>
+    <title>Create products</title>
+
+    <link rel="stylesheet" type="text/css" href="css/products.css" th:href="@{/css/products.css}">
+
+
 </head>
+
 <body>
-<nav class="nav navbar-expand navbar-dark bg-dark">
 
-    <a class="nav-link" th:href="@{/login}">
-        <img th:src="@{/images/logo.jpg}"/>
-    </a>
-    <a class="nav-link active" aria-current="page" href="#">Active</a>
-    <a class="nav-link" th:href="@{product}">Products</a>
-<!--    <a class="nav-link" th:href="@{/cart}">Cart</a>-->
-<!--    <a class="nav-link" th:href="@{/admin}">Admin</a>-->
-<!--    <a class="nav-link" th:href="@{/login}">Login</a>-->
-</nav>
+<div class="w3-sidebar">
+    <div>
+        <img src="images/logo.png" alt="All-Cool" height="75">
+    </div><br>
+    <div>
+        <nav class="side-nav">
+            <hr width="100%">
+            <a th:href="@{/users/setting}" class="w3-bar-item">Setting</a>
+            <hr width="100%">
+            <a th:href="@{/products/products}" class="w3-bar-item">Products</a>
+            <hr width="100%">
+            <a th:href="@{/orders/orders}" class="w3-bar-item">Orders</a>
+            <hr width="100%">
+            <a th:href="@{/users/users}" class="w3-bar-item">Users</a>
+            <hr width="100%">
+            <a th:href="@{/}" class="w3-bar-item">Log Out</a>
+            <hr width="100%">
+        </nav>
+    </div>
+</div>
 
-<form method="POST" th:action="@{/products/create-product}" th:object="${product}" class="col-md-4 col-md-offset-4"
-      style="max-width: 350px; margin: 0 auto" enctype="multipart/form-data">
-    <div class="border border-secondary rounded p-3">
+<header>
+    <div>
+        <nav class="menu-nav">
+            <a th:href="@{/}">Home</a>|
+            <a th:href="@{/products/cognac}">Cognac</a>|
+            <a th:href="@{/products/whiskey}">Whiskey</a> |
+            <a th:href="@{/products/rum}">Rum</a> |
+            <a th:href="@{/products/champagne}">Champagne</a> |
+            <a th:href="@{/products/wine}">Wine</a> |
+            <a th:href="@{/products/vodka}">Vodka</a> |
+            <a th:href="@{/users/login-user}"><img src="images/sign-in100px.png" alt="Login" width="20px"></a> |
+            <a th:href="@{/users/login-user}"><img src="images/cart-100px.png" alt="Order" width="25px"></a>
+        </nav>
+    </div>
+</header>
 
-        <div class="custom-file mb-2">
-            <input type="file" name="file" class="custom-class-input" id="customFile">
-            <label class="custom-file-label" for="customFile">Choose Photo</label>
-        </div>
+<br>
+<div class="table-contents" >
 
-        <div class="col-md-6">
-            <label for="name" class="form-label">Name</label>
-            <input type="text" th:field="*{name}" id="name">
-        </div>
-            <label for="price" class="form-label">Price</label>
-            <input type="text" th:field="*{price}" id="price"/>
-        </div>
-    <div class="col-md-6">
-        <label for="name" class="form-label">Type</label>
-        <input type="text" th:field="*{type}" id="type">
+    <div class="right-move">
+        <img class="logo" src="images/logo.png" alt="All-Cool" height="225">
     </div>
 
+    <table  width="45%" align="center">
+        <tr>
+            <td>
+                <div class=".form-product">
+                    <form action="#" method="POST" enctype="multipart/form-data" th:action="@{/products/create-product}" th:object="${product}">
+                        <div class="container">
+                            <h1 class="center"> Add New Product</h1>
+                            <hr><br>
+                            <div>
+
+                                <div>
+                                    <label> <sup class="asterix">*</sup> Name of product: </label>
+                                </div><br>
+                                <div >
+                                    <input type="text" th:field="*{name}" id="name" name="productName" placeholder= "Name of product" size="50"  maxlength="12" required />
+                                </div><br>
+                                <hr><br>
+
+                                <div>
+                                    <label> <sup class="asterix">*</sup> Type of product: </label>
+                                </div><br>
+                                <div >
+                                    <input type="text" th:field="*{type}" id="type" name="typeProduct" placeholder= "Type of product" size="15" maxlength="12" required />
+                                </div><br>
+                                <hr><br>
+
+                                <div>
+                                    <label> <sup class="asterix">*</sup> Name of producer: </label>
+                                </div><br>
+                                <div >
+                                    <input type="text" th:field="*{producer}" id="producer" name="producerName" placeholder= "Name of producer" size="50" maxlength="12" required />
+                                </div><br>
+                                <hr><br>
+
+                                <div>
+                                    <label> <sup class="asterix">*</sup> Price: </label>
+                                </div><br>
+                                <div >
+                                    <input type="number" th:field="*{price}" id="price" name="price" placeholder= "Price" size="50"  required />
+                                </div><br>
+                                <hr><br>
+
+                                <div>
+                                    <label> <sup class="asterix">*</sup> Quantity: </label>
+                                </div><br>
+                                <div >
+                                    <input type="number" th:field="*{qty}" id="qty" name="quantity" placeholder= "Quantity" size="50"  required />
+                                </div><br>
+                                <hr><br>
+
+                                <div>
+                                    <label> <sup class="asterix">*</sup> Bottle size: </label>
+                                </div><br>
+                                <div >
+                                    <input type="text" th:field="*{bottleSize}" id="bottle_size" name="bottleSize" placeholder= "Bottle Size" size="50"  required />
+                                </div><br>
+                                <hr><br>
+
+                                <div>
+                                    <label> Description: </label>
+                                </div><br>
+                                <div >
+                                    <input type="text" th:field="*{description}" id="description" name="producerName" placeholder= "Maximum 1500 characters" size="50"  maxlength="1500" />
+                                </div><br>
+                                <hr><br>
+
+                                <div>
+                                    <label class="custom-file-label" for="customFile"><sup class="asterix">*</sup> Choose Photo</label>
+                                </div><br>
+                                <div>
+                                    <input type="file" name="file" class="custom-class-input" id="customFile" required />
+                                </div><br>
+                                <hr><br>
+                                <div>
+                                    <label class="red-label"> <sup class="asterix">*</sup> <id="req"></id>Required </label>
+                                </div><br>
+
+                                <hr><br>
+
+                                <div class="center">
+                                    <button>Add new product</button>
+                                </div><br>
+                            </div>
+                    </form>
+                </div>
+            </td>
+        </tr>
+
+
+
+
+
+        <div>
+            <table width="100%" align="right" bgcolor="#C9D3C7">
+                <tr>
+                    <td>
+                        <div>
+                            <nav class="menu-nav">
+                                <a th:href="@{/global/terms}">Terms</a>|
+                                <a th:href="@{/global/gdpr}">GDPR</a>|
+                                <a th:href="@{/global/contact}">Contact</a>
+                                <br>
+                            </nav>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="after-footer">
+                            <hr color="red">
+                            <p id="p-footer">&copy; 2022 All-Cool - Created by Admin<br/></p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
         </div>
-        <div class="col-12">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck">
-                <label class="form-check-label" for="gridCheck">
-                    Check me out
-                </label>
-            </div>
-        </div>
-        <div class="col-12">
-            <a>
-                <button type="submit">Add Product</button>
-            </a>
-        </div>
-    </div>
-</form>
+
+
 </body>
+
+
 </html>

@@ -26,4 +26,34 @@ public class IndexController {
         return "terms";
     }
 
+    @GetMapping(value = "/users/login-admin")
+    public String getLoginAdminPage() {
+        return "loginAdmin";
+    }
+
+    @GetMapping(value = "/users/admin")
+    public String getAdminPage() {
+        return "admin";
+    }
+
+    @GetMapping(value = "/users/login-user")
+    public String getLoginUserPage() {
+        return "loginUser";
+    }
+
+    @GetMapping(value = "/users/user")
+    public String getUserPage() {
+        return "user";
+    }
+
+    @GetMapping(value = "/users/register")
+    public String getRegisterPage() {
+        return "register";
+    }
+
+    @GetMapping(value = "/users/not-register")
+    public String getNotRegisterPage() {
+        return "notRegister";
+    }
+
 }

@@ -28,8 +28,8 @@
             <a th:href="@{/products/champagne}">Champagne</a> |
             <a th:href="@{/products/wine}">Wine</a> |
             <a th:href="@{/products/vodka}">Vodka</a> |
-            <a th:href="@{/users/login}"><img src="images/sign-in100px.png" alt="Login" width="20px"></a> |
-            <a th:href="@{/orders/orders}"><img src="images/cart-100px.png" alt="Order" width="25px"></a>
+            <a th:href="@{/users/login-user}"><img src="images/sign-in100px.png" alt="Login" width="20px"></a> |
+            <a th:href="@{/users/login-user}"><img src="images/cart-100px.png" alt="Order" width="25px"></a>
         </nav>
     </div>
 </header>
@@ -59,7 +59,6 @@
         "palette": "dark",
         "language": "English",
         "privacy_policy_url" : "#" ,
-
     });
 </script>
 
@@ -74,13 +73,9 @@
     </div>
     <div class="after-footer">
         <hr color="red">
-        <p id="p-footer">&copy; 2022 All-Cool - by <a href="users/logadmin.html">Admin</a><br/></p>
+        <p id="p-footer">&copy; 2022 All-Cool - by <a th:href="@{/users/login-admin}">Admin</a><br/></p>
     </div>
 </footer>
-
-
-
-
 
 </body>
 </html>

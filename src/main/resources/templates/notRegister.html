@@ -3,19 +3,16 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Register</title>
+    <title>All-Cool</title>
     <style>
         body {
-            background-image: url("images/registerf-background.jpg");
+            background-image: url("images/not-background.jpeg");
             height: 750px;
             background-position: center top;
             background-size: cover;
         }
     </style>
-
-
-<link rel="stylesheet" type="text/css" href="css/users.css" th:href="@{/css/users.css}">
-    
+    <link rel="stylesheet" type="text/css" href="css/users.css" th:href="@{/css/users.css}">
 
 </head>
 
@@ -38,37 +35,52 @@
     </header>
 
 
-    <br> <br>
-    <div class="center" >
-        <div>
-            <img src="images/register-logo.png" alt="All-Cool" height="225">
+    <br/> <br/>
+    <div class="notall">
+        <div >
+            <img class="logo" src="images/register-logo.png" alt="All-Cool" height="225">
         </div><br>
-        <div>
-            <p><h2>Are you an adult?</h2></p>
-        </div>
-        <div class="yes-not">
-            <span> <a th:href="@{/users/register-user}"><img src="images/yes.png" alt="YES" height="50"></a></span>
-            <span> <a th:href="@{/users/not-register}"><img src="images/no.png" alt="NO" height="50"></a></span>
-        </div>
+
         
-    <br>
-<br>
+    </div><br>
+    <div class="notdiv" >
+        <div class="p-div">
+            <p><h2>It is illegal to sell alcoholic products to anyone under the age of 18!</h2></p>
+        </div>
 
-<footer>
-    <div>
-        <nav class="menu-nav">
-            <a th:href="@{/global/terms}">Terms</a>|
-            <a th:href="@{/global/gdpr}">GDPR</a>|
-            <a th:href="@{/global/contact}">Contact</a>
-            <br>
-        </nav>
     </div>
-    <div class="after-footer">
-        <hr color="red">
-        <p id="p-footer">&copy; 2022 All-Cool - Created by Admin<br/></p>
-    </div>
-</footer>  
 
+    <footer>
+        <div>
+            <nav class="menu-nav">
+                <a th:href="@{/global/terms}">Terms</a>|
+                <a th:href="@{/global/gdpr}">GDPR</a>|
+                <a th:href="@{/global/contact}">Contact</a>
+                <br>
+            </nav>
+        </div>
+        <div class="after-footer">
+            <hr color="red">
+            <p id="p-footer">&copy; 2022 All-Cool - Created by Admin<br/></p>
+        </div>
+    </footer>  
+
+
+<br/>
+
+
+
+
+
+
+        
+       
+        
+
+
+    
 
 </body>
+
+
 </html>

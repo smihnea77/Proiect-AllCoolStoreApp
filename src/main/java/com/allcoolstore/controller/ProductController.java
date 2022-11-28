@@ -68,7 +68,8 @@ public class ProductController {
 
 
     @GetMapping(path = "/cognac")
-    public String getCognacType(ModelMap modelMap) {
+    public ModelAndView getCognacType(ModelMap modelMap) {
+        ModelAndView modelAndView = new ModelAndView("cognac");
         String type = "cognac";
         List<Product> findAllProducts = productService.getAllProducts();
         List<Product> productList = new ArrayList<>();
@@ -78,11 +79,12 @@ public class ProductController {
             }
         }
         modelMap.addAttribute("products", productList);
-        return "cognac";
+        return modelAndView;
     }
 
     @GetMapping(path = "/champagne")
-    public String getChampagneType(ModelMap modelMap) {
+    public ModelAndView getChampagneType(ModelMap modelMap) {
+        ModelAndView modelAndView = new ModelAndView("champagne");
         String type = "champagne";
         List<Product> findAllProducts = productService.getAllProducts();
         List<Product> productList = new ArrayList<>();
@@ -92,11 +94,13 @@ public class ProductController {
             }
         }
         modelMap.addAttribute("products", productList);
-        return "champagne";
+        return modelAndView;
     }
 
+
     @GetMapping(path = "/rum")
-    public String getRumType(ModelMap modelMap) {
+    public ModelAndView getRumType(ModelMap modelMap) {
+        ModelAndView modelAndView = new ModelAndView("rum");
         String type = "rum";
         List<Product> findAllProducts = productService.getAllProducts();
         List<Product> productList = new ArrayList<>();
@@ -106,11 +110,12 @@ public class ProductController {
             }
         }
         modelMap.addAttribute("products", productList);
-        return "rum";
+        return modelAndView;
     }
 
     @GetMapping(path = "/vodka")
-    public String getVodkaType(ModelMap modelMap) {
+    public ModelAndView getVodkaType(ModelMap modelMap) {
+        ModelAndView modelAndView = new ModelAndView("vodka");
         String type = "vodka";
         List<Product> findAllProducts = productService.getAllProducts();
         List<Product> productList = new ArrayList<>();
@@ -120,11 +125,12 @@ public class ProductController {
             }
         }
         modelMap.addAttribute("products", productList);
-        return "vodka";
+        return modelAndView;
     }
 
     @GetMapping(path = "/whiskey")
-    public String getWhiskeyType(ModelMap modelMap) {
+    public ModelAndView getWhiskeyType(ModelMap modelMap) {
+        ModelAndView modelAndView = new ModelAndView("whiskey");
         String type = "whiskey";
         List<Product> findAllProducts = productService.getAllProducts();
         List<Product> productList = new ArrayList<>();
@@ -134,11 +140,12 @@ public class ProductController {
             }
         }
         modelMap.addAttribute("products", productList);
-        return "whiskey";
+        return modelAndView;
     }
 
     @GetMapping(path = "/wine")
-    public String getWineType(ModelMap modelMap) {
+    public ModelAndView getWineType(ModelMap modelMap) {
+        ModelAndView modelAndView = new ModelAndView("wine");
         String type = "wine";
         List<Product> findAllProducts = productService.getAllProducts();
         List<Product> productList = new ArrayList<>();
@@ -148,7 +155,7 @@ public class ProductController {
             }
         }
         modelMap.addAttribute("products", productList);
-        return "wine";
+        return modelAndView;
     }
     //    @GetMapping(path = "/{type}")
 //    public String getProductsByType(@PathVariable("type") String type, ModelMap modelMap){

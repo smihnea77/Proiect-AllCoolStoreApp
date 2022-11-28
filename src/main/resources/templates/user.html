@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login Customer</title>
+    <style>
+        body {
+            background-image: url("images/login-background.jpg");
+            height: 750px;
+            background-position: center top;
+            background-size: cover;
+        }
+    </style>
+
+
+    <link rel="stylesheet" type="text/css" href="css/users.css" th:href="@{/css/users.css}">
+    
+
+</head>
+
+<body>
+
+    <div class="w3-sidebar">
+        <div>
+            <img src="images/logo.png" alt="All-Cool" height="75">
+        </div><br>
+        <div>
+            <nav class="side-nav">
+                <hr width="100%">
+                <a th:href="@{/users/setting}" class="w3-bar-item">Setting</a>
+                <hr width="100%">
+                <a th:href="@{/orders/my-orders}" class="w3-bar-item">My Orders</a>
+                <hr width="100%">
+                <a th:href="@{/}" class="w3-bar-item">Log Out</a>
+                <hr width="100%">
+            </nav>
+        </div>
+    </div>
+
+    <header>
+        <div>
+            <nav class="menu-nav">
+                <a th:href="@{/}">Home</a>|
+                <a th:href="@{/products/cognac}">Cognac</a>|
+                <a th:href="@{/products/whiskey}">Whiskey</a> |
+                <a th:href="@{/products/rum}">Rum</a> |
+                <a th:href="@{/products/champagne}">Champagne</a> |
+                <a th:href="@{/products/wine}">Wine</a> |
+                <a th:href="@{/products/vodka}">Vodka</a> |
+                <a th:href="@{/users/login-user}"><img src="images/sign-in100px.png" alt="Login" width="20px"></a> |
+                <a th:href="@{/users/login-user}"><img src="images/cart-100px.png" alt="Order" width="25px"></a>
+            </nav>
+        </div>
+    </header>
+
+
+    <br>
+    <div class="table-contents">
+    
+        <div class="right-move">
+            <p><h1> Hello</h1></p>
+            <p><h1> Customer</h1></p>
+            <br><br>
+        </div>
+    
+    
+    </div>
+        <div>
+            <table width="100%" align="right" bgcolor="#C9D3C7">
+                <tr>
+                    <td>
+                        <div>
+                            <nav class="menu-nav">
+                                <a th:href="@{/global/terms}">Terms</a>|
+                                <a th:href="@{/global/gdpr}">GDPR</a>|
+                                <a th:href="@{/global/contact}">Contact</a>
+                                <br>
+                            </nav>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="after-footer">
+                            <hr color="red">
+                            <p id="p-footer">&copy; 2022 All-Cool - Created by Admin<br/></p>
+                         </div>
+                    </td>
+                </tr>
+            </table>
+      
+        </div>
+    
+
+   
+
+    
+
+</body>
+
+
+</html>

@@ -1,6 +1,5 @@
 package com.allcoolstore.model;
 
-import com.sun.istack.NotNull;
 import lombok.*;
 import javax.persistence.*;
 import java.util.List;
@@ -31,12 +30,12 @@ public class User {
     //@NotNull
     private String phone;
     private String city;
-    private String country;
+    private String county;
     private String postalCode;
     private String address1;
     private String address2;
 
-    public User(String firstName, String lastName, String email, String username, String password, String role, String phone, String city, String country, String postalCode, String address1, String address2) {
+    public User(String firstName, String lastName, String email, String username, String password, String role, String phone, String city, String county, String postalCode, String address1, String address2) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -45,7 +44,7 @@ public class User {
         this.role = role;
         this.phone = phone;
         this.city = city;
-        this.country = country;
+        this.county = county;
         this.postalCode = postalCode;
         this.address1 = address1;
         this.address2 = address2;

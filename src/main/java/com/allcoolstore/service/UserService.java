@@ -6,13 +6,17 @@ import com.allcoolstore.repository.UserRepository;
 //import org.springframework.security.core.userdetails.UserDetails;
 //import org.springframework.security.core.userdetails.UserDetailsService;
 //import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import com.allcoolstore.security.adapter.UserDetailsAdapter;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
 
@@ -63,15 +67,26 @@ public class UserService {
         return userRepository.findByUsername(username);
     }
 
+//    public boolean verifyEmailAndPassword(String email, String password) {
+//        Optional<User> userOptional = Optional.ofNullable(userRepository.findByEmailAndPassword(email,password));
+//        if (!userOptional.isPresent()) {
+//           return false;
+//        }
+//        return true;
+//    }
+
+
+
+
     public User getByUserId(Long id) {
         return userRepository.findById(id).orElse(new User());
     }
 
-//    @Override
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        Optional<User> user = Optional.ofNullable(userRepository.findByUsername(username));
-//        User foundUser = user.orElseThrow(() -> new UsernameNotFoundException("Error! Username not found"));
-//        return new UserDetailsAdapter(foundUser);
-//    }
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Optional<User> user = Optional.ofNullable(userRepository.findByUsername(username));
+        User foundUser = user.orElseThrow(() -> new UsernameNotFoundException("Error! Username not found"));
+        return new UserDetailsAdapter(foundUser);
+    }
 
 }

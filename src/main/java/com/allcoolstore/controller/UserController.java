@@ -2,6 +2,8 @@ package com.allcoolstore.controller;
 
 import com.allcoolstore.model.User;
 import com.allcoolstore.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -11,7 +13,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/users")
 public class UserController {
+
     private final UserService userService;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     public UserController(UserService userService) {
         this.userService = userService;
@@ -25,7 +31,26 @@ public class UserController {
         return modelAndView;
     }
 
-    @GetMapping("/register-user")
+//    @GetMapping("/login-user")
+//    public ModelAndView getLoginPage(){
+//        ModelAndView modelAndView = new ModelAndView("loginUser");
+//        modelAndView.addObject(new User());
+//        return modelAndView;
+//    }
+//
+//    @PostMapping("/login-user")
+//    public ModelAndView loginUser(@ModelAttribute User user, Model model) {
+//        if (userService
+//                .verifyEmailAndPassword(user.getEmail(), user.getPassword())
+//                .isPresent()) {
+//            return new ModelAndView("redirect:/products");
+//        }
+//        return new ModelAndView("redirect:/login");
+//    }
+
+
+
+        @GetMapping("/register-user")
     public ModelAndView registerUserPage() {
         ModelAndView modelAndView = new ModelAndView("registerUser");
         modelAndView.addObject(new User());
@@ -33,9 +58,10 @@ public class UserController {
     }
 
     @PostMapping("/register-user")
-    public ModelAndView registerUser(@ModelAttribute User user) {
+    public void  registerUser(@RequestBody User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userService.registerUser(user);
-        return new ModelAndView("redirect:/");
+/*        return new ModelAndView("redirect:/");*/
     }
 
     @PostMapping(path = "/update-user/{id}")

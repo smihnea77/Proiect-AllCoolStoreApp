@@ -48,7 +48,7 @@
 
  <div class="login-page">
     <div class="form">
-    <form method="post" th:action="@{/users/user}" th:object="${user}" class="login-form">
+    <form method="GET" th:action="@{/users/user}" th:object="${user}" class="login-form">
         <h2 id="signIn">Login Customer</h2>
         <p>
             <input th:field="*{email}" type="email" placeholder="email"/>

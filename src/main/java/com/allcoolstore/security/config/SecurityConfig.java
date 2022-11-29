@@ -39,6 +39,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
+        http.formLogin();
+        http.authorizeRequests().mvcMatchers("/users/user").authenticated();
+
+
 //        http.formLogin().loginPage("/loginUser")
 //                        .loginProcessingUrl("/users/login-user")
 //                        .defaultSuccessUrl("/index.html", true)
@@ -48,8 +52,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .antMatchers("/").permitAll().antMatchers("/index.html").hasAnyRole("USER", "ADMIN")
 //                .and();
 
-        http.authorizeRequests().mvcMatchers("/users/login-user").permitAll()
-                .mvcMatchers("/products/cognac").permitAll();
+//        http.authorizeRequests().mvcMatchers("/users/login-user").permitAll()
+//                .mvcMatchers("/products/cognac").permitAll();
 
 
 //        http.authorizeRequests()
@@ -57,6 +61,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .mvcMatchers("/addUser").permitAll()
 //                .mvcMatchers("/orderlist").permitAll()
 //                .anyRequest().authenticated();
+
+
 
         // for adding users
 //        http.csrf().disable();

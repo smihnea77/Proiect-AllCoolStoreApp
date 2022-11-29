@@ -42,18 +42,17 @@ public class IndexController {
         return "admin";
     }
 
-    @GetMapping(value = "/users/login-user")
-    public String getLoginUserPage(ModelMap modelMap) {
-        modelMap.addAttribute("user", new User());
-        return "loginUser";
-    }
-    @PostMapping("/users/login-user")
-    public ModelAndView loginUser(@ModelAttribute User user, Model model) {
-        return new ModelAndView("redirect:/");
-    }
+//    @GetMapping(value = "/users/login-user")
+//    public String getLoginUserPage(ModelMap modelMap) {
+//        modelMap.addAttribute("user", new User());
+//        return "loginUser";
+//    }
+//    @PostMapping("/users/login-user")
+//    public ModelAndView loginUser(@ModelAttribute User user, Model model) {
+//        return new ModelAndView("redirect:/");
+//    }
 
     @GetMapping(value = "/users/user")
-    @PostMapping
     public String getUserPage() {
         return "user";
     }

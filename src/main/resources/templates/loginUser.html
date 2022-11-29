@@ -46,9 +46,9 @@
 
 <br>
 
-<!-- <div class="login-page">
+ <div class="login-page">
     <div class="form">
-    <form method="post" th:action="@{/login}" th:object="${user}" class="login-form">
+    <form method="post" th:action="@{/users/user}" th:object="${user}" class="login-form">
         <h2 id="signIn">Login Customer</h2>
         <p>
             <input th:field="*{email}" type="email" placeholder="email"/>
@@ -57,30 +57,30 @@
             <input th:field="*{password}" type="password" placeholder="password"/>
         </p>
         <p>
-            <button type="submit" id="loginButton" value="Login"><a th:href="@{/users/user}">Login</a></button>
+            <button type="submit" id="loginButton" value="Login">Login</a></button>
         </p>
             <p class="message">Not registered? <a th:href="@{/users/register-user}">Create an account</a></p>
     </form>
     </div>
-</div> -->
+</div>
 
-    <div class="login-page">
-        <div class="form">
-        <form class="login-form">
-            <h2 id="signIn">Login Customer</h2>
-            <p>
-                <input type="email" placeholder="email"/>
-            </p>
-            <p>
-                <input type="password" placeholder="password"/>
-            </p>
-            <p>
-                <button><a th:href="@{/users/user}">Login</a></button>
-            </p>
-                <p class="message">Not registered? <a th:href="@{/users/register}">Create an account</a></p>
-        </form>
-        </div>
-    </div>
+<!--    <div class="login-page">-->
+<!--        <div class="form">-->
+<!--        <form class="login-form">-->
+<!--            <h2 id="signIn">Login Customer</h2>-->
+<!--            <p>-->
+<!--                <input type="email" placeholder="email"/>-->
+<!--            </p>-->
+<!--            <p>-->
+<!--                <input type="password" placeholder="password"/>-->
+<!--            </p>-->
+<!--            <p>-->
+<!--                <button><a th:href="@{/users/user}">Login</a></button>-->
+<!--            </p>-->
+<!--                <p class="message">Not registered? <a th:href="@{/users/register}">Create an account</a></p>-->
+<!--        </form>-->
+<!--        </div>-->
+<!--    </div>-->
   
 
    

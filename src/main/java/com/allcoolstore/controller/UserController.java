@@ -39,15 +39,7 @@ public class UserController {
 //        return modelAndView;
 //    }
 //
-//    @PostMapping("/login-user")
-//    public ModelAndView loginUser(@ModelAttribute User user, Model model) {
-//        if (userService
-//                .verifyEmailAndPassword(user.getEmail(), user.getPassword())
-//                .isPresent()) {
-//            return new ModelAndView("redirect:/products");
-//        }
-//        return new ModelAndView("redirect:/login");
-//    }
+
 
 
     @GetMapping("/register-user")
@@ -56,6 +48,16 @@ public class UserController {
         modelAndView.addObject(new User());
         return modelAndView;
     }
+
+    //only for adding admins
+    /*
+    @PostMapping("/register-user")
+    public void  registerUser(@RequestBody User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userService.registerUser(user);
+                return new ModelAndView("redirect:/");
+    }*/
+
 
     @PostMapping("/register-user")
     public ModelAndView registerUser(@RequestParam("firstName") String firstName,
@@ -70,8 +72,8 @@ public class UserController {
                                      @RequestParam("postalCode") String postalCode,
                                      @RequestParam("address1") String address1,
                                      @RequestParam("address2") String address2) {
-        passwordEncoder.encode(password);
         User user = new User(firstName, lastName, email, username, password, role, phone, city, county, postalCode, address1, address2);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userService.registerUser(user);
         return new ModelAndView("redirect:/products");
     }

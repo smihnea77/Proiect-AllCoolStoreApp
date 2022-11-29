@@ -38,9 +38,13 @@ public class ProductController {
     @PostMapping("/create-product")
     public ModelAndView createProduct(@RequestParam("file") MultipartFile file,
                                       @RequestParam("name") String name,
+                                      @RequestParam("producer") String producer,
+                                      @RequestParam("type") String type,
                                       @RequestParam("price") double price,
-                                      @RequestParam("type") String type) {
-        productService.createProduct(file, name, price, type);
+                                      @RequestParam("qty") int qty,
+                                      @RequestParam("bottleSize") double bottleSize,
+                                      @RequestParam("description") String description) {
+        productService.createProduct(file,name,producer,type,price,qty,bottleSize,description);
         //return new ModelAndView("redirect:/view-product");
         return new ModelAndView("redirect:/products");
     }
@@ -60,11 +64,10 @@ public class ProductController {
     }
 
     @GetMapping(path = "/delete-product/{id}")
-    public ModelAndView deleteProduct(@PathVariable ("id") Long id, Model model) {
+    public ModelAndView deleteProduct(@PathVariable("id") Long id, Model model) {
         productService.deleteProduct(id);
         return new ModelAndView("redirect:/products");
     }
-
 
 
     @GetMapping(path = "/cognac")

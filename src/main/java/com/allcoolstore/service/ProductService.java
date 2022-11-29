@@ -53,7 +53,7 @@ public class ProductService {
         productRepository.save(product);
     }
 
-    public void saveProductToDB(MultipartFile file, String name, String producer,  String type, double price, int qty, double bottleSize, String description) {
+    public void saveProductToDB(MultipartFile file, String name, String producer, String type, double price, int qty, double bottleSize, String description) {
         Product product = new Product();
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         if (fileName.contains("..")) {
@@ -74,7 +74,8 @@ public class ProductService {
         productRepository.save(product);
     }
 
-    public void createProduct(MultipartFile file, String name, double price, String type) {
+    public void createProduct(MultipartFile file, String name, String producer, String type, double price, int qty
+                                ,double bottleSize, String description) {
         Product product = new Product();
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         if (fileName.contains("..")) {
@@ -86,8 +87,12 @@ public class ProductService {
             e.printStackTrace();
         }
         product.setName(name);
-        product.setPrice(price);
         product.setType(type);
+        product.setPrice(price);
+        product.setQty(qty);
+        product.setProducer(producer);
+        product.setBottleSize(bottleSize);
+        product.setDescription(description);
         productRepository.save(product);
     }
 

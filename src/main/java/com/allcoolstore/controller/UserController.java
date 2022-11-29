@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -49,8 +50,7 @@ public class UserController {
 //    }
 
 
-
-        @GetMapping("/register-user")
+    @GetMapping("/register-user")
     public ModelAndView registerUserPage() {
         ModelAndView modelAndView = new ModelAndView("registerUser");
         modelAndView.addObject(new User());
@@ -58,10 +58,22 @@ public class UserController {
     }
 
     @PostMapping("/register-user")
-    public void  registerUser(@RequestBody User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+    public ModelAndView registerUser(@RequestParam("firstName") String firstName,
+                                     @RequestParam("lastName") String lastName,
+                                     @RequestParam("email") String email,
+                                     @RequestParam("username") String username,
+                                     @RequestParam("password") String password,
+                                     @RequestParam("role") String role,
+                                     @RequestParam("phone") String phone,
+                                     @RequestParam("city") String city,
+                                     @RequestParam("county") String county,
+                                     @RequestParam("postalCode") String postalCode,
+                                     @RequestParam("address1") String address1,
+                                     @RequestParam("address2") String address2) {
+        passwordEncoder.encode(password);
+        User user = new User(firstName, lastName, email, username, password, role, phone, city, county, postalCode, address1, address2);
         userService.registerUser(user);
-/*        return new ModelAndView("redirect:/");*/
+        return new ModelAndView("redirect:/products");
     }
 
     @PostMapping(path = "/update-user/{id}")
@@ -83,7 +95,7 @@ public class UserController {
     }
 
     @GetMapping(path = "/delete-user/{id}")
-    public ModelAndView deleteUser(@PathVariable ("id") Long id, Model model) {
+    public ModelAndView deleteUser(@PathVariable("id") Long id, Model model) {
         userService.deleteUser(id);
         return new ModelAndView("redirect:/users");
     }

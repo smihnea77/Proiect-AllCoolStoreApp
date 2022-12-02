@@ -39,7 +39,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http.formLogin();
+        http.formLogin().loginPage("/login").and().logout().logoutSuccessUrl("/logout").logoutUrl("/logout");
+                //.defaultSuccessUrl("/",true).usernameParameter("email")
+                //.passwordParameter("password");
+
+
         http.authorizeRequests().mvcMatchers("/users/user").authenticated();
 
 

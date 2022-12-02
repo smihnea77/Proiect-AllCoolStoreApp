@@ -42,11 +42,17 @@ public class IndexController {
         return "admin";
     }
 
-//    @GetMapping(value = "/users/login-user")
+//        @GetMapping(value = "/users/login-user")
 //    public String getLoginUserPage(ModelMap modelMap) {
 //        modelMap.addAttribute("user", new User());
 //        return "loginUser";
 //    }
+    @GetMapping(value = "/login")
+    public String getLoginUserPage(ModelMap modelMap){
+        modelMap.addAttribute("loginForm", new User());
+        return "login";
+    }
+
 //    @PostMapping("/users/login-user")
 //    public ModelAndView loginUser(@ModelAttribute User user, Model model) {
 //        return new ModelAndView("redirect:/");
@@ -66,5 +72,10 @@ public class IndexController {
     public String getNotRegisterPage() {
         return "notRegister";
     }
+    @GetMapping(value = "logout")
+    public String logoutPage(){
+        return "logout";
+    }
+
 
 }

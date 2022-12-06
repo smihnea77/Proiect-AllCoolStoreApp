@@ -35,7 +35,8 @@ public class User {
     private String address1;
     private String address2;
 
-    public User(String firstName, String lastName, String email, String username, String password, String role, String phone, String city, String county, String postalCode, String address1, String address2) {
+    public User(String firstName, String lastName, String email, String username, String password, String role,
+                String phone, String city, String county, String postalCode, String address1, String address2) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

@@ -69,97 +69,116 @@ public class ProductController {
         return new ModelAndView("redirect:/products");
     }
 
-
-    @GetMapping(path = "/cognac")
-    public ModelAndView getCognacType(ModelMap modelMap) {
-        ModelAndView modelAndView = new ModelAndView("cognac");
-        String type = "cognac";
+    @GetMapping(path = "/{type}")
+    public ModelAndView getGenericType(@PathVariable("type") String type, ModelMap modelMap) {
+        ModelAndView modelAndView = new ModelAndView(type);
         List<Product> findAllProducts = productService.getAllProducts();
         List<Product> productList = new ArrayList<>();
         for (Product p : findAllProducts) {
             if (type.equals(p.getType())) {
                 productList.add(p);
             }
-        }
-        modelMap.addAttribute("products", productList);
-        return modelAndView;
-    }
-
-    @GetMapping(path = "/champagne")
-    public ModelAndView getChampagneType(ModelMap modelMap) {
-        ModelAndView modelAndView = new ModelAndView("champagne");
-        String type = "champagne";
-        List<Product> findAllProducts = productService.getAllProducts();
-        List<Product> productList = new ArrayList<>();
-        for (Product p : findAllProducts) {
-            if (type.equals(p.getType())) {
-                productList.add(p);
-            }
+        }if (productList.isEmpty()){
+            throw new IllegalStateException(String.format("No type of %s found. Please try again with a valid type.", type));
         }
         modelMap.addAttribute("products", productList);
         return modelAndView;
     }
 
 
-    @GetMapping(path = "/rum")
-    public ModelAndView getRumType(ModelMap modelMap) {
-        ModelAndView modelAndView = new ModelAndView("rum");
-        String type = "rum";
-        List<Product> findAllProducts = productService.getAllProducts();
-        List<Product> productList = new ArrayList<>();
-        for (Product p : findAllProducts) {
-            if (type.equals(p.getType())) {
-                productList.add(p);
-            }
-        }
-        modelMap.addAttribute("products", productList);
-        return modelAndView;
-    }
+//    @GetMapping(path = "/cognac")
+//    public ModelAndView getCognacType(ModelMap modelMap) {
+//        ModelAndView modelAndView = new ModelAndView("cognac");
+//        String type = "cognac";
+//        List<Product> findAllProducts = productService.getAllProducts();
+//        List<Product> productList = new ArrayList<>();
+//        for (Product p : findAllProducts) {
+//            if (type.equals(p.getType())) {
+//                productList.add(p);
+//            }
+//        }
+//        modelMap.addAttribute("products", productList);
+//        return modelAndView;
+//    }
 
-    @GetMapping(path = "/vodka")
-    public ModelAndView getVodkaType(ModelMap modelMap) {
-        ModelAndView modelAndView = new ModelAndView("vodka");
-        String type = "vodka";
-        List<Product> findAllProducts = productService.getAllProducts();
-        List<Product> productList = new ArrayList<>();
-        for (Product p : findAllProducts) {
-            if (type.equals(p.getType())) {
-                productList.add(p);
-            }
-        }
-        modelMap.addAttribute("products", productList);
-        return modelAndView;
-    }
+//    @GetMapping(path = "/champagne")
+//    public ModelAndView getChampagneType(ModelMap modelMap) {
+//        ModelAndView modelAndView = new ModelAndView("champagne");
+//        String type = "champagne";
+//        List<Product> findAllProducts = productService.getAllProducts();
+//        List<Product> productList = new ArrayList<>();
+//        for (Product p : findAllProducts) {
+//            if (type.equals(p.getType())) {
+//                productList.add(p);
+//            }
+//        }
+//        modelMap.addAttribute("products", productList);
+//        return modelAndView;
+//    }
 
-    @GetMapping(path = "/whiskey")
-    public ModelAndView getWhiskeyType(ModelMap modelMap) {
-        ModelAndView modelAndView = new ModelAndView("whiskey");
-        String type = "whiskey";
-        List<Product> findAllProducts = productService.getAllProducts();
-        List<Product> productList = new ArrayList<>();
-        for (Product p : findAllProducts) {
-            if (type.equals(p.getType())) {
-                productList.add(p);
-            }
-        }
-        modelMap.addAttribute("products", productList);
-        return modelAndView;
-    }
 
-    @GetMapping(path = "/wine")
-    public ModelAndView getWineType(ModelMap modelMap) {
-        ModelAndView modelAndView = new ModelAndView("wine");
-        String type = "wine";
-        List<Product> findAllProducts = productService.getAllProducts();
-        List<Product> productList = new ArrayList<>();
-        for (Product p : findAllProducts) {
-            if (type.equals(p.getType())) {
-                productList.add(p);
-            }
-        }
-        modelMap.addAttribute("products", productList);
-        return modelAndView;
-    }
+//    @GetMapping(path = "/rum")
+//    public ModelAndView getRumType(ModelMap modelMap) {
+//        ModelAndView modelAndView = new ModelAndView("rum");
+//        String type = "rum";
+//        List<Product> findAllProducts = productService.getAllProducts();
+//        List<Product> productList = new ArrayList<>();
+//        for (Product p : findAllProducts) {
+//            if (type.equals(p.getType())) {
+//                productList.add(p);
+//            }
+//        }
+//        modelMap.addAttribute("products", productList);
+//        return modelAndView;
+//    }
+
+//    @GetMapping(path = "/vodka")
+//    public ModelAndView getVodkaType(ModelMap modelMap) {
+//        ModelAndView modelAndView = new ModelAndView("vodka");
+//        String type = "vodka";
+//        List<Product> findAllProducts = productService.getAllProducts();
+//        List<Product> productList = new ArrayList<>();
+//        for (Product p : findAllProducts) {
+//            if (type.equals(p.getType())) {
+//                productList.add(p);
+//            }
+//        }
+//        modelMap.addAttribute("products", productList);
+//        return modelAndView;
+//    }
+
+//    @GetMapping(path = "/whiskey")
+//    public ModelAndView getWhiskeyType(ModelMap modelMap) {
+//        ModelAndView modelAndView = new ModelAndView("whiskey");
+//        String type = "whiskey";
+//        List<Product> findAllProducts = productService.getAllProducts();
+//        List<Product> productList = new ArrayList<>();
+//        for (Product p : findAllProducts) {
+//            if (type.equals(p.getType())) {
+//                productList.add(p);
+//            }
+//        }
+//        modelMap.addAttribute("products", productList);
+//        return modelAndView;
+//    }
+
+//    @GetMapping(path = "/wine")
+//    public ModelAndView getWineType(ModelMap modelMap) {
+//        ModelAndView modelAndView = new ModelAndView("wine");
+//        String type = "wine";
+//        List<Product> findAllProducts = productService.getAllProducts();
+//        List<Product> productList = new ArrayList<>();
+//        for (Product p : findAllProducts) {
+//            if (type.equals(p.getType())) {
+//                productList.add(p);
+//            }
+//        }
+//        modelMap.addAttribute("products", productList);
+//        return modelAndView;
+//    }
+
+
+
     //    @GetMapping(path = "/{type}")
 //    public String getProductsByType(@PathVariable("type") String type, ModelMap modelMap){
 //        List <Product> findAllProducts = productService.getAllProducts();
@@ -171,21 +190,6 @@ public class ProductController {
 //        }modelMap.addAttribute("products", productList);
 //        return "view";
 
-
-//        @GetMapping("/uploadimage")
-//        public String displayUploadForm () {
-//            return "index";
-//        }
-//
-//        @PostMapping("/upload")
-//        public String uploadImage (Model model, @RequestParam("image") MultipartFile file) throws IOException {
-//            StringBuilder fileNames = new StringBuilder();
-//            Path fileNameAndPath = Paths.get(UPLOAD_DIRECTORY, file.getOriginalFilename());
-//            fileNames.append(file.getOriginalFilename());
-//            Files.write(fileNameAndPath, file.getBytes());
-//            model.addAttribute("msg", "Uploaded images: " + fileNames.toString());
-//            return "index";
-//        }
 
 
 }

@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -40,11 +41,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.formLogin().loginPage("/login").and().logout().logoutSuccessUrl("/logout").logoutUrl("/logout");
-                //.defaultSuccessUrl("/",true).usernameParameter("email")
-                //.passwordParameter("password");
-
-
         http.authorizeRequests().mvcMatchers("/users/user").authenticated();
+        http.authorizeRequests().mvcMatchers("users/delete-user/").access("hasAnyAuthority('ADMIN')")
+                .mvcMatchers("/users").access("hasAnyAuthority('ADMIN')")
+                .mvcMatchers("/products/update-product/").access("hasAnyAuthority('ADMIN')")
+                .mvcMatchers("/products/delete-product/").access("hasAnyAuthority('ADMIN')");
+
 
 
 //        http.formLogin().loginPage("/loginUser")

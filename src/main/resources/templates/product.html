@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Product</title>
+
+    <link rel="stylesheet" type="text/css" href="css/products.css" th:href="@{/css/products.css}">
+
+
+</head>
+
+<body>
+
+<br>
+
+<div th:href="@{/products/product/{id}}">
+    <div th:each="id: ${products}" >
+            <div>
+                <div>
+                    <p th:text="${id.name}"></p>
+                </div>
+                <div>
+                    <p th:text="${id.type}"></p>
+                </div>
+                <div>
+                    <p th:text="${id.producer}"></p>
+                </div>
+                <div>
+                    <span th:text="${id.price}"> </span><span> lei</span>
+                </div>
+                <div>
+                    <img th:src="*{'id:image/jpeg;base64,' + {cognac.image}}" style=" height: 200px">
+                </div>
+                <br>
+            </div>
+    </div>
+</div>
+
+</body>
+
+</html>

@@ -108,6 +108,10 @@ table, tr, td {
 
 }
 
+.tf-center {
+    text-align: center;
+}
+
 .right-move {
     text-align: center;
 }

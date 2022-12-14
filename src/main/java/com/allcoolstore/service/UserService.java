@@ -36,6 +36,12 @@ public class UserService implements UserDetailsService {
         userRepository.save(user);
     }
 
+    public void createUser(User user) {
+        validateEmail(user.getEmail());
+        validateUsername(user.getUsername());
+        userRepository.save(user);
+    }
+
     public void deleteUser(Long id) {
         boolean userExists = userRepository.existsById(id);
         if (!userExists) {

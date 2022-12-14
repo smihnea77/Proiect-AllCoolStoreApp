@@ -25,17 +25,37 @@
         <div>
             <img src="images/logo.png" alt="All-Cool" height="75">
         </div><br>
-        <div>
+
+        <div sec:authorize="hasAuthority('ADMIN')">
+            <nav class="side-nav">
+                <hr width="100%">
+                <a th:href="@{/users/setting}" class="w3-bar-item">Setting</a>
+                <hr width="100%">
+                <a th:href="@{/products/products}" class="w3-bar-item">Products</a>
+                <hr width="100%">
+
+                <a th:href="@{/orders}" class="w3-bar-item">Orders</a>
+
+                <hr width="100%">
+                <a th:href="@{/users/users}" class="w3-bar-item">Users</a>
+                <hr width="100%">
+                <a th:href="@{/logout}" class="w3-bar-item">Log Out</a>
+                <hr width="100%">
+            </nav>
+        </div>
+
+        <div sec:authorize="hasAuthority('USER')">
             <nav class="side-nav">
                 <hr width="100%">
                 <a th:href="@{/users/setting}" class="w3-bar-item">Setting</a>
                 <hr width="100%">
                 <a th:href="@{/my-orders}" class="w3-bar-item">My Orders</a>
                 <hr width="100%">
-                <a href="#" th:href="@{/logout}" class="w3-bar-item" >Logout</a>
+                <a th:href="@{/logout}" class="w3-bar-item" >Logout</a>
                 <hr width="100%">
             </nav>
         </div>
+
     </div>
 
     <header>
@@ -48,8 +68,6 @@
                 <a th:href="@{/products/champagne}">Champagne</a> |
                 <a th:href="@{/products/wine}">Wine</a> |
                 <a th:href="@{/products/vodka}">Vodka</a> |
-<!--                <a th:href="@{/users/login-user}"><img src="images/sign-in100px.png" alt="Login" width="20px"></a> |-->
-<!--                <a th:href="@{/users/login-user}"><img src="images/cart-100px.png" alt="Order" width="25px"></a>-->
                 <a th:href="@{/users/user}"><img src="images/sign-in100px.png" alt="Login" width="20px"></a> |
                 <a th:href="@{/users/user}"><img src="images/cart-100px.png" alt="Order" width="25px"></a>
 
@@ -61,12 +79,30 @@
     <br>
     <div class="table-contents">
     
-        <div class="right-move">
-            <p><h1> Hello</h1></p>
-            <p><h1> Customer</h1></p>
-            <br><br>
+        <div class="right-move" sec:authorize="hasAuthority('ADMIN')">
+            <div>
+                <p><h1>Hello</h1></p>
+                <p><h1>Admin</h1></p>
+                <br><br>
+            </div>
         </div>
-    
+
+        <div class="right-move" sec:authorize="hasAuthority('USER')">
+            <div>
+                <p><h1>Hello</h1></p>
+                <p><h1>Customer</h1></p>
+                <br><br>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
     
     </div>
         <div>

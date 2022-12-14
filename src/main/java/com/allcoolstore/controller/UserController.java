@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+
+import java.sql.Date;
 import java.util.List;
 
 @RestController
@@ -24,7 +26,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping
+    @GetMapping("/users")
     public ModelAndView getAllUsers() {
         ModelAndView modelAndView = new ModelAndView("users");
         List<User> userList = userService.getAllUsers();
@@ -62,6 +64,7 @@ public class UserController {
     @PostMapping("/register-user")
     public ModelAndView registerUser(@RequestParam("firstName") String firstName,
                                      @RequestParam("lastName") String lastName,
+                                     @RequestParam("dateOfBirth") Date dateOfBirth,
                                      @RequestParam("email") String email,
                                      @RequestParam("username") String username,
                                      @RequestParam("password") String password,
@@ -72,16 +75,37 @@ public class UserController {
                                      @RequestParam("postalCode") String postalCode,
                                      @RequestParam("address1") String address1,
                                      @RequestParam("address2") String address2) {
-        User user = new User(firstName, lastName, email, username, password, role, phone, city, county, postalCode, address1, address2);
+        User user = new User(firstName, lastName, dateOfBirth, email, username, password, role, phone, city, county, postalCode, address1, address2);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userService.registerUser(user);
-        return new ModelAndView("redirect:/products");
+        return new ModelAndView("redirect:/login");
+    }
+
+    @PostMapping("/create-user")
+    public ModelAndView createUser(@RequestParam("firstName") String firstName,
+                                   @RequestParam("lastName") String lastName,
+                                   @RequestParam("dateOfBirth") Date dateOfBirth,
+                                   @RequestParam("email") String email,
+                                   @RequestParam("username") String username,
+                                   @RequestParam("password") String password,
+                                   @RequestParam("role") String role,
+                                   @RequestParam("phone") String phone,
+                                   @RequestParam("city") String city,
+                                   @RequestParam("county") String county,
+                                   @RequestParam("postalCode") String postalCode,
+                                   @RequestParam("address1") String address1,
+                                   @RequestParam("address2") String address2) {
+        User user = new User(firstName, lastName, dateOfBirth, email, username, password, role, phone, city, county, postalCode, address1, address2);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userService.createUser(user);
+        return new ModelAndView("redirect:/users/users");
     }
 
     @PostMapping(path = "/update-user/{id}")
     public ModelAndView updateUser(@PathVariable Long id, @ModelAttribute("userUpdateForm") User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userService.updateUser(id, user);
-        return new ModelAndView("redirect:/");
+        return new ModelAndView("redirect:/users/users");
     }
 
     @GetMapping("update-user/{id}")
@@ -99,6 +123,6 @@ public class UserController {
     @GetMapping(path = "/delete-user/{id}")
     public ModelAndView deleteUser(@PathVariable("id") Long id, Model model) {
         userService.deleteUser(id);
-        return new ModelAndView("redirect:/users");
+        return new ModelAndView("redirect:/users/users");
     }
 }

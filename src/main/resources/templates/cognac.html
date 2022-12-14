@@ -9,6 +9,7 @@
 
 
 </head>
+<body>
 
 <header>
     <div>
@@ -43,23 +44,34 @@
     <div th:each="cognac: ${products}" >
         <article class="prod-art">
             <div>
+                Code: COG<span th:text="${cognac.id}"></span>
                 <div>
-                    <p th:text="${cognac.name}"></p>
-                </div>
-                <div>
-                    <img th:src="*{'data:image/jpeg;base64,' + {cognac.image}}" style=" height: 200px">
-                </div>
-                <div>
-                    <span th:text="${cognac.price}"> </span><span> lei</span>
-                </div><br>
-                <div>
-                    <a th:href="@{/users/login-user}"> COMANDA </a>
-                </div>
+                    <!-- <a th:href="@{/products/product/{id}}" target="_blank">Link</a> -->
+                    <div>
+                        <p th:text="${cognac.name}"></p>
+                    </div>
+                    <div>
+                        <img th:src="*{'data:image/jpeg;base64,' + {cognac.image}}" style=" height: 200px">
+                    </div>
+                    <div>
+                        <span th:text="${cognac.price}"> </span><span> lei</span>
+                    </div><br>
+
             </div>
+                    
+                               
+
+            <div>
+                <a th:href="@{/login}"> COMANDA </a>
+            </div>
+
 
         </article>
     </div>
 </div>
+<br>
+
+
 
 </body>
 

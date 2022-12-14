@@ -208,6 +208,10 @@ nav a:hover {
     padding-right: 20px;
 }
 
+.tf-center {
+    text-align: center;
+}
+
 table, tr, td {
     border: 1px solid  #C9D3C7;
     border-collapse: collapse;
@@ -216,7 +220,6 @@ table, tr, td {
 
 .right-move {
     text-align: center;
-    color: white;
 }
 
 #border-none {
@@ -243,6 +246,25 @@ table, tr, td {
   margin-right: auto;
   text-align: center;
   border: 0;
+}
+
+.form-user {
+  padding-left: 250px;
+  padding-top: 10px;
+}
+.container-form {
+  width: 100%;
+  padding: 50px;
+  background-color: #C9D3C7;
+}
+
+.asterix {
+  color: red;
+  line-height: 80%;
+}
+
+.red-label {
+  color: red;
 }
 
 .center {

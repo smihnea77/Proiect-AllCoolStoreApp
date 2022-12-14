@@ -35,9 +35,14 @@ public class IndexController {
         return "terms";
     }
 
-    @GetMapping(value = "/users/login-admin")
-    public String getLoginAdminPage() {
-        return "loginAdmin";
+//    @GetMapping(value = "/users/login-admin")
+//    public String getLoginAdminPage() {
+//        return "loginAdmin";
+//    }
+
+    @GetMapping(value = "/users/create-user")
+    public String createUser() {
+        return "createUser";
     }
 
     @GetMapping(value = "/users/admin")
@@ -50,6 +55,7 @@ public class IndexController {
 //        modelMap.addAttribute("user", new User());
 //        return "loginUser";
 //    }
+
     @GetMapping(value = "/login")
     public String getLoginUserPage(ModelMap modelMap){
         modelMap.addAttribute("loginForm", new User());
@@ -84,7 +90,5 @@ public class IndexController {
         }
         return "redirect:/login";
     }
-
-
 
 }

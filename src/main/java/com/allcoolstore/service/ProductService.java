@@ -25,19 +25,12 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-//    public List<Product> getProductsByType(String type, Product product) {
-//        priceWithTva();
-//        List<Product> productListByType = (List<Product>) productRepository.findByType(type);
-//        return productListByType;
-//    }
-
     private void priceWithTva() {
         List<Product> productList = productRepository.findAll();
         for (Product p : productList) {
             p.setPrice(p.getPrice() * tva);
         }
     }
-
 
     public void deleteProduct(Long id) {
         boolean productExists = productRepository.existsById(id);
@@ -47,9 +40,18 @@ public class ProductService {
         productRepository.deleteById(id);
     }
 
-    public void updateProduct(Long id, Product product) {
+    public void updateProduct(MultipartFile file, Long id, Product product) {
         Product productToUpdate = productRepository.findById(id).orElseThrow(() ->
                 new IllegalStateException(String.format("Product with id %s does not exist.", id)));
+        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+        if (fileName.contains("..")) {
+            System.out.println("Not a a valid file");
+        }
+        try {
+            product.setImage(Base64.getEncoder().encodeToString(file.getBytes()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         productRepository.save(product);
     }
 
@@ -57,7 +59,7 @@ public class ProductService {
         Product product = new Product();
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         if (fileName.contains("..")) {
-            System.out.println("not a a valid file");
+            System.out.println("Not a a valid file");
         }
         try {
             product.setImage(Base64.getEncoder().encodeToString(file.getBytes()));
@@ -75,11 +77,11 @@ public class ProductService {
     }
 
     public void createProduct(MultipartFile file, String name, String producer, String type, double price, int qty
-                                ,double bottleSize, String description) {
+            ,double bottleSize, String description) {
         Product product = new Product();
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         if (fileName.contains("..")) {
-            System.out.println("not a a valid file");
+            System.out.println("Not a a valid file");
         }
         try {
             product.setImage(Base64.getEncoder().encodeToString(file.getBytes()));
@@ -100,4 +102,3 @@ public class ProductService {
         return productRepository.findById(id).orElse(new Product());
     }
 }
-

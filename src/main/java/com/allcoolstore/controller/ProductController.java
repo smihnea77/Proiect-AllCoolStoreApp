@@ -20,13 +20,30 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping
+    @GetMapping("/products")
     public ModelAndView getAllProducts() {
         ModelAndView modelAndView = new ModelAndView("products");
         List<Product> productList = productService.getAllProducts();
         modelAndView.addObject("productList", productList);
         return modelAndView;
     }
+
+    @GetMapping(path = "/product/{id}")
+    public ModelAndView getProductById(@PathVariable("id") Long id, ModelMap modelMap) {
+        ModelAndView modelAndView = new ModelAndView();
+        List<Product> findAllProducts = (List<Product>) productService.getByProductId(id);
+        List<Product> productList = new ArrayList<>();
+        for (Product p : findAllProducts) {
+            if (id.equals(p.getId())) {
+                productList.add(p);
+            }
+        }if (productList.isEmpty()){
+            throw new IllegalStateException(String.format("No id of %s found. Please try again with a valid type.", id));
+        }
+        modelMap.addAttribute("products", productList);
+        return modelAndView;
+    }
+
 
     @GetMapping("/create-product")
     public ModelAndView addProductPage() {
@@ -46,13 +63,13 @@ public class ProductController {
                                       @RequestParam("description") String description) {
         productService.createProduct(file,name,producer,type,price,qty,bottleSize,description);
         //return new ModelAndView("redirect:/view-product");
-        return new ModelAndView("redirect:/products");
+        return new ModelAndView("redirect:/products/products");
     }
 
     @PostMapping(path = "update-product/{id}")
-    public ModelAndView updateProduct(@PathVariable Long id, @ModelAttribute("productUpdateForm") Product product) {
-        productService.updateProduct(id, product);
-        return new ModelAndView("redirect:/products");
+    public ModelAndView updateProduct(@RequestParam("file") MultipartFile file, @PathVariable Long id, @ModelAttribute("productUpdateForm") Product product) {
+        productService.updateProduct(file, id, product);
+        return new ModelAndView("redirect:/products/products");
     }
 
 
@@ -66,7 +83,7 @@ public class ProductController {
     @GetMapping(path = "/delete-product/{id}")
     public ModelAndView deleteProduct(@PathVariable("id") Long id, Model model) {
         productService.deleteProduct(id);
-        return new ModelAndView("redirect:/products");
+        return new ModelAndView("redirect:/products/products");
     }
 
     @GetMapping(path = "/{type}")

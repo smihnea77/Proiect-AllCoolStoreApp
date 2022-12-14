@@ -25,18 +25,19 @@
             <hr width="100%">
             <a th:href="@{/users/setting}" class="w3-bar-item">Setting</a>
             <hr width="100%">
-            <a th:href="@{/products}" class="w3-bar-item">Products</a>
+            <a th:href="@{/products/products}" class="w3-bar-item">Products</a>
             <hr width="100%">
 
-            <a th:href="@{/orders}" class="w3-bar-item">Orders</a>
+            <a th:href="@{/orders/orders}" class="w3-bar-item">Orders</a>
 
             <hr width="100%">
-            <a th:href="@{/users}" class="w3-bar-item">Users</a>
+            <a th:href="@{/users/users}" class="w3-bar-item">Users</a>
             <hr width="100%">
             <a th:href="@{/}" class="w3-bar-item">Log Out</a>
             <hr width="100%">
         </nav>
     </div>
+
 </div>
 </div>
 
@@ -78,7 +79,7 @@
 
         </tr>
         </thead>
-        <tbody>
+        <tbody class="tf-center">
         <tr th:each="product: ${productList}">
             <td th:text="${product.id}"></td>
             <td th:text="${product.name}"></td>
@@ -90,12 +91,13 @@
                 <img th:src="*{'data:image/jpeg;base64,' + {product.image}}" style="width: 150px; height: 150px;">
             </td>
 
-            <td class="td-center" width="5%"><img src="images/editproducts220x220.png" alt="Update" width="30px"></td>
-            <td class="td-center" width="5%"><img src="images/deleteproducts220x220.png" alt="Delete" width="30px"></td>
+            <td class="td-center" width="5%"><a th:href="@{/products/update-product/{productId}(productId=${product.id})}"><img src="images/editproducts220x220.png" alt="Update" width="30px"></a></td>
+            <td class="td-center" width="5%"><a th:href="@{/products/delete-product/{productId}(productId=${product.id})}"><img src="images/deleteproducts220x220.png" alt="Delete" width="30px"></a></td>
 
         </tr>
         </tbody>
     </table>
+
 </div>
 <div>
     <table width="100%" align="right" bgcolor="#C9D3C7">

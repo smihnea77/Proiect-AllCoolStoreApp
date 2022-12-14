@@ -42,10 +42,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.formLogin().loginPage("/login").and().logout().logoutSuccessUrl("/logout").logoutUrl("/logout");
         http.authorizeRequests().mvcMatchers("/users/user").authenticated();
-        http.authorizeRequests().mvcMatchers("users/delete-user/").access("hasAnyAuthority('ADMIN')")
+        http.authorizeRequests().mvcMatchers("users/delete-user").access("hasAnyAuthority('ADMIN')")
                 .mvcMatchers("/users").access("hasAnyAuthority('ADMIN')")
-                .mvcMatchers("/products/update-product/").access("hasAnyAuthority('ADMIN')")
-                .mvcMatchers("/products/delete-product/").access("hasAnyAuthority('ADMIN')");
+                .mvcMatchers("/products/create-product").access("hasAnyAuthority('ADMIN')")
+                .mvcMatchers("/products/update-product").access("hasAnyAuthority('ADMIN')")
+                .mvcMatchers("/products/delete-product").access("hasAnyAuthority('ADMIN')")
+                .mvcMatchers("/users/create-user").access("hasAnyAuthority('ADMIN')")
+                .mvcMatchers("/users/update-user").access("hasAnyAuthority('ADMIN')")
+                .mvcMatchers("/users/delete-user").access("hasAnyAuthority('ADMIN')");
 
 
 

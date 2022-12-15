@@ -55,23 +55,6 @@ public class User {
     }
 
 
-
-//    public User(String firstName, String lastName, String email, String username, String password, String role,
-//                String phone, String city, String county, String postalCode, String address1, String address2) {
-//        this.firstName = firstName;
-//        this.lastName = lastName;
-//        this.email = email;
-//        this.username = username;
-//        this.password = password;
-//        this.role = role;
-//        this.phone = phone;
-//        this.city = city;
-//        this.county = county;
-//        this.postalCode = postalCode;
-//        this.address1 = address1;
-//        this.address2 = address2;
-//    }
-
     @OneToMany(mappedBy = "user")
     private List<Order> orderList;
 

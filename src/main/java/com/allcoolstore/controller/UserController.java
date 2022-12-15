@@ -34,16 +34,6 @@ public class UserController {
         return modelAndView;
     }
 
-//    @GetMapping("/login-user")
-//    public ModelAndView getLoginPage(){
-//        ModelAndView modelAndView = new ModelAndView("loginUser");
-//        modelAndView.addObject(new User());
-//        return modelAndView;
-//    }
-//
-
-
-
     @GetMapping("/register-user")
     public ModelAndView registerUserPage() {
         ModelAndView modelAndView = new ModelAndView("registerUser");

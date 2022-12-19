@@ -10,9 +10,11 @@ import java.util.List;
 public class OrderService  {
 
     private final OrderRepository orderRepository;
+    private final CartService cartService;
 
-    public OrderService(OrderRepository orderRepository) {
+    public OrderService(OrderRepository orderRepository, CartService cartService) {
         this.orderRepository = orderRepository;
+        this.cartService = cartService;
     }
 
 
@@ -20,8 +22,9 @@ public class OrderService  {
         return orderRepository.findAll();
     }
 
-
     public void createOrder(Order order) {
+        order.setProducts(cartService.getAllProductsAddedToCart());
+        order.setTotal(cartService.getTotalPrice());
         orderRepository.save(order);
     }
 

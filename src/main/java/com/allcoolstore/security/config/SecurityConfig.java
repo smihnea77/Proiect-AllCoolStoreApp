@@ -42,6 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.formLogin().loginPage("/login").and().logout().logoutSuccessUrl("/logout").logoutUrl("/logout");
         http.authorizeRequests().mvcMatchers("/users/user").authenticated();
+        http.authorizeRequests().mvcMatchers("/cart").authenticated();
         http.authorizeRequests().mvcMatchers("users/delete-user").access("hasAnyAuthority('ADMIN')")
                 .mvcMatchers("/users").access("hasAnyAuthority('ADMIN')")
                 .mvcMatchers("/products/create-product").access("hasAnyAuthority('ADMIN')")

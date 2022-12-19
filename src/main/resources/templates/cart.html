@@ -81,12 +81,6 @@
             <td>
                 <img th:src="*{'data:image/jpeg;base64,' + {product.image}}" style="width: 150px; height: 150px;">
             </td>
-            <td class="td-center" width="5%"><a
-                    th:href="@{/products/update-product/{productId}(productId=${product.id})}"><img
-                    src="images/editproducts220x220.png" alt="Update" width="30px"></a></td>
-            <td class="td-center" width="5%"><a
-                    th:href="@{/products/delete-product/{productId}(productId=${product.id})}"><img
-                    src="images/deleteproducts220x220.png" alt="Delete" width="30px"></a></td>
         </tr>
         </tbody>
     </table>

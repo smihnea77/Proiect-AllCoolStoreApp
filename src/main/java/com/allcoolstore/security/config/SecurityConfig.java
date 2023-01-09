@@ -50,35 +50,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .mvcMatchers("/products/delete-product").access("hasAnyAuthority('ADMIN')")
                 .mvcMatchers("/users/create-user").access("hasAnyAuthority('ADMIN')")
                 .mvcMatchers("/users/update-user").access("hasAnyAuthority('ADMIN')")
-                .mvcMatchers("/users/delete-user").access("hasAnyAuthority('ADMIN')");
-
-
-
-//        http.formLogin().loginPage("/loginUser")
-//                        .loginProcessingUrl("/users/login-user")
-//                        .defaultSuccessUrl("/index.html", true)
-//                .usernameParameter("email")
-//                .passwordParameter("password");
-//        http.authorizeRequests()
-//                .antMatchers("/").permitAll().antMatchers("/index.html").hasAnyRole("USER", "ADMIN")
-//                .and();
-
-//        http.authorizeRequests().mvcMatchers("/users/login-user").permitAll()
-//                .mvcMatchers("/products/cognac").permitAll();
-
-
-//        http.authorizeRequests()
-//                .mvcMatchers("/products").access("hasAnyAuthority('ADMIN')")
-//                .mvcMatchers("/addUser").permitAll()
-//                .mvcMatchers("/orderlist").permitAll()
-//                .anyRequest().authenticated();
-
-
-
-        // for adding users
-//        http.csrf().disable();
-//        http.authorizeRequests()
-//                .anyRequest().permitAll();
+                .mvcMatchers("/users/delete-user").access("hasAnyAuthority('ADMIN')")
+                .mvcMatchers("/users/user").access("hasAnyAuthority('ADMIN')");
     }
 
 

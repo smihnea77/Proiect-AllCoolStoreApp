@@ -21,25 +21,29 @@
 
 <body>
 
-    <header>
-        <div>
-            <nav class="menu-nav">
-                <a th:href="@{/}">Home</a>|
-                <a th:href="@{/products/cognac}">Cognac</a>|
-                <a th:href="@{/products/whiskey}">Whiskey</a> |
-                <a th:href="@{/products/rum}">Rum</a> |
-                <a th:href="@{/products/champagne}">Champagne</a> |
-                <a th:href="@{/products/wine}">Wine</a> |
-                <a th:href="@{/products/vodka}">Vodka</a> |
-                <a th:href="@{/users/user}"><img src="images/sign-in100px.png" alt="Login" width="20px"></a> |
-                <a th:href="@{/cart}"><img src="images/cart-100px.png" alt="Cart" width="25px"></a>
-            </nav>
-        </div>
-    </header>
+    <div class="container clearfix">
+        <header>
+            <div>
+                <nav class="menu-nav">
+                    <a th:href="@{/}">Home</a>|
+                    <a th:href="@{/products/cognac}">Cognac</a>|
+                    <a th:href="@{/products/whiskey}">Whiskey</a> |
+                    <a th:href="@{/products/rum}">Rum</a> |
+                    <a th:href="@{/products/champagne}">Champagne</a> |
+                    <a th:href="@{/products/wine}">Wine</a> |
+                    <a th:href="@{/products/vodka}">Vodka</a> |
+                    <a th:href="@{/users/user}"><img src="images/sign-in100px.png" alt="Login" width="20px"></a> |
+                    <a th:href="@{/cart}"><img src="images/cart-100px.png" alt="Cart" width="25px"></a>
+                </nav>
+            </div>
+        </header>
+    </div>
+
+<br>
 
 
-    <br> <br>
-    <div class="center" >
+<div class="container">
+    <div class="text-center">
         <div>
             <img src="images/register-logo.png" alt="All-Cool" height="225">
         </div><br>
@@ -50,24 +54,30 @@
             <span> <a th:href="@{/users/register-user}"><img src="images/yes.png" alt="YES" height="50"></a></span>
             <span> <a th:href="@{/users/not-register}"><img src="images/no.png" alt="NO" height="50"></a></span>
         </div>
-        
-    <br>
-<br>
+    </div><br><br>
+</div>
 
-<footer>
-    <div>
-        <nav class="menu-nav">
-            <a th:href="@{/global/terms}">Terms</a>|
-            <a th:href="@{/global/gdpr}">GDPR</a>|
-            <a th:href="@{/global/contact}">Contact</a>
-            <br>
-        </nav>
-    </div>
-    <div class="after-footer">
-        <hr color="red">
-        <p id="p-footer">&copy; 2022 All-Cool - Created by Admin<br/></p>
-    </div>
-</footer>  
+<div class="container">
+    <footer class="fix-ft">
+        <div>
+            <nav class="menu-nav">
+                <a th:href="@{/global/terms}">Terms</a>|
+                <a th:href="@{/global/gdpr}">GDPR</a>|
+                <a th:href="@{/global/contact}">Contact</a>
+                <br>
+            </nav>
+        </div>
+        <div class="after-footer">
+            <hr color="red">
+            <p id="p-footer">&copy; 2022 All-Cool - by Admin<br/></p>
+        </div>
+    </footer>
+</div>
+
+
+
+
+
 
 
 </body>

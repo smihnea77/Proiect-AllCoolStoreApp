@@ -16,7 +16,7 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @GetMapping
+    @GetMapping("/orders")
     public ModelAndView getAllOrders() {
         ModelAndView modelAndView = new ModelAndView("orders");
         List<Order> orderList = orderService.getAllOrders();
@@ -34,13 +34,13 @@ public class OrderController {
     @PostMapping("/create-order")
     public ModelAndView createOrder(@ModelAttribute Order order) {
         orderService.createOrder(order);
-        return new ModelAndView("redirect:/orders");
+        return new ModelAndView("redirect:/createOrder");
     }
 
     @PostMapping(path = "/update-order/{id}")
     public ModelAndView updateOrder(@PathVariable Long id, @ModelAttribute("orderUpdateForm") Order order) {
         orderService.updateOrder(id, order);
-        return new ModelAndView("redirect:/orders");
+        return new ModelAndView("redirect:/orders/orders");
     }
 
     @GetMapping("/update-order/{id}")

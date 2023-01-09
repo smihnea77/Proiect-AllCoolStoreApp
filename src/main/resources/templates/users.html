@@ -14,99 +14,96 @@
 </head>
 
 <body>
-<div sec:authorize="hasAuthority('USER')">Text visible to user.</div>
-<div sec:authorize="hasAuthority('ADMIN')">Text visible to admin.</div>
-<div class="w3-sidebar">
-    <div>
-        <img src="images/logo.png" alt="All-Cool" height="75">
-    </div><br>
-    <div>
-        <nav class="side-nav">
-            <hr width="100%">
-            <a th:href="@{/users/setting}" class="w3-bar-item">Setting</a>
-            <hr width="100%">
-            <a th:href="@{/products/products}" class="w3-bar-item">Products</a>
-            <hr width="100%">
-            <a th:href="@{/orders/orders}" class="w3-bar-item">Orders</a>
-            <hr width="100%">
-            <a th:href="@{/users/users}" class="w3-bar-item">Users</a>
-            <hr width="100%">
-            <a th:href="@{/}" class="w3-bar-item">Log Out</a>
-            <hr width="100%">
-        </nav>
+    <div class="container clearfix">
+        <header>
+            <div>
+                <nav class="menu-nav">
+                    <a th:href="@{/}">Home</a>|
+                    <a th:href="@{/products/cognac}">Cognac</a>|
+                    <a th:href="@{/products/whiskey}">Whiskey</a> |
+                    <a th:href="@{/products/rum}">Rum</a> |
+                    <a th:href="@{/products/champagne}">Champagne</a> |
+                    <a th:href="@{/products/wine}">Wine</a> |
+                    <a th:href="@{/products/vodka}">Vodka</a> |
+                    <a th:href="@{/users/user}"><img src="images/sign-in100px.png" alt="Login" width="20px"></a> |
+                    <a th:href="@{/cart}"><img src="images/cart-100px.png" alt="Cart" width="25px"></a>
+                </nav>
+            </div>
+        </header>
     </div>
 
-</div>
-</div>
-
-<header>
-    <div>
-        <nav class="menu-nav">
-            <a th:href="@{/}">Home</a>|
-            <a th:href="@{/products/cognac}">Cognac</a>|
-            <a th:href="@{/products/whiskey}">Whiskey</a> |
-            <a th:href="@{/products/rum}">Rum</a> |
-            <a th:href="@{/products/champagne}">Champagne</a> |
-            <a th:href="@{/products/wine}">Wine</a> |
-            <a th:href="@{/products/vodka}">Vodka</a> |
-            <a th:href="@{/users/user}"><img src="images/sign-in100px.png" alt="Login" width="20px"></a> |
-            <a th:href="@{/cart}"><img src="images/cart-100px.png" alt="Cart" width="25px"></a>
-        </nav>
+    <div class="container">
+        <div class="grid text-center row">
+            <aside class="sidebar">
+                <div>
+                    <img src="images/logo.png" alt="All-Cool" height="75">
+                </div>
+                <br>
+                <div>
+                    <nav class="side-nav">
+                        <hr width="100%">
+                        <a th:href="@{/users/settingAdmin}" class="w3-bar-item">Setting</a>
+                        <hr width="100%">
+                        <a th:href="@{/orders/orders-admin}" class="w3-bar-item">My Orders</a>
+                        <hr width="100%">
+                        <a th:href="@{/products/products}" class="w3-bar-item">Products</a>
+                        <hr width="100%">
+                        <a th:href="@{/orders/orders}" class="w3-bar-item">Orders</a>
+                        <hr width="100%">
+                        <a th:href="@{/users/users}" class="w3-bar-item">Users</a>
+                        <hr width="100%">
+                        <a th:href="@{/}" class="w3-bar-item">Log Out</a>
+                        <hr width="100%">
+                    </nav>
+                </div>
+            </aside>
+            <main class="content text-center">
+                <div class="table-contents">
+                    <div>
+                        <br>
+                        <a th:href="@{/users/create-user}">
+                        <img src="images/adduser220x220.png" alt="Users" width="30px">
+                        <h3> Add new user</h3> </a>
+                        </a>
+                    </div>
+                    <table th:href="@{/users}" width="95%" align="center">
+                        <thead>
+                        <tr>
+                            <th width="2%">Id</th>
+                            <th width="15%">First name</th>
+                            <th width="15%">Last Name</th>
+                            <th width="15%">Username</th>
+                            <th width="20%">E-mail</th>
+                            <th width="9%">Role</th>
+                            <th width="15%">Phone</th>
+                            <th width="10%">Update</th>
+                            <th width="10%">Delete</th>
+                        </tr>
+                        </thead>
+                        <tbody class="tf-center">
+                            <tr th:each="user: ${userList}">
+                                <td th:text="${user.id}"></td>
+                                <td th:text="${user.firstName}"></td>
+                                <td th:text="${user.lastName}"></td>
+                                <td th:text="${user.username}"></td>
+                                <td th:text="${user.email}"></td>
+                                <td th:text="${user.role}"></td>
+                                <td th:text="${user.phone}"></td>
+                                <td class="td-center" width="5%"><a th:href="@{/users/update-user/{userId}(userId=${user.id})}"><img src="images/edituser220x220.png" alt="Update" width="30px"></a></td>
+                                <td class="td-center" width="5%"><a th:href="@{/users/delete-user/{userId}(userId=${user.id})}"><img src="images/deleteuser220x220.png" alt="Delete" width="30px"></a></td>
+                        </tr>
+                        </tbody>
+                    </table><br>
+                    <div>
+                        
+                    </div>
+                </div>
+            </main>
+        </div>
     </div>
-</header>
 
-<br>
-<div class="table-contents">
-
-    <div class="right-move">
-        <a th:href="@{/users/create-user}"> <img src="images/adduser220x220.png" alt="Users" width="30px"><h3> Add users</h3> </a>
-    </div>
-</div>
-
-<div class="table-contents">
-
-    <table  th:href="@{/users}" width="85%" align="right">
-        <thead>
-        <tr>
-            <th width="2%">Id user</th>
-            <th width="15%">First name</th>
-            <th width="15%">Last Name</th>
-            <th width="15%">Username</th>
-            <th width="20%">E-mail</th>
-            <th width="9%">Role</th>
-            <th width="15%">Phone</th>
-            <th width="10%">Update</th>
-            <th width="10%">Delete</th>
-
-        </tr>
-        </thead>
-        <tbody class="tf-center">
-        <tr th:each="user: ${userList}">
-            <td th:text="${user.id}"></td>
-            <td th:text="${user.firstName}"></td>
-            <td th:text="${user.lastName}"></td>
-            <td th:text="${user.username}"></td>
-            <td th:text="${user.email}"></td>
-            <td th:text="${user.role}"></td>
-            <td th:text="${user.phone}"></td>
-            <td class="td-center" width="5%"><a th:href="@{/users/update-user/{userId}(userId=${user.id})}"><img src="images/edituser220x220.png" alt="Update" width="30px"></a></td>
-            <td class="td-center" width="5%"><a th:href="@{/users/delete-user/{userId}(userId=${user.id})}"><img src="images/deleteuser220x220.png" alt="Delete" width="30px"></a></td>
-
-        </tr>
-        </tbody>
-    </table>
-
-</div>
-<div class="table-contents">
-      <div class="right-move">
-        <a th:href="@{/users/create-user}"> <img src="images/adduser220x220.png" alt="Users" width="30px"><h3> Add users</h3> </a>
-    </div>
-
-</div>
-<div>
-    <table width="100%" align="right" bgcolor="#C9D3C7">
-        <tr>
-            <td>
+    <div class="container">
+            <footer>
                 <div>
                     <nav class="menu-nav">
                         <a th:href="@{/global/terms}">Terms</a>|
@@ -115,19 +112,16 @@
                         <br>
                     </nav>
                 </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
                 <div class="after-footer">
                     <hr color="red">
-                    <p id="p-footer">&copy; 2022 All-Cool - Created by Admin<br/></p>
+                    <p id="p-footer">&copy; 2022 All-Cool - by Admin<br/></p>
                 </div>
-            </td>
-        </tr>
-    </table>
+            </footer>
+    </div>
 
-</div>
+
+
+
 
 </body>
 

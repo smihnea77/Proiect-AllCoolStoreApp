@@ -13,40 +13,35 @@
         }
     </style>
     <link rel="stylesheet" type="text/css" href="css/style.css">
-
-
 </head>
 
 <body>
-<header>
-    <div>
-        <nav class="menu-nav">
-            <a th:href="@{/}">Home</a>|
-            <a th:href="@{/products/cognac}">Cognac</a>|
-            <a th:href="@{/products/whiskey}">Whiskey</a> |
-            <a th:href="@{/products/rum}">Rum</a> |
-            <a th:href="@{/products/champagne}">Champagne</a> |
-            <a th:href="@{/products/wine}">Wine</a> |
-            <a th:href="@{/products/vodka}">Vodka</a> |
-<!--            <a th:href="@{/users/login-user}"><img src="images/sign-in100px.png" alt="Login" width="20px"></a> |-->
-<!--            <a th:href="@{/users/login-user}"><img src="images/cart-100px.png" alt="Order" width="25px"></a>-->
-            <a th:href="@{/users/user}"><img src="images/sign-in100px.png" alt="Login" width="20px"></a> |
-            <a th:href="@{/cart}"><img src="images/cart-100px.png" alt="Order" width="25px"></a>
-        </nav>
-    </div>
-</header>
-
+<div class="container clearfix">
+    <header>
+        <div>
+            <nav class="menu-nav">
+                <a th:href="@{/}">Home</a>|
+                <a th:href="@{/products/cognac}">Cognac</a>|
+                <a th:href="@{/products/whiskey}">Whiskey</a> |
+                <a th:href="@{/products/rum}">Rum</a> |
+                <a th:href="@{/products/champagne}">Champagne</a> |
+                <a th:href="@{/products/wine}">Wine</a> |
+                <a th:href="@{/products/vodka}">Vodka</a> |
+                <a th:href="@{/users/user}"><img src="images/sign-in100px.png" alt="Login" width="20px"></a> |
+                <a th:href="@{/cart}"><img src="images/cart-100px.png" alt="Cart" width="25px"></a>
+            </nav>
+        </div>
+    </header>
+</div>
 
 <br>
-<div>
+<div class="container" id="in-im-lo">
     <img class="logo" src="images/logo.png" alt="All-Cool" height="225">
 </div>
 <br><br><br>
-<center>
-    <div>
-        <img src="images/pink500x500.png" alt="All-Cool" height="350">
-    </div>
-</center>
+<div class="container text-center">
+    <img src="images/pink500x500.png" alt="All-Cool" height="350">
+</div>
 <br>
 <br><br><br><br><br><br>
 
@@ -64,20 +59,22 @@
     });
 </script>
 
-<footer>
-    <div>
-        <nav class="menu-nav">
-            <a th:href="@{/global/terms}">Terms</a>|
-            <a th:href="@{/global/gdpr}">GDPR</a>|
-            <a th:href="@{/global/contact}">Contact</a>
-            <br>
-        </nav>
-    </div>
-    <div class="after-footer">
-        <hr color="red">
-        <p id="p-footer">&copy; 2022 All-Cool - by <a th:href="@{/users/login-admin}">Admin</a><br/></p>
-    </div>
-</footer>
+<div class="container">
+    <footer class="fix-ft">
+        <div>
+            <nav class="menu-nav">
+                <a th:href="@{/global/terms}">Terms</a>|
+                <a th:href="@{/global/gdpr}">GDPR</a>|
+                <a th:href="@{/global/contact}">Contact</a>
+                <br>
+            </nav>
+        </div>
+        <div class="after-footer">
+            <hr color="red">
+            <p id="p-footer">&copy; 2022 All-Cool - by Admin<br/></p>
+        </div>
+    </footer>
+</div>
 
 </body>
 </html>

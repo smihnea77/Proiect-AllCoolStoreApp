@@ -13,7 +13,6 @@ import java.util.List;
 @Service
 public class ProductService {
     private final ProductRepository productRepository;
-
     private double tva = 1.19;
 
     public ProductService(ProductRepository productRepository) {
@@ -55,7 +54,8 @@ public class ProductService {
         productRepository.save(product);
     }
 
-    public void saveProductToDB(MultipartFile file, String name, String producer, String type, double price, int qty, double bottleSize, String description) {
+    public void saveProductToDB(MultipartFile file, String name, String producer, String type, double price, int qty,
+                                double bottleSize, String description) {
         Product product = new Product();
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         if (fileName.contains("..")) {

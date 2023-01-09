@@ -15,12 +15,12 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-   // @NotNull
+    //@NotNull
     private String name;
     //@NotNull
     private String producer;
     private String type;
-   // @NotNull
+    //@NotNull
     private double price;
     private int qty;
     private double bottleSize;

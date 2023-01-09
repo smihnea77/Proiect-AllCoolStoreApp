@@ -35,16 +35,6 @@ public class IndexController {
         return "terms";
     }
 
-//    @GetMapping(value = "/users/login-admin")
-//    public String getLoginAdminPage() {
-//        return "loginAdmin";
-//    }
-
-    @GetMapping(value = "/users/create-user")
-    public String createUser() {
-        return "createUser";
-    }
-
     @GetMapping(value = "/users/admin")
     public String getAdminPage() {
         return "admin";
@@ -61,15 +51,50 @@ public class IndexController {
         return "user";
     }
 
+    @GetMapping(value = "/users/settingAdmin")
+    public String getSettingAdminPage() {
+        return "settingAdmin";
+    }
+
+    @GetMapping(value = "/users/settingUser")
+    public String getSettingUserPage() {
+        return "settingUser";
+    }
+
+    @GetMapping(value = "/users/tkyou")
+    public String getThankYouPage() {
+        return "tkyou";
+    }
+
     @GetMapping(value = "/users/register")
     public String getRegisterPage() {
         return "register";
     }
 
-    @GetMapping(value = "/users/not-register")
-    public String getNotRegisterPage() {
-        return "notRegister";
+    @GetMapping(value = "/users/update-admin")
+    public String getUpdateAdmin() {
+        return "updateAdmin";
     }
+
+    @GetMapping(value = "/users/update-customer")
+    public String getUpdateCustomer() {
+        return "updateCustomer";
+    }
+
+    @GetMapping(value = "/users/not-register")
+    public String getNotRegisterPage() { return "notRegister"; }
+
+    @GetMapping(value = "/orders/my-orders")
+    public String getMyOrders() { return "myOrders"; }
+
+    @GetMapping(value = "/orders/orders-admin")
+    public String getAdminOrders() { return "ordersAdmin"; }
+
+    @GetMapping(value = "/orders/orders-user")
+    public String getUserOrders() { return "ordersUser"; }
+
+//    @GetMapping(value = "/orders/create-order")
+//    public String createOrder() { return "createOrder"; }
 
     @GetMapping(value = "/logout")
     public String logoutPage (HttpServletRequest request, HttpServletResponse response) {

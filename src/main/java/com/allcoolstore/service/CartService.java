@@ -20,8 +20,13 @@ public class CartService {
         this.productListAddedToCart = productListAddedToCart;
     }
 
-    public void addProductToCart(String name) {
-        Optional<Product> productToFind = productRepository.findByName(name);
+//    public void addProductToCart(String name) {
+//        Optional<Product> productToFind = productRepository.findByName(name);
+//        productToFind.ifPresent(product -> productListAddedToCart.add(product));
+//    }
+
+    public void addProductToCart(Long id) {
+        Optional<Product> productToFind = productRepository.findById(id);
         productToFind.ifPresent(product -> productListAddedToCart.add(product));
     }
 
@@ -40,7 +45,7 @@ public class CartService {
     }
 
     public void removeProductFromCart(String name){
-         productListAddedToCart.remove(name);
+        productListAddedToCart.remove(name);
     }
 
 

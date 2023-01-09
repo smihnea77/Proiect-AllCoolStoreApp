@@ -19,10 +19,10 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     //@NotNull
-  //  private String status;
+    //private String status;
     //@NotNull
     private double total;
-   // @NotNull
+    //@NotNull
     private String paymentMethod;
     private LocalDate localDate;
 

@@ -34,21 +34,34 @@ public class UserController {
         return modelAndView;
     }
 
+//    @GetMapping("/user/{id}")
+//    public ModelAndView getAdminById(@PathVariable Long id) {
+//        ModelAndView modelAndView = new ModelAndView("settingAdmin");
+//        modelAndView.addObject(userService.getByUserId(id));
+//        return modelAndView;
+//    }
+//
+//    @GetMapping("/user/{id}")
+//    public ModelAndView getUserById(@PathVariable Long id) {
+//        ModelAndView modelAndView = new ModelAndView("settingUser");
+//        modelAndView.addObject(userService.getByUserId(id));
+//        return modelAndView;
+//    }
+
+//    @GetMapping("/{id}")
+//    public ModelAndView getUserById(@PathVariable Long id) {
+//        ModelAndView modelAndView = new ModelAndView("setting");
+//        modelAndView.addObject(userService.getByUserId(id));
+//        return modelAndView;
+//    }
+
+
     @GetMapping("/register-user")
     public ModelAndView registerUserPage() {
         ModelAndView modelAndView = new ModelAndView("registerUser");
         modelAndView.addObject(new User());
         return modelAndView;
     }
-
-    //only for adding admins
-    /*
-    @PostMapping("/register-user")
-    public void  registerUser(@RequestBody User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userService.registerUser(user);
-                return new ModelAndView("redirect:/");
-    }*/
 
 
     @PostMapping("/register-user")
@@ -69,6 +82,13 @@ public class UserController {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userService.registerUser(user);
         return new ModelAndView("redirect:/login");
+    }
+
+    @GetMapping("/create-user")
+    public ModelAndView createUserPage() {
+        ModelAndView modelAndView = new ModelAndView("createUser");
+        modelAndView.addObject(new User());
+        return modelAndView;
     }
 
     @PostMapping("/create-user")

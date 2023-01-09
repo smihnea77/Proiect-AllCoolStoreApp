@@ -1,40 +1,35 @@
-
 body {
     background-color: white;
     margin: 0 auto;
 }
 
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+.container {
+    /* padding-left: 5px;
+    padding-right: 5px; */
+    margin-left: auto;
+    margin-right: auto;
+}
+
 header {
     background-color: #C9D3C7;
     width: 100%;
-    height: 50px;
-    padding-bottom: 15px;
+    height: 65px;
     margin: 0;
     border: none;
 }
 
-footer {
-    background-color: #C9D3C7;
-    width: 100%;
-    height: 50px;
-    padding-bottom: 10px;
-    margin: 0;
-    border: none;
-    text-align: center;
-    /* position:absolute;
-    bottom: 0; */
-}
-
-.after-footer {
-    background-color: #C9D3C7;
-    text-align: center;   
+.vt-al {
+    align-items: center;
 }
 
 .menu-nav {
     padding: 15px;
     text-align: right;
 }
-
 
 nav a {
     color: black;
@@ -49,16 +44,50 @@ nav a:hover {
     color: rgb(95, 62, 62);
 }
 
-#p-footer {
-    background-color: #C9D3C7;
-    margin: 0;
-    height: 15px;
-    padding: 10px;
-    color: red;
+.content {
+    width: 90%;
+    margin-left: 10px;
+    background-color: white;
 }
 
-hr {
+.add-cart {
+    color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-decoration: none;
+    vertical-align: middle;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #C9D3C7;
+    padding: 5px;
+    font-size: smaller;
+}
+
+.grid {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 10% auto;
+}
+
+.row {
+    display: flex;
+}
+
+
+.sidebar {
+    width: calc(10% - 10px);
+    background-color: #C9D3C7;
+    text-align: center;
     margin: 0;
+}
+
+.sidebar a {
+    color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-decoration: none;
+    background-color: #C9D3C7;
+    vertical-align: middle;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .w3-sidebar{
@@ -94,34 +123,58 @@ hr {
     vertical-align: middle;
 }
 
-nav a:hover {
-    color: rgb(95, 62, 62);
+.p-10 {
+    padding: 10px;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 .table-contents {
     padding-right: 20px;
 }
 
-table, tr, td {
+table, th, tr, td {
     border: 1px solid  #C9D3C7;
     border-collapse: collapse;
-
 }
 
-.tf-center {
+footer {
+    background-color: #C9D3C7;
+    width: 100%;
+    height: 90px;
+    margin: 0;
+    border: none;
     text-align: center;
 }
 
-.right-move {
+.after-footer {
+    background-color: #C9D3C7;
+    text-align: center;   
+}
+
+#p-footer {
+    background-color: #C9D3C7;
+    margin: 0;
+    height: 15px;
+    padding: 10px;
+    color: red;
+}
+
+hr {
+    margin: 0;
     text-align: center;
-}
-
-#border-none {
-    border: 0;
-}
-
-#table-top {
-    border: 0;
 }
 
 .td-center {
@@ -133,46 +186,25 @@ table, tr, td {
     padding-left: 50px;
 }
 
+.col-red {
+    color: red;
+    font-weight: bold;
+}
+
+.img-top {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}
+
 .img_p {
     align-items:center;
 }
 
-#my_header {
-    background-color:#337AB7;
-    color:white;
-    text-align:center;
-    padding:5px;
-}
-#my_side {
-    line-height:30px;
-    background-color:#C0E0EE;
-    height:300px;
-    width:20%;
-    float:left;
-    padding:5px;	      
-}
-#my_section {
-    width:80%;
-    float:left;
-    padding:10px;	 	 
-}
-#my_footer {
-    background-color:#337AB7;
-    color:white;
-    clear:both;
-    text-align:center;
-   padding:5px;	 	 
-}
-
-.form-product {
-    padding-left: 250px;
-    padding-top: 10px;
-}
-
-.container {
-    width: 100%;
-    padding: 50px;
-    background-color: #C9D3C7;
+.img-resp {
+    width: 50%;
+    height: auto;
+    max-width: 100%;   
 }
 
 .asterix {
@@ -183,15 +215,14 @@ table, tr, td {
 .red-label {
     color: red;
 }
-
-.center {
-    text-align: center;
+  
+.req {
+    height: 30px;
 }
-
-
+  
 .prod-art {
     width: 200px;
-    height: 350px;
+    height: 365px;
     border: 2px solid red;
     margin: 25px;
     padding: 10px;
@@ -201,11 +232,37 @@ table, tr, td {
     float: left;
     align-content: space-between;
     border-radius: 10px;
+    background-color:white;
 }
 
 .div-art {
     margin: auto;
     display: block;
+}
+
+.table-form-prod {
+    background-color: #C9D3C7;
+    width: 45%;
+    margin: auto;
+    text-align: left;
+}
+
+.form-product {
+    padding-left: 20px;
+    padding-top: 10px;
+    background-color: #C9D3C7;
+}
+
+.container-form {
+    width: 100%;
+    padding: 10px;
+    background-color: #C9D3C7;
+  }
+
+.cont-upprod {
+    width: 90%;
+    margin-left: 10px;
+
 }
 
 /* table {

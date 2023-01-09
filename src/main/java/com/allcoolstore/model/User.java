@@ -15,20 +15,19 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    // @NotNull
+    //@NotNull
     private String firstName;
-    //NotNull
+    //@NotNull
     private String lastName;
-    //NotNull
+    //@NotNull
     private Date dateOfBirth;
-    // @NotNull
+    //@NotNull
     private String email;
     //@NotNull
     private String username;
-    // @NotNull
+    //@NotNull
     private String password;
     //@NotNull
-//    private Date birthDate;
     private String role;
     //@NotNull
     private String phone;

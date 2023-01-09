@@ -6,109 +6,241 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Products</title>
-
-    <link rel="stylesheet" type="text/css" href="css/products.css" th:href="@{/css/products.css}">
-
-
+    <title>Cart</title>
+    <link rel="stylesheet" type="text/css" href="css/cart.css" th:href="@{/css/cart.css}">
 </head>
 
 <body>
-<!--<div sec:authorize="hasAuthority('USER')">Text visible to user.</div>-->
-<!--<div sec:authorize="hasAuthority('ADMIN')">Text visible to admin.</div>-->
-<div class="w3-sidebar">
-    <div>
-        <img src="images/logo.png" alt="All-Cool" height="75">
+
+    <div class="container clearfix">
+        <header>
+            <div>
+                <nav class="menu-nav">
+                    <a th:href="@{/}">Home</a>|
+                    <a th:href="@{/products/cognac}">Cognac</a>|
+                    <a th:href="@{/products/whiskey}">Whiskey</a> |
+                    <a th:href="@{/products/rum}">Rum</a> |
+                    <a th:href="@{/products/champagne}">Champagne</a> |
+                    <a th:href="@{/products/wine}">Wine</a> |
+                    <a th:href="@{/products/vodka}">Vodka</a> |
+                    <a th:href="@{/users/user}"><img src="images/sign-in100px.png" alt="Login" width="20px"></a> |
+                    <a th:href="@{/cart}"><img src="images/cart-100px.png" alt="Cart" width="25px"></a>
+                </nav>
+            </div>
+        </header>
     </div>
-    <br>
-    <div>
-        <nav class="side-nav">
-            <hr width="100%">
-            <a th:href="@{/users/setting}" class="w3-bar-item">Setting</a>
-            <hr width="100%">
-            <a th:href="@{/products/products}" class="w3-bar-item">Products</a>
-            <hr width="100%">
-            <a th:href="@{/orders/orders}" class="w3-bar-item">Orders</a>
-            <hr width="100%">
-            <a th:href="@{/users/users}" class="w3-bar-item">Users</a>
-            <hr width="100%">
-            <a th:href="@{/}" class="w3-bar-item">Log Out</a>
-            <hr width="100%">
-        </nav>
-    </div>
-</div>
-</div>
-<header>
-    <div>
-        <nav class="menu-nav">
-            <a th:href="@{/}">Home</a>|
-            <a th:href="@{/products/cognac}">Cognac</a>|
-            <a th:href="@{/products/whiskey}">Whiskey</a> |
-            <a th:href="@{/products/rum}">Rum</a> |
-            <a th:href="@{/products/champagne}">Champagne</a> |
-            <a th:href="@{/products/wine}">Wine</a> |
-            <a th:href="@{/products/vodka}">Vodka</a> |
-            <a th:href="@{/users/user}"><img src="images/sign-in100px.png" alt="Login" width="20px"></a> |
-            <a th:href="@{/cart}"><img src="images/cart-100px.png" alt="Cart" width="25px"></a>
-        </nav>
-    </div>
-</header>
+
+
 
 <br>
 
-    <table th:href="@{/cart}" width="85%" align="right">
+<div class="container">
+    <img class="img-top" src="images/cart2700.png" alt="Alcoholic Drinks" >
+</div>
+
+<br>
+<div class="container">
+    <div>
+        <img class="img-resp" src="images/pleasedrinkresp.png" alt="Cognac">
+    </div>
+</div>
+
+<div class="container">
+    <div>
+        <h3>Your shopping cart</h3>
+    </div>
+</div><br>
+
+<div class="clearfix">
+    <table class="center text-center" width="90%" th:href="@{/cart}">
         <thead>
-        <tr>
-            <th width="2%">Id product</th>
-            <th width="15%">Name of product</th>
-            <th width="15%">Type of product</th>
-            <th width="15%">Producer</th>
-            <th width="9%">Price</th>
-            <th width="9%">Quantity</th>
-            <th width="15%">Image</th>
-            <th width="10%">Update</th>
-            <th width="10%">Delete</th>
-        </tr>
+            <tr>
+                <th width="5%">Id</th>
+                <th width="15%">Photo</th>
+                <th width="10%">Type</th>
+                <th width="15%">Name</th>
+                <th width="10%">Price (each)</th>
+                <th width="7%">Quantity</th>
+                <th width="3%"></th>
+                <th width="35%"></th>
+            </tr>
         </thead>
-        <tbody class="tf-center">
-        <tr th:each="product: ${productList}">
-            <td th:text="${product.id}"></td>
-            <td th:text="${product.name}"></td>
-            <td th:text="${product.type}"></td>
-            <td th:text="${product.producer}"></td>
-            <td th:text="${#numbers.formatDecimal(product.price, 0, 2)}"></td>
-            <td th:text="${product.qty}"></td>
-            <td>
-                <img th:src="*{'data:image/jpeg;base64,' + {product.image}}" style="width: 150px; height: 150px;">
+        <tbody>
+        <tr th:each="product: ${productListAddedToCart}">
+            <td class="counterCell" width="5%"></td>
+            <td width="15%">
+                <img th:src="*{'data:image/jpeg;base64,' + {product.image}}" style="width: 50px;height: auto;">
+            </td>
+            <td width="10%" th:text="${product.type}"></td>
+            <td  width="15%" th:text="${product.name}"></td>
+            <td width="7%">
+                <span><input class="wid-in" type="number" id="quantity" name="quantity" min="1" max="25" value="1"></span>
+            </td>
+            <td width="3%">
+                <span>pcs.</span>
+            </td>
+            <td width="10%" th:text="${#numbers.formatDecimal(product.price, 0, 2)}"></td>
+            <td width="35%">
+                <!-- <a th:href="@{/delete-cart-product/__${product.id}__}">Delete</a> -->
             </td>
         </tr>
         </tbody>
     </table>
+
 </div>
+<br>
+
 <div>
-    <table width="100%" align="right" bgcolor="#C9D3C7">
+    <table class="center text-center" width="90%">
+        <thead>
+            <tr>
+                <th width="5%">Id</th>
+                <th width="15%">Photo</th>
+                <th width="10%">Type</th>
+                <th width="15%">Name</th>
+                <th width="10%">Price (each)</th>
+                <th width="7%">Quantity</th>
+                <th width="3%"></th>
+                <th width="35%"></th>
+            </tr>
+        </thead>
+
+        <tbody>
         <tr>
-            <td>
-                <div>
-                    <nav class="menu-nav">
-                        <a th:href="@{/global/terms}">Terms</a>|
-                        <a th:href="@{/global/gdpr}">GDPR</a>|
-                        <a th:href="@{/global/contact}">Contact</a>
-                        <br>
-                    </nav>
-                </div>
+            <td class="counterCell" width="5%"></td>
+            <td width="15%">
+                <img src="images/cognac_02.jpg" style="width: 50px;height: auto;">
             </td>
+            <td width="10%">cognac</td>
+            <td width="15%">MEUKOW VS</td>
+            <td width="10%">100.19 lei</td>
+            <td width="7%">
+                <span><input class="wid-in" type="number" id="quantity" name="quantity" min="1" max="25" value="1"></span>
+            </td>
+            <td width="3%">
+                <span>pcs.</span>
+            </td>
+            <td width="35%"> </td>
         </tr>
         <tr>
-            <td>
-                <div class="after-footer">
-                    <hr color="red">
-                    <p id="p-footer">&copy; 2022 All-Cool - Created by Admin<br/></p>
+            <td class="counterCell" width="5%"></td>
+            <td width="15%">
+                <img src="images/champagne_09.jpg" style="width: 50px;height: auto;">
+            </td>
+            <td width="10%">champagne</td>
+            <td width="15%">CRISTAL ROSE</td>
+            <td width="10%">2380.00 lei</td>
+            <td width="7%">
+                <span><input class="wid-in" type="number" id="quantity" name="quantity" min="1" max="25" value="1"></span>
+            </td>
+            <td width="3%">
+                <span>pcs.</span>
+            </td>
+            <td width="35%"> </td>
+        </tr>
+        <tr>
+            <td class="counterCell" width="5%"></td>
+            <td width="15%">
+                <img src="images/whiskey_09.jpg" style="width: 50px;height: auto;">
+            </td>
+            <td width="10%">whiskey</td>
+            <td width="15%">BLUE LABEL</td>
+            <td width="10%">952.00 lei</td>
+            <td width="7%">
+                <span><input class="wid-in" type="number" id="quantity" name="quantity" min="1" max="25" value="1"></span>
+            </td>
+            <td width="3%">
+                <span>pcs.</span>
+            </td>
+            <td width="35%"> </td>
+        </tr>
+        <tr>
+            <td class="counterCell" width="5%"></td>
+            <td width="15%">
+                <img src="images/rum_01.jpg" style="width: 50px;height: auto;">
+            </td>
+            <td width="10%">rum</td>
+            <td width="15%">RUM CO.</td>
+            <td width="10%">148.75 lei</td>
+            <td width="7%">
+                <span><input class="wid-in" type="number" id="quantity" name="quantity" min="1" max="25" value="1"></span>
+            </td>
+            <td width="3%">
+                <span>pcs.</span>
+            </td>
+            <td width="35%"> </td>
+        </tr>
+        <tr>
+            <td class="counterCell" width="5%"></td>
+            <td width="15%">
+                <img src="images/vodka_04.jpg" style="width: 50px;height: auto;">
+            </td>
+            <td width="10%">vodka</td>
+            <td width="15%">VODKA SKYY</td>
+            <td width="10%">83.30 lei</td>
+            <td width="7%">
+                <span><input class="wid-in" type="number" id="quantity" name="quantity" min="1" max="25" value="1"></span>
+            </td>
+            <td width="3%">
+                <span>pcs.</span>
+            </td>
+            <td width="35%"> </td>
+        </tr>
+        <tr>
+            <td class="counterCell" width="5%"></td>
+            <td width="15%">
+                <img src="images/wine_11.jpg" style="width: 50px;height: auto;">
+            </td>
+            <td width="10%">wine</td>
+            <td width="15%">SAINT JULIEN</td>
+            <td width="10%">214.20 lei</td>
+            <td width="7%">
+                <span><input class="wid-in" type="number" id="quantity" name="quantity" min="1" max="25" value="1"></span>
+            </td>
+            <td width="3%">
+                <span>pcs.</span>
+            </td>
+            <td width="35%"> </td>
+        </tr>
+        </tbody>
+    </table>
+</div><br>
+
+<div class="container">
+    <table id="mytable" class="center" width="90%">
+        <tr border="0">
+            <td align="left">
+                <div>
+                    <article class="cart-art"><a th:href="@{/products/cognac}">Continue shopping</a></span>
+                </div>
+            </td>
+            <td align="right">
+                <div>
+                    <article class="cart-art"><a th:href="@{/orders/create-order}">Create order</a></span>
                 </div>
             </td>
         </tr>
     </table>
+</div><br>
+
+
+<div class="container">
+    <footer>
+        <div>
+            <nav class="menu-nav">
+                <a th:href="@{/global/terms}">Terms</a>|
+                <a th:href="@{/global/gdpr}">GDPR</a>|
+                <a th:href="@{/global/contact}">Contact</a>
+                <br>
+            </nav>
+        </div>
+        <div class="after-footer">
+            <hr color="red">
+            <p id="p-footer">&copy; 2022 All-Cool - by Admin<br/></p>
+        </div>
+    </footer>
 </div>
+
 
 </body>
 </html>

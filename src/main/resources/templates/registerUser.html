@@ -12,112 +12,112 @@
             background-size: cover;
         }
     </style>
-
-
     <link rel="stylesheet" type="text/css" href="css/users.css" th:href="@{/css/users.css}">
-
-
 </head>
 
 <body>
-<header>
-    <div>
-        <nav class="menu-nav">
-            <a th:href="@{/}">Home</a>|
-            <a th:href="@{/products/cognac}">Cognac</a>|
-            <a th:href="@{/products/whiskey}">Whiskey</a> |
-            <a th:href="@{/products/rum}">Rum</a> |
-            <a th:href="@{/products/champagne}">Champagne</a> |
-            <a th:href="@{/products/wine}">Wine</a> |
-            <a th:href="@{/products/vodka}">Vodka</a> |
-            <a th:href="@{/users/user}"><img src="images/sign-in100px.png" alt="Login" width="20px"></a> |
-            <a th:href="@{/cart}"><img src="images/cart-100px.png" alt="Cart" width="25px"></a>
-        </nav>
-    </div>
-</header>
-
-<br/> <br/>
-<div class="center">
-    <img class="logo" src="images/register-logo.png" alt="All-Cool" height="225">
-</div>
-
-
-<br/>
-
-<div class="register-page">
-    <form method="POST" th:action="@{/users/register-user}" th:object="${user}">
-        <div class="container">
-            <h1 class="center"> Customer Registration Form</h1>
-            <hr>
+    <div class="container clearfix">
+        <header>
             <div>
+                <nav class="menu-nav">
+                    <a th:href="@{/}">Home</a>|
+                    <a th:href="@{/products/cognac}">Cognac</a>|
+                    <a th:href="@{/products/whiskey}">Whiskey</a> |
+                    <a th:href="@{/products/rum}">Rum</a> |
+                    <a th:href="@{/products/champagne}">Champagne</a> |
+                    <a th:href="@{/products/wine}">Wine</a> |
+                    <a th:href="@{/products/vodka}">Vodka</a> |
+                    <a th:href="@{/users/user}"><img src="images/sign-in100px.png" alt="Login" width="20px"></a> |
+                    <a th:href="@{/cart}"><img src="images/cart-100px.png" alt="Cart" width="25px"></a>
+                </nav>
+            </div>
+        </header>
+    </div>
 
+<br> <br>
 
-                <label size="15" > <sup class="asterix">*</sup> First Name: </label>
-                <input type="text" th:field="*{firstName}" id="firstName" name="firstName" placeholder= "First Name" size="15" required />
-                <label> <sup class="asterix">*</sup> Last Name: </label>
-                <input type="text" th:field="*{lastName}" id="lastName" name="lastName" placeholder="Last Name" size="15" required />
-                <label> <sup class="asterix">*</sup> Username: </label>
-                <input type="text" th:field="*{username}" id="username" name="username" placeholder="Username" size="15" required />
-                <label for="email"> <sup class="asterix">*</sup> Email: </label>
-                <input type="email" th:field="*{email}" id="email" name="email" placeholder="Email" size="15" required />
-                <label for="password"> <sup class="asterix">*</sup> Password: </label>
-                <input type="password" th:field="*{password}" id="password" name="password" placeholder="Password" size="15" minlength="6" required />
-
-                <hr>
-                <p>
-                    <label> <sup class="asterix">*</sup> Birthday (date):</label>
-                    <input type="date" th:field="*{dateOfBirth}" id="birthday" name="birthday" placeholder="date" size="15" required />
-                </p>
-
-
-                <hr>
-                <label for="text"> <sup class="asterix">*</sup> Phone(+4) :</label>
-                <input type="text" th:field="*{phone}" id="phone" name="phone" placeholder="phone no." size="15" maxlength="10" required />
-
-                <hr>
-
-                Current Address<br><br>
-                <label> <sup class="asterix">*</sup> City: </label>
-                <input type="text" th:field="*{city}" id="city" name="city" placeholder= "City" size="15" required />
-                <label> <sup class="asterix">*</sup> County: </label>
-                <input type="text" th:field="*{county}" id="county" name="county" placeholder="County" size="15"required />
-                <label for="text"> <sup class="asterix">*</sup> Postal code: </label>
-                <input type="text" th:field="*{postalCode}" id="postalCode" name="postal code" placeholder="postal code" size="15" maxlength="6" required />
-                <label> <sup class="asterix">*</sup> Address 1: </label>
-                <input type="text" th:field="*{address1}" id="address1" name="address1" placeholder="street and number" size="15" required />
-                <label> Address 2: </label>
-                <input type="text" th:field="*{address2}" id="address2" name="address2" placeholder="bl, sc, et, apt" size="15"/>
-                <hr>
-                    <p>
-                        <label> <sup class="asterix">*</sup> Your information are correct? </label>
-                        <input type="radio" th:field="*{role}" id="role" name="role" value="USER" size="15" required />
-                        <label for="user"><span>YES<br></span></label>
-                    </p>
-
-                    <hr><br>
-                    <label class="red-label" id="req" > <sup class="asterix">*</sup><span><i>Required</i></span> </label>
-
-
-                <hr><br>
-
-
-                <div class="center">
-                    <button>Register</button>
-                </div><br>
-    </form>
-
+<div class="container clearfix">
+    <img class="reg-logo" src="images/register-logo.png" alt="All-Cool" height="225">
 </div><br>
 
 
+<div class="container clearfix">
+    <div >
+        <form  class="regf" method="POST" th:action="@{/users/register-user}" th:object="${user}">
+            <div id="reg-container">
+                <h1 class="text-center"> Customer Registration Form</h1>
+                <hr>
+                <div >
+                    <label size="15"> <sup class="asterix">*</sup> First Name: </label>
+                    <input type="text" th:field="*{firstName}" id="firstName" name="firstName" placeholder= "First Name" size="15" required />
+                    <label> <sup class="asterix">*</sup> Last Name: </label>
+                    <input type="text" th:field="*{lastName}" id="lastName" name="lastName" placeholder="Last Name" size="15" required />
+                    <label> <sup class="asterix">*</sup> Username: </label>
+                    <input type="text" th:field="*{username}" id="username" name="username" placeholder="Username" size="15" required />
+                    <label for="email"> <sup class="asterix">*</sup> Email: </label>
+                    <input type="email" th:field="*{email}" id="email" name="email" placeholder="Email" size="15" required />
+                    <label for="password"> <sup class="asterix">*</sup> Password: </label>
+                    <input type="password" th:field="*{password}" id="password" name="password" placeholder="Password" size="15" minlength="6" required />
+    
+                    <hr>
+                    <p>
+                        <label> <sup class="asterix">*</sup> Birthday (date):</label>
+                        <input type="date" th:field="*{dateOfBirth}" id="birthday" name="birthday" placeholder="date" size="15" required />
+                    </p>
+    
+                    <hr>
+                    <label for="text"> <sup class="asterix">*</sup> Phone(+4) :</label>
+                    <input type="text" th:field="*{phone}" id="phone" name="phone" placeholder="phone no." size="15" maxlength="10" required />
+    
+                    <hr>
+    
+                    Current Address<br><br>
+                    <label> <sup class="asterix">*</sup> City: </label>
+                    <input type="text" th:field="*{city}" id="city" name="city" placeholder= "City" size="15" required />
+                    <label> <sup class="asterix">*</sup> County: </label>
+                    <input type="text" th:field="*{county}" id="county" name="county" placeholder="County" size="15"required />
+                    <label for="text"> <sup class="asterix">*</sup> Postal code: </label>
+                    <input type="text" th:field="*{postalCode}" id="postalCode" name="postal code" placeholder="postal code" size="15" maxlength="6" required />
+                    <label> <sup class="asterix">*</sup> Address 1: </label>
+                    <input type="text" th:field="*{address1}" id="address1" name="address1" placeholder="street and number" size="15" required />
+                    <label> Address 2: </label>
+                    <input type="text" th:field="*{address2}" id="address2" name="address2" placeholder="bl, sc, et, apt" size="15"/>
+                    <hr>
+                        <p>
+                            <label> <sup class="asterix">*</sup> Your information are correct? </label>
+                            <input type="radio" th:field="*{role}" id="role" name="role" value="USER" size="15" required />
+                            <label for="user"><span>YES<br></span></label>
+                        </p>
+    
+                        <hr><br>
+                        <label class="red-label" id="req" > <sup class="asterix">*</sup><span><i>Required</i></span> </label><br>
+                    <hr><br>
+                    <div class="text-center">
+                        <button class="registerbtn">Register</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    
+    </div>
+</div>
 
-
-
-
-
-
-
+<!-- <div class="container">
+    <footer>
+        <div>
+            <nav class="menu-nav">
+                <a th:href="@{/global/terms}">Terms</a>|
+                <a th:href="@{/global/gdpr}">GDPR</a>|
+                <a th:href="@{/global/contact}">Contact</a>
+                <br>
+            </nav>
+        </div>
+        <div class="after-footer">
+            <hr color="red">
+            <p id="p-footer">&copy; 2022 All-Cool - by Admin<br/></p>
+        </div>
+    </footer>
+</div> -->
 
 </body>
-
-
 </html>

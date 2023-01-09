@@ -7,58 +7,80 @@
 
     <link rel="stylesheet" type="text/css" href="css/products.css" th:href="@{/css/products.css}">
 
-
+    
 </head>
 <body>
-<header>
-    <div>
-        <nav class="menu-nav">
-            <a th:href="@{/}">Home</a>|
-            <a th:href="@{/products/cognac}">Cognac</a>|
-            <a th:href="@{/products/whiskey}">Whiskey</a> |
-            <a th:href="@{/products/rum}">Rum</a> |
-            <a th:href="@{/products/champagne}">Champagne</a> |
-            <a th:href="@{/products/wine}">Wine</a> |
-            <a th:href="@{/products/vodka}">Vodka</a> |
-            <a th:href="@{/users/user}"><img src="images/sign-in100px.png" alt="Login" width="20px"></a> |
-            <a th:href="@{/cart}"><img src="images/cart-100px.png" alt="Cart" width="25px"></a>
-        </nav>
+    <div class="container clearfix">
+        <header>
+            <div>
+                <nav class="menu-nav">
+                    <a th:href="@{/}">Home</a>|
+                    <a th:href="@{/products/cognac}">Cognac</a>|
+                    <a th:href="@{/products/whiskey}">Whiskey</a> |
+                    <a th:href="@{/products/rum}">Rum</a> |
+                    <a th:href="@{/products/champagne}">Champagne</a> |
+                    <a th:href="@{/products/wine}">Wine</a> |
+                    <a th:href="@{/products/vodka}">Vodka</a> |
+                    <a th:href="@{/users/user}"><img src="images/sign-in100px.png" alt="Login" width="20px"></a> |
+                    <a th:href="@{/cart}"><img src="images/cart-100px.png" alt="Cart" width="25px"></a>
+                </nav>
+            </div>
+        </header>
     </div>
-</header>
 
-<br>
-
-<div class="div-top">
-    <img class="img-top" src="images/whiskey-wallpaper-db.jpg" alt="Whiskey" height="500">
+<div class="container">
+    <img class="img-top" src="images/whiskey-wallpaper-db.jpg" alt="Whiskey" >
 </div>
 
 <br>
-<div class="divimg-footer">
+<div class="container">
     <div>
-        <img class="img-footer" src="images/pleasedrinkresp.png" alt="Whiskey">
+        <img class="img-resp" src="images/pleasedrinkresp.png" alt="Whiskey">
     </div>
 </div>
 
-<div th:href="@{/products/whiskey}">
+<div class="clearfix" th:href="@{/products/whiskey}">
     <div th:each="whiskey: ${products}" >
         <article class="prod-art">
             <div>
+                Code: WHI<span th:text="${whiskey.id}"></span>
                 <div>
-                    <p th:text="${whiskey.name}"></p>
-                </div>
-                <div>
-                    <img th:src="*{'data:image/jpeg;base64,' + {whiskey.image}}" style=" height: 200px">
-                </div>
-                <div>
-                    <span th:text="${whiskey.price}"> </span><span> lei</span>
-                </div><br>
-                <div>
-                    <a th:href="@{/users/login-user}"> COMANDA </a>
+                    <!-- <a th:href="@{/products/product/{productId}(productId=${whiskey.id})}" target="_blank">Link</a> -->
+                    <div class="col-red">
+                        <p th:text="${whiskey.name}"></p>
+                    </div>
+                    <div>
+                        <img th:src="*{'data:image/jpeg;base64,' + {whiskey.image}}" style=" height: 200px">
+                    </div>
+                    
+                    <div class="col-red" >
+                        <i><span th:text="${#numbers.formatDecimal(whiskey.price, 0, 2)}"> </span><span> lei</span></i>
+                    </div><br>
+                    <div class="text-center" method="POST" enctype="multipart/form-data" th:action="@{/cart/add-product-to-cart/{id}}" th:object="${cart}">
+                        <a class="add-cart" th:href="@{/cart}"><img src="images/cart-100px.png" alt="Cart" width="15px"> Add to cart </a>
+                    </div>
                 </div>
             </div>
-
         </article>
     </div>
+</div>
+<br>
+
+<div class="container">
+    <footer>
+        <div>
+            <nav class="menu-nav">
+                <a th:href="@{/global/terms}">Terms</a>|
+                <a th:href="@{/global/gdpr}">GDPR</a>|
+                <a th:href="@{/global/contact}">Contact</a>
+                <br>
+            </nav>
+        </div>
+        <div class="after-footer">
+            <hr color="red">
+            <p id="p-footer">&copy; 2022 All-Cool - by Admin<br/></p>
+        </div>
+    </footer>
 </div>
 
 </body>

@@ -18,52 +18,60 @@
 
 <body>
 
-    <header>
-        <div>
-            <nav class="menu-nav">
-                <a th:href="@{/}">Home</a>|
-                <a th:href="@{/products/cognac}">Cognac</a>|
-                <a th:href="@{/products/whiskey}">Whiskey</a> |
-                <a th:href="@{/products/rum}">Rum</a> |
-                <a th:href="@{/products/champagne}">Champagne</a> |
-                <a th:href="@{/products/wine}">Wine</a> |
-                <a th:href="@{/products/vodka}">Vodka</a> |
-                <a th:href="@{/users/user}"><img src="images/sign-in100px.png" alt="Login" width="20px"></a> |
-                <a th:href="@{/cart}"><img src="images/cart-100px.png" alt="Cart" width="25px"></a>
-            </nav>
-        </div>
-    </header>
-
-
-    <br/> <br/>
-    <div class="notall">
-        <div >
-            <img class="logo" src="images/register-logo.png" alt="All-Cool" height="225">
-        </div><br>
-
-        
-    </div><br>
-    <div class="notdiv" >
-        <div class="p-div">
-            <p><h2>It is illegal to sell alcoholic products to anyone under the age of 18!</h2></p>
-        </div>
-
+    <div class="container clearfix">
+        <header>
+            <div>
+                <nav class="menu-nav">
+                    <a th:href="@{/}">Home</a>|
+                    <a th:href="@{/products/cognac}">Cognac</a>|
+                    <a th:href="@{/products/whiskey}">Whiskey</a> |
+                    <a th:href="@{/products/rum}">Rum</a> |
+                    <a th:href="@{/products/champagne}">Champagne</a> |
+                    <a th:href="@{/products/wine}">Wine</a> |
+                    <a th:href="@{/products/vodka}">Vodka</a> |
+                    <a th:href="@{/users/user}"><img src="images/sign-in100px.png" alt="Login" width="20px"></a> |
+                    <a th:href="@{/cart}"><img src="images/cart-100px.png" alt="Cart" width="25px"></a>
+                </nav>
+            </div>
+        </header>
     </div>
 
-    <footer>
-        <div>
-            <nav class="menu-nav">
-                <a th:href="@{/global/terms}">Terms</a>|
-                <a th:href="@{/global/gdpr}">GDPR</a>|
-                <a th:href="@{/global/contact}">Contact</a>
-                <br>
-            </nav>
-        </div>
-        <div class="after-footer">
-            <hr color="red">
-            <p id="p-footer">&copy; 2022 All-Cool - Created by Admin<br/></p>
-        </div>
-    </footer>  
+    <div class="container clearfix">
+        <div >
+            <div class="notdiv" >
+                <div >
+                    <p><h2>It is illegal to sell alcoholic products to anyone under the age of 18!</h2></p>
+                </div>
+        
+            </div>
+            <div class="notall">
+                <div >
+                    <img src="images/register-logo.png" alt="All-Cool" height="225">
+                </div><br>
+            </div><br>
+
+
+        </div><br><br>
+    </div>
+    
+    <div class="container">
+        <footer class="fix-ft">
+            <div>
+                <nav class="menu-nav">
+                    <a th:href="@{/global/terms}">Terms</a>|
+                    <a th:href="@{/global/gdpr}">GDPR</a>|
+                    <a th:href="@{/global/contact}">Contact</a>
+                    <br>
+                </nav>
+            </div>
+            <div class="after-footer">
+                <hr color="red">
+                <p id="p-footer">&copy; 2022 All-Cool - by Admin<br/></p>
+            </div>
+        </footer>
+    </div>
+
+
 
 
 <br/>

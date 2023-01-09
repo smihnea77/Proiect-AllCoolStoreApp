@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Settings Admin</title>
+    <link rel="stylesheet" type="text/css" href="css/users.css" th:href="@{/css/users.css}">
+    
+
+</head>
+
+<body>
+
+    <div class="container clearfix">
+        <header>
+            <div>
+                <nav class="menu-nav">
+                    <a th:href="@{/}">Home</a>|
+                    <a th:href="@{/products/cognac}">Cognac</a>|
+                    <a th:href="@{/products/whiskey}">Whiskey</a> |
+                    <a th:href="@{/products/rum}">Rum</a> |
+                    <a th:href="@{/products/champagne}">Champagne</a> |
+                    <a th:href="@{/products/wine}">Wine</a> |
+                    <a th:href="@{/products/vodka}">Vodka</a> |
+                    <a th:href="@{/users/user}"><img src="images/sign-in100px.png" alt="Login" width="20px"></a> |
+                    <a th:href="@{/cart}"><img src="images/cart-100px.png" alt="Cart" width="25px"></a>
+                </nav>
+            </div>
+        </header>
+    </div>
+
+    <div class="container">
+        <div class="grid row">
+            <aside class="sidebar text-center">
+                <div>
+                    <img src="images/logo.png" alt="All-Cool" height="75">
+                </div>
+                <br>
+                <div>
+                    <nav class="side-nav">
+                        <hr width="100%">
+                        <a th:href="@{/users/settingAdmin}" class="w3-bar-item">Setting</a>
+                        <hr width="100%">
+                        <a th:href="@{/orders/orders-admin}" class="w3-bar-item">My Orders</a>
+                        <hr width="100%">
+                        <a th:href="@{/products/products}" class="w3-bar-item">Products</a>
+                        <hr width="100%">
+                        <a th:href="@{/orders/orders}" class="w3-bar-item">Orders</a>
+                        <hr width="100%">
+                        <a th:href="@{/users/users}" class="w3-bar-item">Users</a>
+                        <hr width="100%">
+                        <a th:href="@{/}" class="w3-bar-item">Log Out</a>
+                        <hr width="100%">
+                    </nav>
+                </div>
+            </aside>
+            <main class="content ">
+
+                <div>
+                    <div >
+                        <br><br>
+                        <div >
+                            <table id="altab" width="90%">
+                                <tr>
+                                    <td width="75%">
+                                        <table id="mydate" width="100%">
+                                            <tr>
+                                                <td class="tx-ft" colspan="2" style="background-color:#C9D3C7">
+                                                    Personal Details
+                                                </td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                    First Name:
+                                                </td>
+                                                <td class="tx-get">John</td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                    Last Name:
+                                                </td>
+                                                <td class="tx-get">Doe</td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                    Username:
+                                                </td>
+                                                <td class="tx-get">johndoe</td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                    Date of birth:
+                                                </td>
+                                                <td class="tx-get">2000-01-01</td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                    E-mail:
+                                                </td>
+                                                <td class="tx-get">john@sda.ro</td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                    Phone:
+                                                </td>
+                                                <td class="tx-get">0711111111</td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                </td>
+                                                <td class="tx-get"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tx-ft" colspan="2" style="background-color:#C9D3C7">
+                                                    Billing Address
+                                                </td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                    City:
+                                                </td>
+                                                <td class="tx-get">Constanta</td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                    County:
+                                                </td>
+                                                <td class="tx-get">Constanta</td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                    Zip code:
+                                                </td>
+                                                <td class="tx-get">010001</td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                    Street, number:
+                                                </td>
+                                                <td class="tx-get">Unirii 1</td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                    Bl, sc, et, apt.:
+                                                </td>
+                                                <td class="tx-get">-</td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                </td>
+                                                <td class="tx-get"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tx-ft" colspan="2" style="background-color:#C9D3C7">
+                                                    Delivery Address
+                                                </td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                    City:
+                                                </td>
+                                                <td class="tx-get">Constanta</td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                    County (or sector):
+                                                </td>
+                                                <td class="tx-get">Constanta</td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                    Zip code:
+                                                </td>
+                                                <td class="tx-get">010001</td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                    Street, number:
+                                                </td>
+                                                <td class="tx-get">Unirii 1</td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                    Bl, sc, et, apt.:
+                                                </td>
+                                                <td class="tx-get">-</td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                </td>
+                                                <td class="tx-get"></td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left">
+                                                    <div>
+                                                        <article class="user-art"><a th:href="@{/users/update-admin}">Update account</a></span>
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td width="25%" class="top-al">
+                                        <table id="logotop" width="100%">
+                                            <tr>
+                                                <td>
+                                                    <img src="images/logo.png" alt="All-Cool" height="150">
+                                                </td>
+                                            </tr>
+                                            <td id="id-admin">
+                                                <i><span>Admin code: ALCADM-</span><span>3</span></i>
+                                            </td>
+                                        </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table><br>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- <div>
+                    <div th:href="@{/users}">
+                        <br><br>
+                        <div >
+                            <table id="altab" width="90%">
+                                <tr>
+                                    <td width="75%">
+                                        <table id="mydate" width="100%">
+                                            <tr>
+                                                <td class="tx-ft" colspan="2" style="background-color:#C9D3C7">
+                                                    Personal Details
+                                                </td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                    First Name:
+                                                </td>
+                                                <td class="tx-get" th:text="${user.firstName}"></td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                    Last Name:
+                                                </td>
+                                                <td class="tx-get" th:text="${user.lastName}"></td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                    Username:
+                                                </td>
+                                                <td class="tx-get" th:text="${user.username}"></td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                    Date of birth:
+                                                </td>
+                                                <td class="tx-get" th:text="${user.dateOfBirth}"></td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                    E-mail:
+                                                </td>
+                                                <td class="tx-get" th:text="${user.email}"></td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                    Phone:
+                                                </td>
+                                                <td class="tx-get" th:text="${user.phone}"></td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                </td>
+                                                <td class="tx-get"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tx-ft" colspan="2" style="background-color:#C9D3C7">
+                                                    Billing Address
+                                                </td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                    City:
+                                                </td>
+                                                <td class="tx-get" th:text="${user.city}"></td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                    County (or sector):
+                                                </td>
+                                                <td class="tx-get" th:text="${user.county}"></td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                    Zip code:
+                                                </td>
+                                                <td class="tx-get" th:text="${user.postalCode}"></td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                    Street, number:
+                                                </td>
+                                                <td class="tx-get" th:text="${user.address1}"></td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                    Bl, sc, et, apt.:
+                                                </td>
+                                                <td class="tx-get" th:text="${user.address2}"></td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                </td>
+                                                <td class="tx-get"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tx-ft" colspan="2" style="background-color:#C9D3C7">
+                                                    Delivery Address
+                                                </td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                    City:
+                                                </td>
+                                                <td class="tx-get" th:text="${user.city}"></td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                    County (or sector):
+                                                </td>
+                                                <td class="tx-get" th:text="${user.county}"></td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                    Zip code:
+                                                </td>
+                                                <td class="tx-get" th:text="${user.postalCode}"></td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                    Street, number:
+                                                </td>
+                                                <td class="tx-get" th:text="${user.address1}"></td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                    Bl, sc, et, apt.:
+                                                </td>
+                                                <td class="tx-get" th:text="${user.address2}"></td>
+                                            </tr>
+                                            <tr >
+                                                <td class="tx-it">
+                                                </td>
+                                                <td class="tx-get"></td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left">
+                                                    <div>
+                                                        <article class="user-art"><a th:href="@{/user/updateAdmin}">Update account</a></span>
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td width="25%" class="top-al">
+                                        <table id="logotop" width="100%">
+                                            <tr>
+                                                <td>
+                                                    <img src="images/logo.png" alt="All-Cool" height="150">
+                                                </td>
+                                            </tr>
+                                            <td id="id-admin">
+                                                <i><span>Admin code: ALCADM-</span><span th:text="${user.id}">3</span></i>
+                                            </td>
+                                        </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table><br>
+                        </div>
+                    </div>
+                </div> -->
+
+
+
+
+
+            </main>
+        </div>
+    </div>
+
+    <div class="container">
+            <footer>
+                <div>
+                    <nav class="menu-nav">
+                        <a th:href="@{/global/terms}">Terms</a>|
+                        <a th:href="@{/global/gdpr}">GDPR</a>|
+                        <a th:href="@{/global/contact}">Contact</a>
+                        <br>
+                    </nav>
+                </div>
+                <div class="after-footer">
+                    <hr color="red">
+                    <p id="p-footer">&copy; 2022 All-Cool - by Admin<br/></p>
+                </div>
+            </footer>
+    </div>
+
+</body>
+
+</html>

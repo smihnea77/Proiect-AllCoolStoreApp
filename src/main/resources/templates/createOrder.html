@@ -1,50 +1,367 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
     <meta charset="UTF-8">
-    <title>Add Product</title>
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-            crossorigin="anonymous"></script>
+    <title>Create Order</title>
+    <link rel="stylesheet" type="text/css" href="css/orders.css" th:href="@{/css/orders.css}">
 </head>
 <body>
-<nav class="nav navbar-expand navbar-dark bg-dark">
 
-    <a class="nav-link" th:href="@{/login}">
-        <img th:src="@{/images/logo.jpg}"/>
-    </a>
-    <a class="nav-link active" aria-current="page" href="#">Active</a>
-    <a class="nav-link" th:href="@{product}">Products</a>
-    <!--    <a class="nav-link" th:href="@{/cart}">Cart</a>-->
-    <!--    <a class="nav-link" th:href="@{/admin}">Admin</a>-->
-    <!--    <a class="nav-link" th:href="@{/login}">Login</a>-->
-</nav>
-
-<form method="POST" th:action="@{/orders/create-order}" th:object="${order}" class="col-md-4 col-md-offset-4"
-      style="max-width: 350px; margin: 0 auto" enctype="multipart/form-data">
-    <div class="border border-secondary rounded p-3">
-
-        <div class="col-md-6">
-            <label for="total" class="form-label">total</label>
-            <input type="text" th:field="*{total}" id="total">
+    
+    <body>
+        <div class="container clearfix">
+            <header>
+                <div>
+                    <nav class="menu-nav">
+                        <a th:href="@{/}">Home</a>|
+                        <a th:href="@{/products/cognac}">Cognac</a>|
+                        <a th:href="@{/products/whiskey}">Whiskey</a> |
+                        <a th:href="@{/products/rum}">Rum</a> |
+                        <a th:href="@{/products/champagne}">Champagne</a> |
+                        <a th:href="@{/products/wine}">Wine</a> |
+                        <a th:href="@{/products/vodka}">Vodka</a> |
+                        <a th:href="@{/users/user}"><img src="images/sign-in100px.png" alt="Login" width="20px"></a> |
+                        <a th:href="@{/cart}"><img src="images/cart-100px.png" alt="Cart" width="25px"></a>
+                    </nav>
+                </div>
+            </header>
         </div>
-        <label for="paymentMethod" class="form-label">paymentMethod</label>
-        <input type="text" th:field="*{paymentMethod}" id="paymentMethod"/>
-    </div>
+        
+        <div class="container">
+            <div class="grid text-center row">
+                <aside class="sidebar">
+                    <div>
+                        <img src="images/logo.png" alt="All-Cool" height="75">
+                    </div>
+                    <br>
 
-    </div>
+                    <div sec:authorize="hasAuthority('ADMIN')">
+                        <nav class="side-nav">
+                            <hr width="100%">
+                            <a th:href="@{/users/settingAdmin}" class="w3-bar-item">Setting</a>
+                            <hr width="100%">
+                            <a th:href="@{/orders/orders-admin}" class="w3-bar-item">My Orders</a>
+                            <hr width="100%">
+                            <a th:href="@{/products/products}" class="w3-bar-item">Products</a>
+                            <hr width="100%">
+                            <a th:href="@{/orders/orders}" class="w3-bar-item">Orders</a>
+                            <hr width="100%">
+                            <a th:href="@{/users/users}" class="w3-bar-item">Users</a>
+                            <hr width="100%">
+                            <a th:href="@{/logout}" class="w3-bar-item">Log Out</a>
+                            <hr width="100%">
+                        </nav>
+                    </div>
+    
+                    <div sec:authorize="hasAuthority('USER')">
+                        <nav class="side-nav">
+                            <hr width="100%">
+                            <a th:href="@{/users/settingUser}" class="w3-bar-item">Setting</a>
+                            <hr width="100%">
+                            <a th:href="@{/orders/orders-user}" class="w3-bar-item">My Orders</a>
+                            <hr width="100%">
+                            <a th:href="@{/logout}" class="w3-bar-item" >Logout</a>
+                            <hr width="100%">
+                        </nav>
+                    </div>
 
-    <div class="col-12">
-        <a>
-            <button type="submit">Add order</button>
-        </a>
-    </div>
-    </div>
-</form>
-</body>
-</html>
+                </aside>
+                <main class="content text-center">
+                    <div class="table-contents">
+                        <div><br><br>
+                            <div>
+                                <table id="datetable" class="center text-center" width="90%">
+                                    <tr>
+                                        <td align="right">
+                                            <span>
+                                                <script>
+                                                    document.write(new Date().toLocaleDateString());
+                                                </script>
+                                            </span>
+
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div><br>
+                            <table id="tpordtable" class="text-center" width="90%">
+                                <tr>
+                                    <td width="35%">
+                                        <table class="lf-tb" id="lftable" >
+                                            <tr>
+                                                <td colspan="2">
+                                                    <b><i><span>All-Cool Inc</span></i></b>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span>VAT code:</span>
+                                                </td>
+                                                <td>
+                                                    <span>RO999999999</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span>Reg. no.:</span>
+                                                </td>
+                                                <td>
+                                                    <span>J40/1001/2022</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span>Address:</span>
+                                                </td>
+                                                <td>
+                                                    <span>Bucuresti</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <span>Nicolae Filipescu 39-41</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <span>sector 2, zip code 020961</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span>Phone no.:</span>
+                                                </td>
+                                                <td>
+                                                    <span>0370111111</span>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                    </td>
+                                    <td width="30%">
+                                        <img src="images/logo.png" alt="All-Cool" height="150">
+                                    </td>
+                                    <td width="35%" align="right">
+                                        <table id="rgtable">
+                                            <tr>
+                                                <td>
+                                                    <i><span>Customer</span></i>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <b><i><span>John Doe</span></i></b>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span>Bucuresti</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span>str. Unirii nr. 1</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span>sector 1, zip code 010001</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span>0701111111</span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table><br><br>
+                        </div>
+
+                        <div>
+                            <table class="text-center" width="90%">
+                                <thead>
+                                    <tr>
+                                        <th width="5%">Id</th>
+                                        <th width="15%">Photo</th>
+                                        <th width="25%">Product</th>
+                                        <th width="25%">Producer</th>
+                                        <th width="10%">Price (each)</th>
+                                        <th width="7%">Quantity</th>
+                                        <th width="3%"></th>
+                                        <th width="10%">Total price item</th>
+                                    </tr>
+                                </thead>
+                        
+                                <tbody>
+                                <tr>
+                                    <td class="counterCell" width="5%"></td>
+                                    <td width="15%">
+                                        <img src="images/cognac_02.jpg" style="width: 50px;height: auto;">
+                                    </td>
+                                    <td width="25%"><span>cognac </span><span>MEUKOW VS</span></td>
+                                    <td width="25%"><span>MEUKOW</span></td>
+                                    <td width="10%">100.19 lei</td>
+                                    <td width="7%">
+                                        <span><input class="wid-in" type="number" id="quantity" name="quantity" min="1" max="25" value="1"></span>
+                                    </td>
+                                    <td width="3%">
+                                        <span>pcs.</span>
+                                    </td>
+                                    <td width="10%">100.19 lei</td>
+                                </tr>
+                                <tr>
+                                    <td class="counterCell" width="5%"></td>
+                                    <td width="15%">
+                                        <img src="images/champagne_09.jpg" style="width: 50px;height: auto;">
+                                    </td>
+                                    <td width="25%"><span>champagne </span><span>CRISTAL ROSE</span></td>
+                                    <td width="25%"><span>LOUIS ROEDERER</span></td>
+                                   
+                                    <td width="10%">2380.00 lei</td>
+                                    <td width="7%">
+                                        <span><input class="wid-in" type="number" id="quantity" name="quantity" min="1" max="25" value="1"></span>
+                                    </td>
+                                    <td width="3%">
+                                        <span>pcs.</span>
+                                    </td>
+                                    <td width="10%">2380.00 lei</td>
+                                </tr>
+                                <tr>
+                                    <td class="counterCell" width="5%"></td>
+                                    <td width="15%">
+                                        <img src="images/whiskey_09.jpg" style="width: 50px;height: auto;">
+                                    </td>
+                                    <td width="25%"><span>whiskey </span><span>BLUE LABEL</span></td>
+                                    <td width="25%"><span>JOHNNIE WALKER</span></td>
+                                   
+                                    <td width="10%">952.00 lei</td>
+                                    <td width="7%">
+                                        <span><input class="wid-in" type="number" id="quantity" name="quantity" min="1" max="25" value="1"></span>
+                                    </td>
+                                    <td width="3%">
+                                        <span>pcs.</span>
+                                    </td>
+                                    <td width="10%">952.00 lei</td>
+                                </tr>
+                                <tr>
+                                    <td class="counterCell" width="5%"></td>
+                                    <td width="15%">
+                                        <img src="images/rum_01.jpg" style="width: 50px;height: auto;">
+                                    </td>
+                                    <td width="25%"><span>rum </span><span>RUM CO.</span></td>
+                                    <td width="25%"><span>BUMBU</span></td>
+                                   
+                                    <td width="10%">148.75 lei</td>
+                                    <td width="7%">
+                                        <span><input class="wid-in" type="number" id="quantity" name="quantity" min="1" max="25" value="1"></span>
+                                    </td>
+                                    <td width="3%">
+                                        <span>pcs.</span>
+                                    </td>
+                                    <td width="10%">148.75 lei</td>
+                                </tr>
+                                <tr>
+                                    <td class="counterCell" width="5%"></td>
+                                    <td width="15%">
+                                        <img src="images/vodka_04.jpg" style="width: 50px;height: auto;">
+                                    </td>
+                                    <td width="25%"><span>vodka </span><span>VODKA SKYY</span></td>
+                                    <td width="25%"><span>SKYY</span></td>
+                                   
+                                    <td width="10%">83.30 lei</td>
+                                    <td width="7%">
+                                        <span><input class="wid-in" type="number" id="quantity" name="quantity" min="1" max="25" value="1"></span>
+                                    </td>
+                                    <td width="3%">
+                                        <span>pcs.</span>
+                                    </td>
+                                    <td width="10%">83.30 lei</td>
+                                </tr>
+                                <tr>
+                                    <td class="counterCell" width="5%"></td>
+                                    <td width="15%">
+                                        <img src="images/wine_11.jpg" style="width: 50px;height: auto;">
+                                    </td>
+                                    <td width="25%"><span>wine </span><span>SAINT JULIEN</span></td>
+                                    <td width="25%"><span>CHATEAU GLORIA</span></td>
+                                   
+                                    <td width="10%">214.20 lei</td>
+                                    <td width="7%">
+                                        <span><input class="wid-in" type="number" id="quantity" name="quantity" min="1" max="25" value="1"></span>
+                                    </td>
+                                    <td width="3%">
+                                        <span>pcs.</span>
+                                    </td>
+                                    <td width="10%">214.20 lei</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div><br>
+                        
+                        <div>
+                            <table class="text-center" id="trstable" width="90%">
+                                <tr>
+                                    <td width="90%" align="right"><i><span>Transport price</span></i></td>
+                                    <td width="10%" align="center"><span>25.00 lei</span></td>
+                                </tr>
+                            </table>
+                        </div><br>
+
+
+
+                        <div>
+                            <table class="text-center" id="fpxtable" width="90%">
+                                <tr>
+                                    <td width="90%" align="right"><b><span>Total price</span></b></td>
+                                    <td width="10%" align="center"><b><span>3912.44 lei</span></b></td>
+                                </tr>
+                            </table>
+                        </div><br><br>
+                        
+                        <div>
+                            <table id="lwtable" width="90%">
+                                <tr>
+                                    <td align="right">
+                                        <div>
+                                            <article class="ord-art"><a th:href="@{/users/tkyou}">Order</a></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                       <br>
+                    </div>
+                </main>
+            </div>
+        </div>
+    
+        <div class="container">
+                <footer>
+                    <div>
+                        <nav class="menu-nav">
+                            <a th:href="@{/global/terms}">Terms</a>|
+                            <a th:href="@{/global/gdpr}">GDPR</a>|
+                            <a th:href="@{/global/contact}">Contact</a>
+                            <br>
+                        </nav>
+                    </div>
+                    <div class="after-footer">
+                        <hr color="red">
+                        <p id="p-footer">&copy; 2022 All-Cool - by Admin<br/></p>
+                    </div>
+                </footer>
+        </div>
+    
+    
+    </body>
+    </html>

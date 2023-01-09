@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Update customer</title>
+
+    <style>
+        body {
+            background-image: url("images/up-user-bg.jpg");
+            height: 750px;
+            background-position: center top;
+            background-size: cover;
+        }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="css/users.css" th:href="@{/css/users.css}">
+
+
+</head>
+
+<body>
+
+    <div class="container clearfix">
+        <header>
+            <div>
+                <nav class="menu-nav">
+                    <a th:href="@{/}">Home</a>|
+                    <a th:href="@{/products/cognac}">Cognac</a>|
+                    <a th:href="@{/products/whiskey}">Whiskey</a> |
+                    <a th:href="@{/products/rum}">Rum</a> |
+                    <a th:href="@{/products/champagne}">Champagne</a> |
+                    <a th:href="@{/products/wine}">Wine</a> |
+                    <a th:href="@{/products/vodka}">Vodka</a> |
+                    <a th:href="@{/users/user}"><img src="images/sign-in100px.png" alt="Login" width="20px"></a> |
+                    <a th:href="@{/cart}"><img src="images/cart-100px.png" alt="Cart" width="25px"></a>
+                </nav>
+            </div>
+        </header>
+    </div>
+    
+    <div class="container">
+        <div class="grid text-center row">
+            <aside class="sidebar">
+                <div>
+                    <img src="images/logo.png" alt="All-Cool" height="75">
+                </div>
+                <br>
+                <div>
+                    <nav class="side-nav">
+                        <hr width="100%">
+                        <a th:href="@{/users/settingUser}" class="w3-bar-item">Setting</a>
+                        <hr width="100%">
+                        <a th:href="@{/orders/orders-user}" class="w3-bar-item">My Orders</a>
+                        <hr width="100%">
+                        <a th:href="@{/logout}" class="w3-bar-item" >Logout</a>
+                        <hr width="100%">
+                    </nav>
+                </div>
+            </aside>
+            <main class="cont-upuser">
+                <br>
+                <div><br
+                    <div align="center">
+                        
+                        <br>
+                        <div><br>
+                            <div align="center">
+                                <img src="images/under-construction.png" alt="Under construction" weight="100%">
+                            </div>
+                        </div>    
+                        <br><br>
+                    
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div class="container">
+            <footer>
+                <div>
+                    <nav class="menu-nav">
+                        <a th:href="@{/global/terms}">Terms</a>|
+                        <a th:href="@{/global/gdpr}">GDPR</a>|
+                        <a th:href="@{/global/contact}">Contact</a>
+                        <br>
+                    </nav>
+                </div>
+                <div class="after-footer">
+                    <hr color="red">
+                    <p id="p-footer">&copy; 2022 All-Cool - by Admin<br/></p>
+                </div>
+            </footer>
+    </div>
+
+
+</body>
+
+
+</html>

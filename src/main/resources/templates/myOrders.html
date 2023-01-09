@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Settings</title>
+    <link rel="stylesheet" type="text/css" href="css/users.css" th:href="@{/css/users.css}">
+    
+
+</head>
+
+<body>
+
+    <div class="container clearfix">
+        <header>
+            <div>
+                <nav class="menu-nav">
+                    <a th:href="@{/}">Home</a>|
+                    <a th:href="@{/products/cognac}">Cognac</a>|
+                    <a th:href="@{/products/whiskey}">Whiskey</a> |
+                    <a th:href="@{/products/rum}">Rum</a> |
+                    <a th:href="@{/products/champagne}">Champagne</a> |
+                    <a th:href="@{/products/wine}">Wine</a> |
+                    <a th:href="@{/products/vodka}">Vodka</a> |
+                    <a th:href="@{/users/user}"><img src="images/sign-in100px.png" alt="Login" width="20px"></a> |
+                    <a th:href="@{/cart}"><img src="images/cart-100px.png" alt="Cart" width="25px"></a>
+                </nav>
+            </div>
+        </header>
+    </div>
+
+    <div class="container">
+        <div class="grid row">
+            <aside class="sidebar text-center">
+                <div>
+                    <img src="images/logo.png" alt="All-Cool" height="75">
+                </div>
+                <br>
+
+                <div >
+                    <nav class="side-nav">
+                        <hr width="100%">
+                        <a th:href="@{/users/settingUser}" class="w3-bar-item">Setting</a>
+                        <hr width="100%">
+                        <a th:href="@{/orders/my-orders}" class="w3-bar-item">My Orders</a>
+                        <hr width="100%">
+                        <a th:href="@{/cart}" class="w3-bar-item">Cart</a>
+                        <hr width="100%">
+                        <a th:href="@{/logout}" class="w3-bar-item" >Logout</a>
+                        <hr width="100%">
+                    </nav>
+                </div>
+
+
+            </aside>
+            <main class="content-user text-center">
+                <div>
+                    <div>
+                        <br> <img src="images/under-construction.png" alt="Under Construction">
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div class="container">
+            <footer>
+                <div>
+                    <nav class="menu-nav">
+                        <a th:href="@{/global/terms}">Terms</a>|
+                        <a th:href="@{/global/gdpr}">GDPR</a>|
+                        <a th:href="@{/global/contact}">Contact</a>
+                        <br>
+                    </nav>
+                </div>
+                <div class="after-footer">
+                    <hr color="red">
+                    <p id="p-footer">&copy; 2022 All-Cool - by Admin<br/></p>
+                </div>
+            </footer>
+    </div>
+
+</body>
+
+</html>

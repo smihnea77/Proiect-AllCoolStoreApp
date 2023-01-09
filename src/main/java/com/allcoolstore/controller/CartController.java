@@ -26,9 +26,15 @@ public class CartController {
         return modelAndView;
     }
 
-    @GetMapping("/add-product-to-cart/{name}")
-    public ModelAndView addProductToCart(@PathVariable String name){
-        cartService.addProductToCart(name);
+//    @GetMapping("/add-product-to-cart/{name}")
+//    public ModelAndView addProductToCart(@PathVariable String name){
+//        cartService.addProductToCart(name);
+//        return new ModelAndView("/redirect:/");
+//    }
+
+    @GetMapping("/add-product-to-cart/{id}")
+    public ModelAndView addProductToCart(@PathVariable Long id){
+        cartService.addProductToCart(id);
         return new ModelAndView("/redirect:/");
     }
 

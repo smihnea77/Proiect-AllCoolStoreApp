@@ -43,6 +43,12 @@ public class Product {
         this.image = image;
     }
 
+    public Product(String name, String producer, String type) {
+        this.name = name;
+        this.producer = producer;
+        this.type = type;
+    }
+
     @ManyToMany(mappedBy = "products")
     private Set<Order> orderId = new HashSet<>();
 }

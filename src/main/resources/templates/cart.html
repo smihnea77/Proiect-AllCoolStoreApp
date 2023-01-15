@@ -12,23 +12,23 @@
 
 <body>
 
-    <div class="container clearfix">
-        <header>
-            <div>
-                <nav class="menu-nav">
-                    <a th:href="@{/}">Home</a>|
-                    <a th:href="@{/products/cognac}">Cognac</a>|
-                    <a th:href="@{/products/whiskey}">Whiskey</a> |
-                    <a th:href="@{/products/rum}">Rum</a> |
-                    <a th:href="@{/products/champagne}">Champagne</a> |
-                    <a th:href="@{/products/wine}">Wine</a> |
-                    <a th:href="@{/products/vodka}">Vodka</a> |
-                    <a th:href="@{/users/user}"><img src="images/sign-in100px.png" alt="Login" width="20px"></a> |
-                    <a th:href="@{/cart}"><img src="images/cart-100px.png" alt="Cart" width="25px"></a>
-                </nav>
-            </div>
-        </header>
-    </div>
+<div class="container clearfix">
+    <header>
+        <div>
+            <nav class="menu-nav">
+                <a th:href="@{/}">Home</a>|
+                <a th:href="@{/products/cognac}">Cognac</a>|
+                <a th:href="@{/products/whiskey}">Whiskey</a> |
+                <a th:href="@{/products/rum}">Rum</a> |
+                <a th:href="@{/products/champagne}">Champagne</a> |
+                <a th:href="@{/products/wine}">Wine</a> |
+                <a th:href="@{/products/vodka}">Vodka</a> |
+                <a th:href="@{/users/user}"><img src="images/sign-in100px.png" alt="Login" width="20px"></a> |
+                <a th:href="@{/cart}"><img src="images/cart-100px.png" alt="Cart" width="25px"></a>
+            </nav>
+        </div>
+    </header>
+</div>
 
 
 
@@ -54,32 +54,32 @@
 <div class="clearfix">
     <table class="center text-center" width="90%" th:href="@{/cart}">
         <thead>
-            <tr>
-                <th width="5%">Id</th>
-                <th width="15%">Photo</th>
-                <th width="10%">Type</th>
-                <th width="15%">Name</th>
-                <th width="10%">Price (each)</th>
-                <th width="7%">Quantity</th>
-                <th width="3%"></th>
-                <th width="35%"></th>
-            </tr>
+        <tr>
+            <th width="5%">Id</th>
+            <th width="15%">Photo</th>
+            <th width="10%">Type</th>
+            <th width="15%">Name</th>
+            <th width="10%">Price (each)</th>
+            <th width="7%">Quantity</th>
+            <th width="3%"></th>
+            <th width="35%"></th>
+        </tr>
         </thead>
         <tbody>
-        <tr th:each="product: ${productListAddedToCart}">
+        <tr th:each="cart: ${productListAddedToCart}">
             <td class="counterCell" width="5%"></td>
             <td width="15%">
-                <img th:src="*{'data:image/jpeg;base64,' + {product.image}}" style="width: 50px;height: auto;">
+                <img th:src="*{'data:image/jpeg;base64,' + {cart.product.image}}" style="width: 50px;height: auto;">
             </td>
-            <td width="10%" th:text="${product.type}"></td>
-            <td  width="15%" th:text="${product.name}"></td>
+            <td width="10%" th:text="${cart.product.type}"></td>
+            <td  width="15%" th:text="${cart.product.name}"></td>
             <td width="7%">
                 <span><input class="wid-in" type="number" id="quantity" name="quantity" min="1" max="25" value="1"></span>
             </td>
             <td width="3%">
                 <span>pcs.</span>
             </td>
-            <td width="10%" th:text="${#numbers.formatDecimal(product.price, 0, 2)}"></td>
+            <td width="10%" th:text="${#numbers.formatDecimal(cart.product.price, 0, 2)}"></td>
             <td width="35%">
                 <!-- <a th:href="@{/delete-cart-product/__${product.id}__}">Delete</a> -->
             </td>
@@ -93,16 +93,16 @@
 <div>
     <table class="center text-center" width="90%">
         <thead>
-            <tr>
-                <th width="5%">Id</th>
-                <th width="15%">Photo</th>
-                <th width="10%">Type</th>
-                <th width="15%">Name</th>
-                <th width="10%">Price (each)</th>
-                <th width="7%">Quantity</th>
-                <th width="3%"></th>
-                <th width="35%"></th>
-            </tr>
+        <tr>
+            <th width="5%">Id</th>
+            <th width="15%">Photo</th>
+            <th width="10%">Type</th>
+            <th width="15%">Name</th>
+            <th width="10%">Price (each)</th>
+            <th width="7%">Quantity</th>
+            <th width="3%"></th>
+            <th width="35%"></th>
+        </tr>
         </thead>
 
         <tbody>

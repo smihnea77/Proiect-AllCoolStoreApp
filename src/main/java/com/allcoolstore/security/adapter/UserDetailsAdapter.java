@@ -2,6 +2,7 @@ package com.allcoolstore.security.adapter;
 
 import com.allcoolstore.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -12,10 +13,10 @@ public class UserDetailsAdapter implements UserDetails {
 
     private final User user;
 
-    @Autowired
-    public UserDetailsAdapter(User user){
+    public UserDetailsAdapter(User user) {
         this.user = user;
     }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(() -> user.getRole());

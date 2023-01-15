@@ -15,10 +15,21 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private double totalPrice;
+    @OneToOne
+    Product product;
 
     @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user;
+    User user;
 
+    private double totalPrice;
+
+//    @OneToOne
+//    @JoinColumn(name = "user_id", referencedColumnName = "id")
+//    private User user;
+
+
+    public Cart(Product product, User user) {
+        this.product = product;
+        this.user = user;
+    }
 }

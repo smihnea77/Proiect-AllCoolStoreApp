@@ -39,29 +39,16 @@ public class CartService {
         Cart cart = new Cart(product, user);
         return cartRepository.save(cart);
     }
+    public void deleteFromCart(Long id){
+        cartRepository.deleteByProductId(id);
+    }
 
     public List<Cart> getAllProductsAddedToCart() {
         return cartRepository.findAll();
     }
-
-//    public List<Cart> getAllProductsAddedToCartCurrentUser() {
-//        String username = null;
-//        List<Cart> currentUserCart = new ArrayList<>();
-//        List<Cart> allProducts = cartRepository.findAll();
-//
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        if (!(authentication instanceof AnonymousAuthenticationToken)) {
-//            username = authentication.getName();
-//        }
-//        User user = userRepository.findByUsername(username);
-//        for (Cart c : allProducts) {
-//            if (c.getUser().equals(user.getId())) {
-//                currentUserCart.add(c);
-//            }
-//        }
-//        return currentUserCart;
-//    }
-
+    public List <Cart> getAllProductsCurrentUser(Long id){
+       return cartRepository.findAllCurrentUser(id);
+    }
 
     public int getProductCartSize(List<Cart> cartList) {
         int cartSize = 0;

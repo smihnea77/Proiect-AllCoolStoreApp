@@ -14,23 +14,23 @@
 
 <br>
 
-<div th:href="@{/products/product}">
-    <div th:each="id: ${products}" >
+<div th:href="@{/products/cognac/{id}(id = ${id})}" th:object="${user}"}">
+    <div th:each="product: ${product}" >
             <div>
                 <div>
-                    <p th:text="${id.name}"></p>
+                    <p th:text="${product.name}"></p>
                 </div>
                 <div>
-                    <p th:text="${id.type}"></p>
+                    <p th:text="${product.type}"></p>
                 </div>
                 <div>
-                    <p th:text="${id.producer}"></p>
+                    <p th:text="${product.producer}"></p>
                 </div>
                 <div>
-                    <span th:text="${id.price}"> </span><span> lei</span>
+                    <span th:text="${product.price}"> </span><span> lei</span>
                 </div>
                 <div>
-                    <img th:src="*{'id:image/jpeg;base64,' + {cognac.image}}" style=" height: 200px">
+                    <img th:src="*{'id:image/jpeg;base64,' + {product.image}}" style=" height: 200px">
                 </div>
                 <br>
             </div>

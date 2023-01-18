@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
-
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-
 <head>
     <meta charset="UTF-8">
     <title>Cart</title>
     <link rel="stylesheet" type="text/css" href="css/cart.css" th:href="@{/css/cart.css}">
 </head>
-
 <body>
-
 <div class="container clearfix">
     <header>
         <div>
@@ -29,11 +25,7 @@
         </div>
     </header>
 </div>
-
-
-
 <br>
-
 <div class="container">
     <img class="img-top" src="images/cart2700.png" alt="Alcoholic Drinks" >
 </div>
@@ -44,52 +36,76 @@
         <img class="img-resp" src="images/pleasedrinkresp.png" alt="Cognac">
     </div>
 </div>
-
-<div class="container">
+<!-- <div class="container" th:href="@{/users}">
     <div>
-        <h3>Your shopping cart</h3>
+        <h3><span th:text="${user.username}"> </span><span> shopping cart</span>
+        </h3>
+    </div>
+</div><br> -->
+<div class="container">
+    <div th:each="user: ${user}">
+        <span th:text="${user.username}"></span> <span> shopping cart</span>
     </div>
 </div><br>
+<div class="clearfix" th:href="@{/cart}">
 
-<div class="clearfix">
-    <table class="center text-center" width="90%" th:href="@{/cart}">
+    <table class="center text-center" width="80%" >
         <thead>
         <tr>
-            <th width="5%">Id</th>
-            <th width="15%">Photo</th>
-            <th width="10%">Type</th>
-            <th width="15%">Name</th>
+            <th width="3%">Id</th>
+            <th width="7%">Photo</th>
+            <th width="15%">Product</th>
+            <th width="10%">Producer</th>
+            <th width="10%">Quantity</th>
             <th width="10%">Price (each)</th>
-            <th width="7%">Quantity</th>
-            <th width="3%"></th>
-            <th width="35%"></th>
+            <th width="10%">Price (total)</th>
+            <th width="5%">Delete</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="cart: ${productListAddedToCart}">
-            <td class="counterCell" width="5%"></td>
-            <td width="15%">
+            <td class="counterCell" width="3%"></td>
+            <td width="7%">
                 <img th:src="*{'data:image/jpeg;base64,' + {cart.product.image}}" style="width: 50px;height: auto;">
             </td>
-            <td width="10%" th:text="${cart.product.type}"></td>
-            <td  width="15%" th:text="${cart.product.name}"></td>
-            <td width="7%">
-                <span><input class="wid-in" type="number" id="quantity" name="quantity" min="1" max="25" value="1"></span>
+            <td width="15%" class="dist-left">
+                <i><span th:text="${cart.product.type}"></span></i>
+                <span> </span>
+                <span th:text="${cart.product.name}"></span>
             </td>
-            <td width="3%">
-                <span>pcs.</span>
+            <td  width="10%" th:text="${cart.product.producer}"></td>
+
+            <td width="10%">
+                <table id="mytable" width="100%">
+                    <tr>
+                        <!-- <td width="50%" align="right">
+                            <form action="#" method="POST" th:object="${cart}">
+                            <span><input th:field="*{quantityItem}" class="wid-in" type="number" id="quantity" name="quantity" min="1" max="25" value="1" width="25%"></span>
+                            </form>
+                        </td> -->
+                        <td width="50%" align="right">
+                            <span><input class="wid-in" type="number" id="quantity" name="quantity" min="1" max="25" value="1" width="25%"></span>
+                        </td>
+                        <td>
+                            <span align="left">pcs.</span>
+                        </td>
+                    </tr>
+                </table>
             </td>
             <td width="10%" th:text="${#numbers.formatDecimal(cart.product.price, 0, 2)}"></td>
-            <td width="35%">
-                <!-- <a th:href="@{/delete-cart-product/__${product.id}__}">Delete</a> -->
+            <td width="10%" th:text="${#numbers.formatDecimal(cart.amountItem, 0, 2)}"></td>
+            <td width="5%"><a
+                    th:href="@{/cart/delete-product-from-cart/{productId}(productId=${cart.product.id})}"><img
+                    src="images/delete220x220.png" alt="Delete" width="30px"></a>
             </td>
         </tr>
         </tbody>
     </table>
-
+    <div>
+        <span>Total price: </span><span th:text="${#numbers.formatDecimal(cart.totalPrice, 0, 2)}"> </span>
+    </div>
 </div>
 <br>
-
 <div>
     <!-- <table class="center text-center" width="90%">
         <thead>
@@ -104,7 +120,6 @@
             <th width="35%"></th>
         </tr>
         </thead>
-
         <tbody>
         <tr>
             <td class="counterCell" width="5%"></td>
@@ -205,9 +220,8 @@
         </tbody>
     </table> -->
 </div><br>
-
 <div class="container">
-    <table id="mytable" class="center" width="90%">
+    <table id="mytable" class="center" width="80%">
         <tr border="0">
             <td align="left">
                 <div>
@@ -222,8 +236,6 @@
         </tr>
     </table>
 </div><br>
-
-
 <div class="container">
     <footer>
         <div>
@@ -240,7 +252,5 @@
         </div>
     </footer>
 </div>
-
-
 </body>
 </html>

@@ -4,9 +4,6 @@ import com.allcoolstore.model.Cart;
 import com.allcoolstore.model.User;
 import com.allcoolstore.service.CartService;
 import com.allcoolstore.service.UserService;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -26,7 +23,6 @@ public class CartController {
         this.userService = userService;
     }
 
-
     @GetMapping("/add-to-cart/{id}")
     public ModelAndView addToCart(@PathVariable(name = "id")Long id){
         cartService.addToCart(id);
@@ -35,15 +31,11 @@ public class CartController {
 
     @GetMapping()
     public ModelAndView getAllProductsAddedToCart() {
-        String username = null;
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (!(authentication instanceof AnonymousAuthenticationToken)) {
-            username = authentication.getName();
-        }
+        String username = userService.getLoggedUser();
         User user = userService.findByUsername(username);
-
         ModelAndView modelAndView = new ModelAndView("cart");
         List<Cart> productList = cartService.getAllProductsCurrentUser(user.getId());
+        modelAndView.addObject("user",user);
         modelAndView.addObject("productListAddedToCart", productList);
         modelAndView.addObject("totalItems", cartService.getProductCartSize(productList));
         modelAndView.addObject("totalPrice", cartService.getTotalPrice(productList));

@@ -34,6 +34,8 @@ public class ProductController {
         return new ModelAndView("redirect:/products/product");
     }
 
+
+
     @GetMapping("/create-product")
     public ModelAndView addProductPage() {
         ModelAndView modelAndView = new ModelAndView("createProduct");
@@ -91,5 +93,11 @@ public class ProductController {
         modelMap.addAttribute("products", productList);
         return modelAndView;
     }
-
+    @GetMapping("/products/cognac/{id}")
+    public ModelAndView openProductById(@PathVariable("id") Long id) {
+        ModelAndView modelAndView = new ModelAndView();
+        Product product = productService.getByProductId(id);
+        modelAndView.addObject("product", product);
+        return modelAndView;
+    }
 }

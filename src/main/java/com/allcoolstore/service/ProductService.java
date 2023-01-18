@@ -1,5 +1,4 @@
 package com.allcoolstore.service;
-
 import com.allcoolstore.model.Product;
 import com.allcoolstore.repository.ProductRepository;
 import org.springframework.stereotype.Service;

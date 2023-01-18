@@ -51,10 +51,10 @@ public class IndexController {
         return "user";
     }
 
-    @GetMapping(value = "/users/settingAdmin")
-    public String getSettingAdminPage() {
-        return "settingAdmin";
-    }
+//    @GetMapping(value = "/users/settingAdmin")
+//    public String getSettingAdminPage() {
+//        return "settingAdmin";
+//    }
 
     @GetMapping(value = "/users/settingUser")
     public String getSettingUserPage() {

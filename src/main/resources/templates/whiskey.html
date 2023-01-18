@@ -52,9 +52,15 @@
                         <img th:src="*{'data:image/jpeg;base64,' + {product.image}}" style=" height: 200px">
                     </div>
 
-                    <div class="col-red" >
-                        <i><span th:text="${#numbers.formatDecimal(product.price, 0, 2)}"> </span><span> lei</span></i>
+                    <div >
+                        <i><span th:text="${#numbers.formatDecimal(product.bottleSize, 0, 2)}"> </span><span class="al-lf-rg" > litres</span></i>
+
+                        <i><span class="col-red" th:text="${#numbers.formatDecimal(product.price, 0, 2)}"> </span><span class="col-red"> lei</span></i>
                     </div><br>
+
+                    <!-- <div class="text-center">
+                        <a class="a-product" th:href="@{/products/product/{productId}(productId=${product.id})}" target="_blank"><i>More info...</i></a>
+                    </div><br> -->
                     <div class="text-center">
                         <a class="add-cart" th:href="@{/cart/add-to-cart/{productId}(productId=${product.id})}"><img src="images/cart-100px.png" alt="Cart" width="15px"> Add to cart </a>
                     </div>

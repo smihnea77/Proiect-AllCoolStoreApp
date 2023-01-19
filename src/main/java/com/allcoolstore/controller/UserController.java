@@ -37,8 +37,7 @@ public class UserController {
     @GetMapping("/settingAdmin")
     public ModelAndView getCurrentUserForSettings() {
         ModelAndView modelAndView = new ModelAndView("settingsAdmin");
-        String username = userService.getLoggedUser();
-        User user = userService.findByUsername(username);
+        User user = userService.getLoggedUser();
         modelAndView.addObject("user",user);
     return modelAndView;}
 

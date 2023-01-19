@@ -87,8 +87,8 @@ public class IndexController {
     @GetMapping(value = "/orders/my-orders")
     public String getMyOrders() { return "myOrders"; }
 
-    @GetMapping(value = "/orders/orders-admin")
-    public String getAdminOrders() { return "ordersAdmin"; }
+//    @GetMapping(value = "/orders/orders-admin")
+//    public String getAdminOrders() { return "ordersAdmin"; }
 
     @GetMapping(value = "/orders/orders-user")
     public String getUserOrders() { return "ordersUser"; }

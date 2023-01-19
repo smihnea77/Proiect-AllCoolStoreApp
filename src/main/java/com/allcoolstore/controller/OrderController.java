@@ -23,6 +23,13 @@ public class OrderController {
         modelAndView.addObject("orderList", orderList);
         return modelAndView;
     }
+    @GetMapping("/orders-admin")
+    public ModelAndView getAllOrdersCurrentUser() {
+        ModelAndView modelAndView = new ModelAndView("ordersAdmin");
+        List<Order> orderList = orderService.getAllOrdersCurrentUser();
+        modelAndView.addObject("orderList", orderList);
+        return modelAndView;
+    }
 
     @GetMapping("/create-order")
     public ModelAndView createOrderPage() {

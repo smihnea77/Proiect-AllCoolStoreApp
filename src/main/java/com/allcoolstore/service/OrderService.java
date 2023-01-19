@@ -1,9 +1,13 @@
 package com.allcoolstore.service;
 
+import com.allcoolstore.model.Cart;
 import com.allcoolstore.model.Order;
+import com.allcoolstore.model.Product;
+import com.allcoolstore.model.User;
 import com.allcoolstore.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -11,22 +15,53 @@ public class OrderService  {
 
     private final OrderRepository orderRepository;
     private final CartService cartService;
+    private final UserService userService;
+    private final ProductService productService;
 
-    public OrderService(OrderRepository orderRepository, CartService cartService) {
+    public OrderService(OrderRepository orderRepository, CartService cartService, UserService userService, ProductService productService) {
         this.orderRepository = orderRepository;
         this.cartService = cartService;
+        this.userService = userService;
+        this.productService = productService;
     }
 
 
-    public List<Order> getAllOrders() {
+    public List<Order> getAllOrdersCurrentUser() {
+        User user = userService.getLoggedUser();
+        return orderRepository.findAllOrdersCurrentUser(user.getId());
+    }
+    public List <Order> getAllOrders(){
         return orderRepository.findAll();
     }
 
     public void createOrder(Order order) {
-       // order.setProducts(cartService.getAllProductsAddedToCart());
+        User user = userService.getLoggedUser();
+        order.setProducts(getAllProductsFromCart());
+        order.setTotal(getTotalPriceFromCart());
+      order.setUser(user);
       //  order.setTotal(cartService.getTotalPrice());
         orderRepository.save(order);
+        cartService.clearShoppingCart(user.getId());
     }
+    private double getTotalPriceFromCart(){
+        List <Product> productList= getAllProductsFromCart();
+        productService.priceWithTva();
+        double totalPrice = 25;
+        for(Product p : productList){
+            totalPrice+=p.getPrice();
+        }return totalPrice;
+    }
+
+
+    private List<Product> getAllProductsFromCart(){
+        User user = userService.getLoggedUser();
+        List <Cart> cartList = cartService.getAllProductsCurrentUser(user.getId());
+        List <Product> productList = new ArrayList<>();
+        for (Cart c: cartList){
+            productList.add(c.getProduct());
+        }return productList;
+    }
+
 
     public void deleteOrder(Long id) {
         boolean orderExists = orderRepository.existsById(id);

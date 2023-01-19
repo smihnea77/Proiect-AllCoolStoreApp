@@ -101,13 +101,14 @@ public class UserService implements UserDetailsService {
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
-    public String getLoggedUser(){
+    public User getLoggedUser(){
         String username = null;
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
             username = authentication.getName();
         }
-        return username;
+        User user = findByUsername(username);
+        return user;
     }
 
 

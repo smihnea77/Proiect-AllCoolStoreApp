@@ -22,4 +22,11 @@ public interface CartRepository extends JpaRepository<Cart, Long> {
     //@Query("select * from Cart c where c.user.id=:id")
     @Query(value = "select * from shopping_cart where user_id=?1", nativeQuery = true)
     List <Cart> findAllCurrentUser(@Param("id") Long id);
+
+    @Transactional
+    @Modifying
+    @Query("delete from Cart c where c.user.id=:id")
+    void deleteByUsertId(@Param("id") Long id);
+
+
 }

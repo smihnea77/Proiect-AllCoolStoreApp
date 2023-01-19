@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.Base64;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -23,11 +24,16 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    private void priceWithTva() {
+    public void priceWithTva() {
         List<Product> productList = productRepository.findAll();
         for (Product p : productList) {
             p.setPrice(p.getPrice() * tva);
         }
+    }
+    public Product findById (Long id){
+        Optional <Product> productOptional = productRepository.findById(id);
+        Product product = productOptional.get();
+        return product;
     }
 
     public void deleteProduct(Long id) {

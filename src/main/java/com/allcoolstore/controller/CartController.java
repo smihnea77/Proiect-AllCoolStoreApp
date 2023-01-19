@@ -1,13 +1,11 @@
 package com.allcoolstore.controller;
 
 import com.allcoolstore.model.Cart;
-import com.allcoolstore.model.Product;
 import com.allcoolstore.model.User;
 import com.allcoolstore.service.CartService;
 import com.allcoolstore.service.UserService;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -33,8 +31,7 @@ public class CartController {
 
     @GetMapping()
     public ModelAndView getAllProductsAddedToCart() {
-        String username = userService.getLoggedUser();
-        User user = userService.findByUsername(username);
+        User user = userService.getLoggedUser();
         ModelAndView modelAndView = new ModelAndView("cart");
         List<Cart> productList = cartService.getAllProductsCurrentUser(user.getId());
         modelAndView.addObject("user", user);

@@ -22,7 +22,6 @@ public class Cart {
     User user;
 
     private double totalPrice;
-
 //    @OneToOne
 //    @JoinColumn(name = "user_id", referencedColumnName = "id")
 //    private User user;

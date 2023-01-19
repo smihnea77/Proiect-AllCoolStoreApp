@@ -27,7 +27,7 @@ public class CartService {
         String username = userService.getLoggedUser();
         Product product = productRepository.findById(id).get();
         User user = userService.findByUsername(username);
-        Cart cart = new Cart(product, user);
+        Cart cart = new Cart(product,user);
         return cartRepository.save(cart);
     }
     public void deleteFromCart(Long id){
@@ -42,18 +42,14 @@ public class CartService {
     }
 
     public int getProductCartSize(List<Cart> cartList) {
-        int cartSize = 0;
-        for (Cart c : cartList) {
-            cartSize++;
-        }
-        return cartSize;
+        return cartList.size();
     }
 
     public int getTotalPrice(List<Cart> cartList) {
         int totalPrice = 25;
         for (Cart c : cartList) {
             c.getTotalPrice();
-            totalPrice += c.getTotalPrice();
+            totalPrice += c.getProduct().getPrice();
         }
         return totalPrice;
     }

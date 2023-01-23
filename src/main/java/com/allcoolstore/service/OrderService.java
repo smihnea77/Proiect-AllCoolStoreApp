@@ -7,6 +7,7 @@ import com.allcoolstore.model.User;
 import com.allcoolstore.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +39,7 @@ public class OrderService  {
         User user = userService.getLoggedUser();
         order.setProducts(getAllProductsFromCart());
         order.setTotal(getTotalPriceFromCart());
+        order.setLocalDate(LocalDate.now());
       order.setUser(user);
       //  order.setTotal(cartService.getTotalPrice());
         orderRepository.save(order);
@@ -45,7 +47,6 @@ public class OrderService  {
     }
     private double getTotalPriceFromCart(){
         List <Product> productList= getAllProductsFromCart();
-        productService.priceWithTva();
         double totalPrice = 25;
         for(Product p : productList){
             totalPrice+=p.getPrice();
@@ -53,7 +54,7 @@ public class OrderService  {
     }
 
 
-    private List<Product> getAllProductsFromCart(){
+    public List<Product> getAllProductsFromCart(){
         User user = userService.getLoggedUser();
         List <Cart> cartList = cartService.getAllProductsCurrentUser(user.getId());
         List <Product> productList = new ArrayList<>();

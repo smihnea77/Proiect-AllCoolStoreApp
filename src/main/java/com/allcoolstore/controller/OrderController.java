@@ -1,7 +1,11 @@
 package com.allcoolstore.controller;
 
+import com.allcoolstore.model.Cart;
 import com.allcoolstore.model.Order;
+import com.allcoolstore.model.User;
+import com.allcoolstore.service.CartService;
 import com.allcoolstore.service.OrderService;
+import com.allcoolstore.service.UserService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -11,9 +15,13 @@ import java.util.List;
 @RequestMapping(path = "/orders")
 public class OrderController {
     private final OrderService orderService;
+    private final CartService cartService;
+    private final UserService userService;
 
-    public OrderController(OrderService orderService) {
+    public OrderController(OrderService orderService, CartService cartService, UserService userService) {
         this.orderService = orderService;
+        this.cartService = cartService;
+        this.userService = userService;
     }
 
     @GetMapping("/orders")
@@ -34,6 +42,10 @@ public class OrderController {
     @GetMapping("/create-order")
     public ModelAndView createOrderPage() {
         ModelAndView modelAndView = new ModelAndView("createOrder");
+        User user = userService.getLoggedUser();
+        List<Cart> productList = cartService.getAllProductsCurrentUser(user.getId());
+        modelAndView.addObject("productListAddedToCart", productList);
+        modelAndView.addObject("user", user);
         modelAndView.addObject(new Order());
         return modelAndView;
     }
@@ -41,7 +53,7 @@ public class OrderController {
     @PostMapping("/create-order")
     public ModelAndView createOrder(@ModelAttribute Order order) {
         orderService.createOrder(order);
-        return new ModelAndView("redirect:/createOrder");
+        return new ModelAndView("redirect:/");
     }
 
     @PostMapping(path = "/update-order/{id}")

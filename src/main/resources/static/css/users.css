@@ -492,6 +492,12 @@ article a {
   text-align: center;
 }
 
+.pass-tx {
+  font-size: 12px;
+  padding-left: 5px;
+  color: red;
+}
+
 
 
 

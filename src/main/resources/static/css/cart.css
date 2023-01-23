@@ -306,3 +306,38 @@ article a {
 table#mytable, table#mytable tr, table#mytable td {
     border: none;
 }
+
+.lowercase {
+    text-transform: lowercase;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+#tx-ch-us {
+    font-size: 30px;
+    color: #D73737;
+    padding-left: 150px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+#tx-ch {
+    font-size: 30px;
+    color: #D73737;
+    font-weight: bold;
+    font-style: italic;
+}
+
+table#trpr, table#trpr tr, table#trpr td {
+    border: none;
+}
+
+table#topr, table#topr tr, table#topr td {
+    border: none;
+}

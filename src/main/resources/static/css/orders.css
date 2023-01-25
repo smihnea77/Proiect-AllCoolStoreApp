@@ -360,7 +360,34 @@ table {
 }
 
 .img-pay {
-    height: 100px;
+    height: 75px;
     width: auto;
 }
 
+.red-pay {
+    color: red;
+}
+
+.cart-art {
+    width: 200px;
+    height: 35px;
+    border: 1px solid red;
+    margin: 25px;
+    padding: 10px 0;
+    align-content: space-between;
+    border-radius: 5px;
+    background-color: #f3b610;
+    text-align: center;
+}
+
+.btt-order {
+    width: 200px;
+    height: 50px;
+    border: 1px solid red;
+    margin: 25px;
+    padding: 10px 0;
+    align-content: space-between;
+    border-radius: 5px;
+    background-color: #f3b610;
+    text-align: center;
+}

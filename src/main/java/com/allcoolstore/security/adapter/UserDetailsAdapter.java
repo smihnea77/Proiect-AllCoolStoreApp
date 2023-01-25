@@ -1,8 +1,6 @@
 package com.allcoolstore.security.adapter;
 
 import com.allcoolstore.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

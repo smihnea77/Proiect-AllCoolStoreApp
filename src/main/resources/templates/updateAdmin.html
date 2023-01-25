@@ -68,20 +68,167 @@
                 </div>
             </aside>
             <main class="cont-upuser">
+
                 <br>
-                <div><br
+                <div class="table-form-user"><br>
                     <div align="center">
                         
-                        <br>
-                        <div><br>
-                            <div align="center">
-                                <img src="images/under-construction.png" alt="Under construction" weight="100%">
-                            </div>
-                        </div>    
-                        <br><br>
+                        <table>
+                            <tr>
+                                <td>
+                                    <div class=".form-user">
+                                        <form method="POST" th:action="@{/users/update-admin/{userId}(userId=${user.id})}" th:object="${user}" >
+                                            <div class="container-form">
+                                                <h1 class="center"> Update Admin</h1>
+                                                <hr><br>
+                                                <div>
+                                                    <div>
+                                                        <label> <sup class="asterix">*</sup> Admin code: </label>
+                                                    </div><br>
+                                                    <div>
+                                                        <input th:field="*{id}" size="10"  disabled />
+                                                    </div><br>
+                                                    <br>
+                                                    <hr><br>
+
+                                                    <div>
+                                                        <label> <sup class="asterix">*</sup> First Name: </label>
+                                                    </div><br>
+                                                    <div >
+                                                        <input th:field="*{firstName}" id="firstName" name="firstName" placeholder= "First Name" size="50"  required />
+                                                    </div><br>
+                                                    <br>
+                                                    
+                                                    <div>
+                                                        <label> <sup class="asterix">*</sup> Last Name: </label>
+                                                    </div><br>
+                                                    <div >
+                                                        <input th:field="*{lastName}" id="lastName" name="lastName" placeholder="Last Name" size="50"  required />
+                                                    </div><br>
+                                                    <br>
+                    
+                                                    <div>
+                                                        <label> <sup class="asterix">*</sup> Username: </label>
+                                                        <span class="pass-tx"><i>It's not possible to change the username!</i></span>
+                                                    </div><br>
+                                                    <div >
+                                                        <input th:field="*{username}" id="username" name="username" placeholder="Username" size="50"  required />
+                                                    </div><br>
+                                                    <br>
+                    
+                                                    <div>
+                                                        <label for="email"> <sup class="asterix">*</sup> Email: </label>
+                                                    </div><br>
+                                                    <div >
+                                                        <input th:field="*{email}" id="email" name="email" placeholder="Email" size="50"  required />
+                                                    </div><br>
+                                                    <br>
+                    
+                                                    <div>
+                                                        <label for="password"> <sup class="asterix">*</sup> Password: </label>
+                                                        <span class="pass-tx"><i>It's not possible to change the password!!!</i></span>
+                                                    </div><br>
+                                                    <div >
+                                                        <input th:field="*{password}" id="password" name="password" placeholder="Password" size="50" minlength="3" required />
+                                                    </div><br>
+                                                    <br>
+                                                  
+                                                    <div>
+                                                        <label for="date"> <sup class="asterix">*</sup> Birthday (date): </label>
+                                                    </div><br>
+                                                    <div >
+                                                        <input type="date" th:field="*{dateOfBirth}" id="birthday" name="birthday" placeholder="date" size="50" minlength="6" required />
+                                                    </div><br>
+                                                    <hr><br>
+                                    
+                    
+                                                    <div>
+                                                        <label> <sup class="asterix">*</sup> Role: </label>
+                                                    </div><br>
+                                                    <div >
+                                                        <input type="radio" th:field="*{role}" id="role" name="role" value="USER" size="15" required />
+                                                        <label for="user"><span>USER<br></span></label><br>
+                                                        <input type="radio" th:field="*{role}" id="role" name="role" value="ADMIN" size="15" required />
+                                                        <label for="user"><span>ADMIN<br></span></label><br>
+                                                    </div><br>
+                                                    <hr><br>
+                    
+                                                     <div>
+                                                        <label for="text"> <sup class="asterix">*</sup> Phone(+4): </label>
+                                                    </div><br>
+                                                    <div >
+                                                        <input th:field="*{phone}" id="phone" name="phone" placeholder="phone no." size="15" maxlength="10" required />
+                                                    </div><br>
+                                                    <hr><br>
+                    
+                                                    <div>
+                                                        Current Address<br><br>
+                                                    </div><br>
+                    
+                                                    <div>
+                                                        <label> <sup class="asterix">*</sup> City: </label>
+                                                    </div><br>
+                                                    <div >
+                                                        <input th:field="*{city}" id="city" name="city" placeholder= "City" size="50"  required />
+                                                    </div><br>
+                                                    <br>
+                    
+                                                    <div>
+                                                        <label> <sup class="asterix">*</sup> County: </label>
+                                                    </div><br>
+                                                    <div >
+                                                        <input th:field="*{county}" id="county" name="county" placeholder="County" size="50"  required />
+                                                    </div><br>
+                                                    <br>
+                    
+                                                    <div>
+                                                        <label> <sup class="asterix">*</sup> Postal code: </label>
+                                                    </div><br>
+                                                    <div >
+                                                        <input th:field="*{postalCode}" id="postalCode" name="postal code" placeholder="postal code" size="50" maxlength="6" required />
+                                                    </div><br>
+                                                    <br>
+                    
+                                                    <div>
+                                                        <label> <sup class="asterix">*</sup> Address 1: </label>
+                                                    </div><br>
+                                                    <div >
+                                                        <input th:field="*{address1}" id="address1" name="address1" placeholder="street and number" size="50" required />
+                                                    </div><br>
+                                                    <br>
+                    
+                                                    <div>
+                                                        <label> Address 2: </label>
+                                                    </div><br>
+                                                    <div >
+                                                        <input th:field="*{address2}" id="address2" name="address2" placeholder="bl, sc, et, apt" size="50"  />
+                                                    </div><br>
+                                                    <hr><br>
+                    
+                    
+                                                    <div>
+                                                        <label class="red-label"> <sup class="asterix">*</sup> <i>Required</i> </label>
+                                                    </div><br>
+                    
+                                                    <hr><br>
+                    
+                                                    <div class="center">
+                                                        <button>Update user</button>
+                                                    </div><br>
+                                                </div>
+                    
+                    
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
                     
                     </div>
-                </div>
+   
+                </div><br>
+
+
             </main>
         </div>
     </div>

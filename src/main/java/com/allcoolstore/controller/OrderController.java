@@ -6,6 +6,7 @@ import com.allcoolstore.model.User;
 import com.allcoolstore.service.CartService;
 import com.allcoolstore.service.OrderService;
 import com.allcoolstore.service.UserService;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -31,9 +32,10 @@ public class OrderController {
         modelAndView.addObject("orderList", orderList);
         return modelAndView;
     }
-    @GetMapping("/orders-admin")
+
+    @GetMapping("/orders-user")
     public ModelAndView getAllOrdersCurrentUser() {
-        ModelAndView modelAndView = new ModelAndView("ordersAdmin");
+        ModelAndView modelAndView = new ModelAndView("ordersUser");
         List<Order> orderList = orderService.getAllOrdersCurrentUser();
         modelAndView.addObject("orderList", orderList);
         return modelAndView;
@@ -46,6 +48,7 @@ public class OrderController {
         List<Cart> productList = cartService.getAllProductsCurrentUser(user.getId());
         modelAndView.addObject("productListAddedToCart", productList);
         modelAndView.addObject("user", user);
+        modelAndView.addObject("totalPrice", cartService.getTotalPrice(productList));
         modelAndView.addObject(new Order());
         return modelAndView;
     }
@@ -53,7 +56,7 @@ public class OrderController {
     @PostMapping("/create-order")
     public ModelAndView createOrder(@ModelAttribute Order order) {
         orderService.createOrder(order);
-        return new ModelAndView("redirect:/");
+        return new ModelAndView("redirect:/users/tkyou");
     }
 
     @PostMapping(path = "/update-order/{id}")
@@ -67,5 +70,16 @@ public class OrderController {
         ModelAndView modelAndView = new ModelAndView("updateOrder");
         modelAndView.addObject(orderService.getOrderById(id));
         return modelAndView;
+    }
+
+    @DeleteMapping(path = "{id}")
+    public void deleteOrder(@PathVariable Long id) {
+        orderService.deleteOrder(id);
+    }
+
+    @GetMapping(path = "/delete-order/{id}")
+    public ModelAndView deleteOrder(@PathVariable("id") Long id, Model model) {
+        orderService.deleteOrder(id);
+        return new ModelAndView("redirect:/orders/orders");
     }
 }

@@ -51,171 +51,7 @@
             <main class="content ">
 
                 <div>
-                    <div >
-                        <br><br>
-                        <div >
-                            <table id="altab" width="90%">
-                                <tr>
-                                    <td width="75%">
-                                        <table id="mydate" width="100%">
-                                            <tr>
-                                                <td class="tx-ft" colspan="2" style="background-color:#C9D3C7">
-                                                    Personal Details
-                                                </td>
-                                            </tr>
-                                            <tr >
-                                                <td class="tx-it">
-                                                    First Name:
-                                                </td>
-                                                <td class="tx-get">John</td>
-                                            </tr>
-                                            <tr >
-                                                <td class="tx-it">
-                                                    Last Name:
-                                                </td>
-                                                <td class="tx-get">Doe</td>
-                                            </tr>
-                                            <tr >
-                                                <td class="tx-it">
-                                                    Username:
-                                                </td>
-                                                <td class="tx-get">johndoe</td>
-                                            </tr>
-                                            <tr >
-                                                <td class="tx-it">
-                                                    Date of birth:
-                                                </td>
-                                                <td class="tx-get">2000-01-01</td>
-                                            </tr>
-                                            <tr >
-                                                <td class="tx-it">
-                                                    E-mail:
-                                                </td>
-                                                <td class="tx-get">john@sda.ro</td>
-                                            </tr>
-                                            <tr >
-                                                <td class="tx-it">
-                                                    Phone:
-                                                </td>
-                                                <td class="tx-get">0711111111</td>
-                                            </tr>
-                                            <tr >
-                                                <td class="tx-it">
-                                                </td>
-                                                <td class="tx-get"></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="tx-ft" colspan="2" style="background-color:#C9D3C7">
-                                                    Billing Address
-                                                </td>
-                                            </tr>
-                                            <tr >
-                                                <td class="tx-it">
-                                                    City:
-                                                </td>
-                                                <td class="tx-get">Constanta</td>
-                                            </tr>
-                                            <tr >
-                                                <td class="tx-it">
-                                                    County:
-                                                </td>
-                                                <td class="tx-get">Constanta</td>
-                                            </tr>
-                                            <tr >
-                                                <td class="tx-it">
-                                                    Zip code:
-                                                </td>
-                                                <td class="tx-get">010001</td>
-                                            </tr>
-                                            <tr >
-                                                <td class="tx-it">
-                                                    Street, number:
-                                                </td>
-                                                <td class="tx-get">Unirii 1</td>
-                                            </tr>
-                                            <tr >
-                                                <td class="tx-it">
-                                                    Bl, sc, et, apt.:
-                                                </td>
-                                                <td class="tx-get">-</td>
-                                            </tr>
-                                            <tr >
-                                                <td class="tx-it">
-                                                </td>
-                                                <td class="tx-get"></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="tx-ft" colspan="2" style="background-color:#C9D3C7">
-                                                    Delivery Address
-                                                </td>
-                                            </tr>
-                                            <tr >
-                                                <td class="tx-it">
-                                                    City:
-                                                </td>
-                                                <td class="tx-get">Constanta</td>
-                                            </tr>
-                                            <tr >
-                                                <td class="tx-it">
-                                                    County (or sector):
-                                                </td>
-                                                <td class="tx-get">Constanta</td>
-                                            </tr>
-                                            <tr >
-                                                <td class="tx-it">
-                                                    Zip code:
-                                                </td>
-                                                <td class="tx-get">010001</td>
-                                            </tr>
-                                            <tr >
-                                                <td class="tx-it">
-                                                    Street, number:
-                                                </td>
-                                                <td class="tx-get">Unirii 1</td>
-                                            </tr>
-                                            <tr >
-                                                <td class="tx-it">
-                                                    Bl, sc, et, apt.:
-                                                </td>
-                                                <td class="tx-get">-</td>
-                                            </tr>
-                                            <tr >
-                                                <td class="tx-it">
-                                                </td>
-                                                <td class="tx-get"></td>
-                                            </tr>
-                                            <tr>
-                                                <td align="left">
-                                                    <div>
-                                                        <article class="user-art"><a th:href="@{/users/update-customer}">Update account</a></span>
-                                                    </div>
-                                                </td>
-
-                                            </tr>
-                                        </table>
-                                    </td>
-                                    <td width="25%" class="top-al">
-                                        <table id="logotop" width="100%">
-                                            <tr>
-                                                <td>
-                                                    <img src="images/logo.png" alt="All-Cool" height="150">
-                                                </td>
-                                            </tr>
-                                            <td id="id-admin">
-                                                <i><span>Customer code: ALCCST-</span><span>3</span></i>
-                                            </td>
-                                        </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </table><br>
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- <div>
-                    <div th:href="@{/users}">
+                    <div th:each="user: ${user}">
                         <br><br>
                         <div >
                             <table id="altab" width="90%">
@@ -237,8 +73,7 @@
                                                 <td class="tx-it">
                                                     Last Name:
                                                 </td>
-                                                <td class="tx-get" th:text="${user.lastName}"></td>
-                                            </tr>
+                                                <td class="tx-get" th:text="${user.lastName}"></td>                                            </tr>
                                             <tr >
                                                 <td class="tx-it">
                                                     Username:
@@ -351,10 +186,9 @@
                                             <tr>
                                                 <td align="left">
                                                     <div>
-                                                        <article class="user-art"><a th:href="@{/user/updateAdmin}">Update account</a></span>
+                                                        <article class="user-art"><a th:href="@{/users/update-customer}">Update account</a></span>
                                                     </div>
                                                 </td>
-
                                             </tr>
                                         </table>
                                     </td>
@@ -366,7 +200,7 @@
                                                 </td>
                                             </tr>
                                             <td id="id-admin">
-                                                <i><span>Customer code: ALCCST-</span><span th:text="${user.id}">3</span></i>
+                                                <i><span>Customer code: ALCCST-</span><span th:text="${user.id}"></span></i>
                                             </td>
                                         </tr>
                                         </table>
@@ -375,11 +209,7 @@
                             </table><br>
                         </div>
                     </div>
-                </div> -->
-
-
-
-
+                </div>
 
             </main>
         </div>

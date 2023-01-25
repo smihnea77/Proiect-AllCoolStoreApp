@@ -23,7 +23,7 @@ public class ProductController {
     @GetMapping("/products")
     public ModelAndView getAllProducts() {
         ModelAndView modelAndView = new ModelAndView("products");
-        List<Product> productList = productService.getAllProducts();
+        List<Product> productList = productService.getAllProductsForAdmin();
         modelAndView.addObject("productList", productList);
         return modelAndView;
     }

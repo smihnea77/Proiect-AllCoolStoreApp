@@ -24,6 +24,10 @@ public class ProductService {
         return productRepository.findAll();
     }
 
+    public List<Product> getAllProductsForAdmin() {
+        return productRepository.findAll();
+    }
+
     public void priceWithTva() {
         List<Product> productList = productRepository.findAll();
         for (Product p : productList) {

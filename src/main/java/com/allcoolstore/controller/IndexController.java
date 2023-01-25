@@ -51,16 +51,6 @@ public class IndexController {
         return "user";
     }
 
-//    @GetMapping(value = "/users/settingAdmin")
-//    public String getSettingAdminPage() {
-//        return "settingAdmin";
-//    }
-
-    @GetMapping(value = "/users/settingUser")
-    public String getSettingUserPage() {
-        return "settingUser";
-    }
-
     @GetMapping(value = "/users/tkyou")
     public String getThankYouPage() {
         return "tkyou";
@@ -71,30 +61,11 @@ public class IndexController {
         return "register";
     }
 
-    @GetMapping(value = "/users/update-admin")
-    public String getUpdateAdmin() {
-        return "updateAdmin";
-    }
-
-    @GetMapping(value = "/users/update-customer")
-    public String getUpdateCustomer() {
-        return "updateCustomer";
-    }
-
     @GetMapping(value = "/users/not-register")
     public String getNotRegisterPage() { return "notRegister"; }
 
     @GetMapping(value = "/orders/my-orders")
     public String getMyOrders() { return "myOrders"; }
-
-//    @GetMapping(value = "/orders/orders-admin")
-//    public String getAdminOrders() { return "ordersAdmin"; }
-
-    @GetMapping(value = "/orders/orders-user")
-    public String getUserOrders() { return "ordersUser"; }
-
-//    @GetMapping(value = "/orders/create-order")
-//    public String createOrder() { return "createOrder"; }
 
     @GetMapping(value = "/logout")
     public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
@@ -104,5 +75,4 @@ public class IndexController {
         }
         return "redirect:/login";
     }
-
 }

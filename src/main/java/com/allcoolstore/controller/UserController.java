@@ -35,11 +35,20 @@ public class UserController {
     }
 
     @GetMapping("/settingAdmin")
-    public ModelAndView getCurrentUserForSettings() {
-        ModelAndView modelAndView = new ModelAndView("settingsAdmin");
+    public ModelAndView getCurrentAdminForSettings() {
+        ModelAndView modelAndView = new ModelAndView("settingAdmin");
         User user = userService.getLoggedUser();
-        modelAndView.addObject("user",user);
-    return modelAndView;}
+        modelAndView.addObject("user", user);
+        return modelAndView;
+    }
+
+    @GetMapping("/settingUser")
+    public ModelAndView getCurrentUserForSettings() {
+        ModelAndView modelAndView = new ModelAndView("settingUser");
+        User user = userService.getLoggedUser();
+        modelAndView.addObject("user", user);
+        return modelAndView;
+    }
 
 //    @GetMapping("/user/{id}")
 //    public ModelAndView getAdminById(@PathVariable Long id) {
@@ -130,6 +139,34 @@ public class UserController {
         ModelAndView modelAndView = new ModelAndView("updateUser");
         modelAndView.addObject(userService.getByUserId(id));
         return modelAndView;
+    }
+
+    @GetMapping("update-admin")
+    public ModelAndView updateAdminPage() {
+        ModelAndView modelAndView = new ModelAndView("updateAdmin");
+        User user = userService.getLoggedUser();
+        modelAndView.addObject("user", user);
+        return modelAndView;
+    }
+
+    @PostMapping(path = "update-admin/{id}")
+    public ModelAndView updateAdmin(@PathVariable Long id, @ModelAttribute("adminUpdateForm") User user) {
+        userService.updateUser(id, user);
+        return new ModelAndView("redirect:/users/settingAdmin");
+    }
+
+    @GetMapping("update-customer")
+    public ModelAndView updateCustomerPage() {
+        ModelAndView modelAndView = new ModelAndView("updateCustomer");
+        User user = userService.getLoggedUser();
+        modelAndView.addObject("user", user);
+        return modelAndView;
+    }
+
+    @PostMapping(path = "update-customer/{id}")
+    public ModelAndView updateCustomer(@PathVariable Long id, @ModelAttribute("customerUpdateForm") User user) {
+        userService.updateUser(id, user);
+        return new ModelAndView("redirect:/users/settingUser");
     }
 
     @DeleteMapping(path = "{id}")

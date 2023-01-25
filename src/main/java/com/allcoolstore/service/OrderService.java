@@ -40,8 +40,8 @@ public class OrderService  {
         order.setProducts(getAllProductsFromCart());
         order.setTotal(getTotalPriceFromCart());
         order.setLocalDate(LocalDate.now());
-      order.setUser(user);
-      //  order.setTotal(cartService.getTotalPrice());
+        order.setUser(user);
+        //  order.setTotal(cartService.getTotalPrice());
         orderRepository.save(order);
         cartService.clearShoppingCart(user.getId());
     }

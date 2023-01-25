@@ -2,10 +2,6 @@ package com.allcoolstore.service;
 
 import com.allcoolstore.model.User;
 import com.allcoolstore.repository.UserRepository;
-//import com.allcoolstore.security.adapter.UserDetailsAdapter;
-//import org.springframework.security.core.userdetails.UserDetails;
-//import org.springframework.security.core.userdetails.UserDetailsService;
-//import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import com.allcoolstore.security.adapter.UserDetailsAdapter;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;

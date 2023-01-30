@@ -56,7 +56,7 @@ public class OrderController {
     @PostMapping("/create-order")
     public ModelAndView createOrder(@ModelAttribute Order order) {
         orderService.createOrder(order);
-        return new ModelAndView("redirect:/users/tkyou");
+        return new ModelAndView("redirect:/");
     }
 
     @PostMapping(path = "/update-order/{id}")

@@ -29,8 +29,5 @@ Used technologies: Java, Spring , MySQL, Thymeleaf, HTML, CSS, JavaScript
 ## Authors
 
 - [@davidsecheres](https://github.com/davidsecheres)
-- [@cornellupu](https://gitlab.com/cornellupu)
-- [@smihnea77](https://gitlab.com/smihnea77)
-- [@monica.prundean12](https://gitlab.com/monica.prundean12)
 
 
